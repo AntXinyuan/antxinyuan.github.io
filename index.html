@@ -91,26 +91,31 @@
 					<td width="206">
 						<img src="docs//cvpr2024/thumbnail.png" width="200px" height="75	" style="box-shadow: 4px 4px 8px #888">
 					</td>
-					<td><b>Rethinking Boundary Discontinuity Problem for Oriented Object Detection</b> <br>
+					<td><div class="article-analysis">
+						<b>Rethinking Boundary Discontinuity Problem for Oriented Object Detection</b> <br>
 						Hang Xu*, <b>Xinyuan Liu*</b>, Haonan Xu, Yike Ma, Zunjie Zhu, Chenggang Yan and Feng Dai†<br>
 						<i><b>CVPR 2024</b> (CCF-A)</i>
+						<a href="https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:d1gkVwhDpl0C"><img src="">
 						<br>
 						<a href="https://arxiv.org/pdf/2305.10061.pdf">PDF</a> /
 						<a href="https://arxiv.org/pdf/2305.10061.pdf#page=11">Supp</a> /
 						<a href="https://github.com/hangxu-cv/cvpr24acm">Code</a> /
 						Slides /
 						<a href="docs/cvpr2024/acm_poster.pdf">Poster</a> /
-						<a href="docs/cvpr2024/bibtex.txt">BibTex</a>
-					</td>
+						<a href="docs/cvpr2024/bibtex.txt">BibTex</a> 
+						
+						</td></div>
 
 				<tr>
 					<td width="206">
 						<img src="docs/ijcai2023/thumbnail.png" width="200px" height="75	" style="box-shadow: 4px 4px 8px #888">
 					</td>
-					<td><b>Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods</b>
+					<td><div class="article-analysis">
+						<b>Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods</b>
 						<br>
 						<b>Xinyuan Liu</b>, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†<br>
 						<i><b>IJCAI 2023</b> (CCF-A)</i>
+						<a href="https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:qjMakFHDy7sC"><img src=""></a>
 						<br>
 						<a href="https://www.ijcai.org/proceedings/2023/0137.pdf">PDF</a> /
 						Supp /
@@ -118,16 +123,18 @@
 						<a href="docs/ijcai2023/sph2pob_slides.pdf">Slides</a> /
 						<a href="docs/ijcai2023/sph2pob_poster.pdf">Poster</a> /
 						<a href="docs/ijcai2023/bibtex.txt">BibTex</a>
-					</td>
+					</td></div>
 
 
 				<tr>
 					<td width="206">
 						<img src="docs/cvpr2023/thumbnail.png" width="200px" height="75	" style="box-shadow: 4px 4px 8px #888">
 					</td>
-					<td><b>Gaussian Label Distribution Learning for Spherical Image Object Detection</b> <br>
+					<td><div class="article-analysis">
+						<b>Gaussian Label Distribution Learning for Spherical Image Object Detection</b> <br>
 						Hang Xu, <b>Xinyuan Liu</b>, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†<br>
 						<i><b>CVPR 2023</b> (CCF-A)</i>
+						<a href="https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:9yKSN-GCB0IC"><img src=""></a>
 						<br>
 						<a
 							href="https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_Gaussian_Label_Distribution_Learning_for_Spherical_Image_Object_Detection_CVPR_2023_paper.pdf">PDF</a>
@@ -139,23 +146,26 @@
 						<a href="docs/cvpr2023/gldl_slides.pdf">Slides</a> / 
 						<a href="docs/cvpr2023/gldl_poster.pdf">Poster</a> /
 						<a href="docs/cvpr2024/bibtex.txt">BibTex</a>
-					</td>
+	
+					</td></div>
 
 				<tr>
 					<td width="206">
 						<img src="docs/arxiv2024/thumbnail.png" width="200px" height="75	" style="box-shadow: 4px 4px 8px #888">
 					</td>
-					<td><b>TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes</b> <br>
+					<td><div class="article-analysis">
+						<b>TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes</b> <br>
 						Yanping Fu, Wenbin Liao, <b>Xinyuan Liu</b>, Hang Xu, Yike Ma, Feng Dai† and Yucheng Zhang<br>
 						<i><b>arXiv 2024</b> (preprint)</i>
+						<a href="https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:eQOLeE2rZwMC"><img src=""></a>
 						<br>
 						<a	href="https://arxiv.org/pdf/2405.14747">PDF</a> /
 						Supp /
 						Code /
 						Slides / 
 						Poster /
-						<a href="docs/arxiv2024/bibtex.txt">BibTex</a>
-					</td>
+						<a href="docs/arxiv2024/bibtex.txt">BibTex</a>	
+					</td></div>
 
 			</tbody>
 		</table>
@@ -222,6 +232,25 @@
 				</center>
 			</p>
 		</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			fetch('scripts/scholar.json')
+				.then(response => response.json())
+				.then(data => {
+					console.info(data)
+					document.querySelectorAll('.article-analysis img').forEach(img => {
+						const badgeId = img.parentNode.href.match(/citation_for_view=([^&]+)/)[1];
+						const num_citation=data['publications'][badgeId]['num_citations']
+						img.src = `https://img.shields.io/badge/Citations-${num_citation}-blue.svg?logo=google-scholar`;
+						img.parentNode.href=`https://scholar.google.com/citations?view_op=view_citation&citation_for_view=${badgeId}`;
+					});
+				})
+				.catch(error => {
+					console.error('Error loading badges:', img, error);
+				});
+		});
+	</script>	
 
 </body>
 
