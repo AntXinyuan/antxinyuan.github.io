@@ -15,10 +15,11 @@ jobs:
         sudo apt-get install python3-setuptools
     - name: Run
       run: |
+        cd ./scripts
         pip3 install scholarly
-        python3 ./scripts/scholar_crawler.py
+        python3 scholar_crawler.py
         git config --local user.name "${{ github.actor }}"
         git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-        git add ./scripts/scholar.json
+        git add scholar.json
         git commit -m "Updated citation data"
-        git push "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository}}.git" HEAD:master
+        git push
