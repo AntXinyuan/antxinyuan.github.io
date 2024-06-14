@@ -29,7 +29,7 @@ body {
   padding-right: 50px;
   padding-top: 10px;
   padding-bottom: 30px;
-  max-width: 960px;
+  max-width: 1050px;
 }
 
 #layout-menu {
@@ -371,4 +371,62 @@ img {
 table.imgtable, table.imgtable td {
     border: none;
     text-align: left;
+}
+
+body {
+	font-family: Arial, sans-serif;
+}
+
+#layout-content {
+	margin: 25px;
+}
+
+#toptitle h1 {
+	font-size: 2em;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	table, tbody, tr, td {
+		display: block;
+		width: 100%;
+	}
+
+	td img {
+		display: block;
+		margin: 0 auto;
+	}
+
+	#toptitle h1 {
+		text-align: center;
+	}
+
+	#layout-content {
+		margin: 10px;
+	}
+}
+
+/* More specific adjustments for smaller screens */
+@media (max-width: 480px) {
+	#toptitle h1 {
+		font-size: 1.5em;
+	}
+
+	h2, h3 {
+		font-size: 1.2em;
+	}
+
+	p, li {
+		font-size: 1em;
+	}
 }
