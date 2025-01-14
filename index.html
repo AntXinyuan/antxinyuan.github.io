@@ -61,7 +61,11 @@
 				Technology</a>, <a href="https://www.xidian.edu.cn">Xidian University</a>, Xi'an, China, in 2021.
 		</p>
 		<p>
-			I'm interested in computer vision, with a focus on <b>panoramic/oriented/3D object detection</b>.
+			I'm interested in computer vision, with a focus on <b>panoramic/oriented/3D object detection
+			<td><div class="article-analysis">
+			<a href="https://scholar.google.com/citations?user=eXwizz8AAAAJ"><img src="" style="height: 1em;"></a>			
+			<td></div>
+			</b>.
 		</p>
 
 
@@ -255,6 +259,10 @@
 							const num_citation=data['publications'][badgeId]['num_citations']
 							img.src = `https://img.shields.io/badge/Citations-${num_citation}-blue.svg?logo=google-scholar`;
 							img.parentNode.href=`https://scholar.google.com/citations?view_op=view_citation&citation_for_view=${badgeId}`;
+						}
+						else{
+							const num_citation=data['citedby']
+							img.src = `https://img.shields.io/badge/Citations-${num_citation}-blue.svg?logo=google-scholar`;
 						}
 
 					});
