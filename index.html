@@ -253,7 +253,7 @@
 					console.info(data)
 					document.querySelectorAll('.article-analysis img').forEach(img => {
 					    const href = img.parentNode.href;
-                			    if (href && href.includes('scholar.google.com')) {
+                			    if (href && href.includes('scholar')) {
 						const badge = href.match(/citation_for_view=([^&]+)/)
 						if(badge){
 							const badgeId = badge[1];
