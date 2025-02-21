@@ -1,0 +1,10 @@
+@article{fu2024topologic,
+  title={TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes},
+  author={Fu, Yanping and Liao, Wenbin and Liu, Xinyuan and Xu, Hang and Ma, Yike and Zhang, Yucheng and Dai, Feng},
+  booktitle = {Advances in Neural Information Processing Systems},
+  publisher = {Curran Associates, Inc.},
+  editor = {A. Globerson and L. Mackey and D. Belgrave and A. Fan and U. Paquet and J. Tomczak and C. Zhang},
+  pages={61658--61676},
+  volume = {37},
+  year={2024}
+}

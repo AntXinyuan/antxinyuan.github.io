@@ -1,6 +1,0 @@
-@article{fu2023topologic,
-  title={TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes},
-  author={Fu, Yanping and Liao, Wenbin and Liu, Xinyuan and Xu, Hang and Ma, Yike and Dai, Feng and Zhang, Yucheng},
-  journal={arXiv preprint arXiv:2405.14747},
-  year={2024}
-}
