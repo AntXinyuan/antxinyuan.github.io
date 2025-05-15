@@ -1,0 +1,97 @@
+# Xinyuan Liu (刘 鑫源)
+
+**PhD Student**
+
+Institute of Computing Technology, Chinese Academy of Sciences (ICT,CAS)  
+Beijing, China  
+
+Email: [liuxinyuan21s@ict.ac.cn](mailto:liuxinyuan21s@ict.ac.cn)  
+
+[Google Scholar](https://scholar.google.com/citations?user=eXwizz8AAAAJ) / [DBLP](https://dblp.org/pid/202/2370-3) / [Github](https://github.com/antxinyuan)  
+
+## 🇨🇳 Biography 
+I'm now a Ph.D. student in [Institute of Computing Technology, Chinese Academy of Science](http://www.ict.ac.cn), Beijing, China, starting from Autumn 2021.  
+I received the B.E. degree from [School of Computer Science and Technology](https://cs.xidian.edu.cn), [Xidian University](https://www.xidian.edu.cn), Xi'an, China, in 2021.  
+
+I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
+
+## 🔥 News
+- 05/2024: One cooperative paper is released on arXiv (accepted by NeurIPS 2024).  
+- 03/2024: I’m becoming a Ph.D. student at [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn).  
+- 02/2024: One paper is accepted by CVPR 2024.  
+- 05/2023: One paper is accepted by IJCAI 2023.  
+- 02/2023: One paper is accepted by CVPR 2023.  
+- 09/2021: I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
+
+## 📝 Publications  
+**Summary**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**1**), AAAI & IJCAI & ACM MM (**1**), *IEEE* Transactions (**0**).  
+
+* indicates equal contribution, † indicates corresponding author.  
+
+### ACM
+![pub|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.png) 
+
+- **Rethinking Boundary Discontinuity Problem for Oriented Object Detection**
+- **Xinyuan Liu**, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
+- ***CVPR 2024**** (CCF-A) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:d1gkVwhDpl0C) / [![GitHub Stars](https://img.shields.io/github/stars/hangxu-cv/cvpr24acm?style=social)](https://github.com/hangxu-cv/cvpr24acm)
+- [PDF](https://openaccess.thecvf.com/content/CVPR2024/papers/Xu_Rethinking_Boundary_Discontinuity_Problem_for_Oriented_Object_Detection_CVPR_2024_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2024/supplemental/Xu_Rethinking_Boundary_Discontinuity_CVPR_2024_supplemental.pdf) / [arXiv](https://arxiv.org/abs/2305.10061) / [Code](https://github.com/hangxu-cv/cvpr24acm) / Slides / [Poster](docs/cvpr2024/acm_poster.pdf) / [BibTex](docs/cvpr2024/bibtex.txt)  
+
+
+### Sph2Pob
+![pub|Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods](docs/ijcai2023/thumbnail.png)  
+
+- **Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods**
+- **Xinyuan Liu**, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
+- ***ICJAI 2024*** (CCF-A) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:qjMakFHDy7sC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/sph2pob?style=social)](https://github.com/antxinyuan/sph2pob)
+- [PDF](https://www.ijcai.org/proceedings/2023/0137.pdf) / Supp / arXiv / [Code](https://github.com/antxinyuan/sph2pob) / [Slides](docs/ijcai2023/sph2pob_slides.pdf) / [Poster](docs/ijcai2023/sph2pob_poster.pdf) / [BibTex](docs/ijcai2023/bibtex.txt)  
+
+
+### GLDL
+![pub|Gaussian Label Distribution Learning for Spherical Image Object Detection](docs/cvpr2023/thumbnail.png)  
+
+- **Gaussian Label Distribution Learning for Spherical Image Object Detection**  
+- Hang Xu, **Xinyuan Liu**, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
+- ***CVPR 2023*** (CCF-A) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:9yKSN-GCB0IC) 
+- [PDF](https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_Gaussian_Label_Distribution_Learning_for_Spherical_Image_Object_Detection_CVPR_2023_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2023/supplemental/Xu_Gaussian_Label_Distribution_CVPR_2023_supplemental.pdf) / arXiv / Code / [Slides](docs/cvpr2023/gldl_slides.pdf) / [Poster](docs/cvpr2023/gldl_poster.pdf) / [BibTex](docs/cvpr2024/bibtex.txt)  
+
+
+### TopoLogic
+![pub|TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes](docs/neurips2024/thumbnail.png)  
+
+- **TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes**  
+- Yanping Fu, Wenbin Liao, **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  
+- ***NeurIPS 2024*** (CCF-A) 	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:WF5omc3nYNoC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topoLogic?style=social)](https://github.com/franpin/topoLogic)
+- [PDF](https://proceedings.neurips.cc/paper_files/paper/2024/file/7116cda41d75d580bae15d9e484a8466-Paper-Conference.pdf) / [Supp](https://proceedings.neurips.cc/paper_files/paper/2024/file/7116cda41d75d580bae15d9e484a8466-Supplemental-Conference.zip) / [arXiv](https://arxiv.org/abs/2405.14747) / [Code](https://github.com/franpin/topoLogic) / [Slides](docs/neurips2024/topologic_slides.pdf) / [Poster](docs/neurips2024/topologic_poster.pdf) / [BibTex](docs/neurips2024/bibtex.txt)  
+
+## 🎓 Education
+### UCAS
+![edu|UCAS](images/ucas.jpg)
+
+- **Ph.D.** candidate, [Institute of Computing Technology, Chinese Academy of Science (ICT,CAS)](http://www.ict.ac.cn) 
+- Beijing, China 
+- Sep. 2021 - Now 
+
+### XDU
+![edu|Xidian University](images/xidian.png)
+
+- **B.E.** degree, [School of Computer Science and Technology](https://cs.xidian.edu.cn), [Xidian University (XDU)](https://www.xidian.edu.cn) 
+- Xi'an, China 
+- Sep. 2017 - Jun. 2021 
+
+### FGZX
+![edu|Fugu Middle School](images/fgzx.png)
+
+- Fugu Middle School of Shaanxi 
+- Fugu, China 
+- Sep. 2014 - Jun. 2017 
+
+## 🎖 Awards  
+- Master's National Scholarship, 2023  
+- ICT × E Fund Scholarship, 2022  
+- Outstanding Graduates of Universities in Shaanxi Province, 2021  
+- XDU × Oupalm Scholarship, 2019  
+- First-Class Academic Scholarship, 2018, 2019, 2020, 2022, 2023  
+
+<center>
+&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Sep, 2024</a>
+</center>
