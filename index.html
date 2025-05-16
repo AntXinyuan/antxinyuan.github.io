@@ -97,6 +97,39 @@
             padding-left: 0;
             /* 消除左侧缩进 */
         }
+
+        /* 新增手机端响应式布局 */
+        @media (max-width: 768px) {
+            /* 针对Publication和Education的表格 */
+            .pub-table, .edu-table {
+                width: 100%;
+            }
+
+            /* 表格单元格改为块级显示 */
+            .pub-table td, .edu-table td {
+                display: block;
+                width: 100% !important; /* 覆盖原有200px宽度 */
+                padding: 0 !important; /* 重置内边距 */
+            }
+
+            /* 调整图片样式 */
+            .pub-table td:first-child img {
+                width: 100%; /* 图片宽度占满屏幕 */
+                height: auto; /* 保持宽高比 */
+                margin-bottom: 15px; /* 图片与文字间距 */
+            }
+
+            .edu-table td:first-child img {
+                width: 150px; /* 教育背景图片适当缩小 */
+                height: 150px;
+                margin-bottom: 10px;
+            }
+
+            /* 文字内容调整 */
+            .common-content {
+                padding: 0 8px; /* 文字内容增加内边距 */
+            }
+        }
     </style>
 </head>
 
