@@ -1,17 +1,29 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.2/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" >
+
 # Xinyuan Liu (刘 鑫源)
 
 **PhD Student**
 
+<!--<i class="fa fa-building" style="color: #0c4994;"></i> -->
 Institute of Computing Technology, Chinese Academy of Sciences (ICT,CAS)  
+<!--<i class="fa fa-map-marker" style="color: #0c4994;"></i>-->
 Beijing, China  
 
+<i class="fa fa-envelope" style="color: #0c4994;"></i>
 Email: [liuxinyuan21s@ict.ac.cn](mailto:liuxinyuan21s@ict.ac.cn)  
 
-[Google Scholar](https://scholar.google.com/citations?user=eXwizz8AAAAJ) / [DBLP](https://dblp.org/pid/202/2370-3) / [Github](https://github.com/antxinyuan)  
+<i class="ai ai-google-scholar" style="color: #0c4994;"></i>
+[Google Scholar](https://scholar.google.com/citations?user=eXwizz8AAAAJ) / 
+<i class="ai ai-dblp" style="color: #0c4994;"></i>
+[DBLP](https://dblp.org/pid/202/2370-3) / 
+<i class="fa fa-github" style="color: #171515;"></i>
+[Github](https://github.com/antxinyuan)  
 
 ## 🇨🇳 Biography 
 I'm now a Ph.D. student in [Institute of Computing Technology, Chinese Academy of Science](http://www.ict.ac.cn), Beijing, China, starting from Autumn 2021.  
 I received the B.E. degree from [School of Computer Science and Technology](https://cs.xidian.edu.cn), [Xidian University](https://www.xidian.edu.cn), Xi'an, China, in 2021.  
+
 
 I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
 
