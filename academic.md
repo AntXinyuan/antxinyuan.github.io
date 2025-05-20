@@ -38,13 +38,13 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ## 📝 Publications  
 **Summary**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**1**), AAAI & IJCAI & ACM MM (**1**), *IEEE* Transactions (**0**).  
 
-* indicates equal contribution, † indicates corresponding author.  
+\* indicates equal contribution, † indicates corresponding author.  
 
 ### ACM
 ![pub|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.png) 
 
 - **Rethinking Boundary Discontinuity Problem for Oriented Object Detection**
-- **Xinyuan Liu**, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
+- Hang Xu\*, **Xinyuan Liu\***, Haonan Xu, Yike Ma, Zunjie Zhu, Chenggang Yan and Feng Dai†
 - ***CVPR 2024*** (CCF-A) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:d1gkVwhDpl0C) / [![GitHub Stars](https://img.shields.io/github/stars/hangxu-cv/cvpr24acm?style=social)](https://github.com/hangxu-cv/cvpr24acm)
 - [PDF](https://openaccess.thecvf.com/content/CVPR2024/papers/Xu_Rethinking_Boundary_Discontinuity_Problem_for_Oriented_Object_Detection_CVPR_2024_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2024/supplemental/Xu_Rethinking_Boundary_Discontinuity_CVPR_2024_supplemental.pdf) / [arXiv](https://arxiv.org/abs/2305.10061) / [Code](https://github.com/hangxu-cv/cvpr24acm) / Slides / [Poster](docs/cvpr2024/acm_poster.pdf) / [BibTex](docs/cvpr2024/bibtex.txt)  
 
