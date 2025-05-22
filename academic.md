@@ -64,7 +64,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - **Gaussian Label Distribution Learning for Spherical Image Object Detection**  
 - Hang Xu, **Xinyuan Liu**, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
 - ***CVPR 2023*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:9yKSN-GCB0IC) 
-- [PDF](https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_Gaussian_Label_Distribution_Learning_for_Spherical_Image_Object_Detection_CVPR_2023_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2023/supplemental/Xu_Gaussian_Label_Distribution_CVPR_2023_supplemental.pdf) / arXiv / Code / [Slides](docs/cvpr2023/gldl_slides.pdf) / [Poster](docs/cvpr2023/gldl_poster.pdf) / [BibTex](docs/cvpr2024/bibtex.txt)  
+- [PDF](https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_Gaussian_Label_Distribution_Learning_for_Spherical_Image_Object_Detection_CVPR_2023_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2023/supplemental/Xu_Gaussian_Label_Distribution_CVPR_2023_supplemental.pdf) / arXiv / Code / [Slides](docs/cvpr2023/gldl_slides.pdf) / [Poster](docs/cvpr2023/gldl_poster.pdf) / [BibTex](docs/cvpr2023/bibtex.txt)  
 
 
 ### TopoLogic
