@@ -6,7 +6,7 @@ BASE_URL = "https://antxinyuan.github.io"
 
 # 需要排除的文件或目录（支持扩展名或名称）
 EXCLUDE = {
-    ".md", ".py", ".json", "package-lock.json", "README.md",
+    ".md", ".py", ".json", "README.md",
     "scripts/", "legacy/jemdoc.css"  # 排除旧版 CSS 文件
 }
 

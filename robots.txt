@@ -1,0 +1,20 @@
+# 允许所有搜索引擎爬虫（* 代表所有用户代理）
+User-Agent: *
+
+# 允许抓取的核心内容
+Allow: /                     # 允许抓取根目录（包含首页 index.html）
+Allow: /docs/                # 允许抓取论文、会议资料目录（重要学术资源）
+Allow: /legacy/              # 允许抓取旧版页面（如 legacy/index.html）
+Allow: /*.pdf                # 允许抓取 PDF 文件（如论文海报、幻灯片）
+Allow: /*.txt                # 允许抓取 BibTeX 文件（学术引用信息）
+
+# 禁止抓取的技术文件与无关内容
+Disallow: /**.md             # 禁止抓取 Markdown 源文件（.md，非最终网页）
+Disallow: /scripts/          # 禁止抓取脚本目录（如 Python 爬虫、配置文件）
+Disallow: /legacy/jemdoc.css # 禁止抓取旧版 CSS 文件（样式文件无需单独索引）
+
+# 提交站点地图（引导爬虫高效抓取）
+Sitemap: https://antxinyuan.github.io/sitemap.xml
+
+# 可选：设置爬虫抓取间隔（降低服务器压力，GitHub Pages 通常无需限制）
+# Crawl-delay: 5
