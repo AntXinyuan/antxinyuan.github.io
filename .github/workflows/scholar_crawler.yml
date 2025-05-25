@@ -1,4 +1,4 @@
-name: Get Citation Data
+name: Automatic Information Update
 
 on: 
  page_build: 
@@ -22,11 +22,12 @@ jobs:
       run: |
         cd ./scripts
         python3 scholar_crawler.py
+        python3 sitemap_generator.py
 
     - name: Commit and Push Changes
       run: |
         git config --local user.name "${{ github.actor }}"
         git config --local user.email "${{ github.actor }}@users.noreply.github.com"
         git add scripts/scholar.json
-        git commit -m "Updated citation data"
+        git commit -m "Automatic information update"
         git push
