@@ -15,7 +15,7 @@ def generate_sitemap():
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
     # 遍历根目录下的文件
-    for root, dirs, files in os.walk(".", topdown=True):
+    for root, dirs, files in os.walk("..", topdown=True):
         # 排除不需要的目录（如 scripts）
         dirs[:] = [d for d in dirs if d not in EXCLUDE and not d.startswith(".")]
         
