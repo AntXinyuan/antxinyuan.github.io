@@ -28,18 +28,21 @@ I received the B.E. degree from [School of Computer Science and Technology](http
 I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
 
 ## 🔥 News
-- 05/2025: One cooperative paper is released on arXiv. 
-- 05/2024: One cooperative paper is released on arXiv (accepted by NeurIPS 2024).  
-- 03/2024: I’m becoming a Ph.D. student at [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn).  
-- 02/2024: One paper is accepted by CVPR 2024.  
-- 05/2023: One paper is accepted by IJCAI 2023.  
-- 02/2023: One cooperative paper is accepted by CVPR 2023.  
-- 09/2021: I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
+- 05/2025: 🎉 One cooperative paper is released on arXiv. 
+- 05/2024: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2024).  
+- 03/2024: 🏆 I’m becoming a Ph.D. student at [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn).  
+- 02/2024: 🎉 One paper is accepted by CVPR 2024. 
+- 10/2023: 🏆 I am awarded the National Scholarship for Master's Students. 
+- 05/2023: 🎉 One paper is accepted by IJCAI 2023.  
+- 02/2023: 🎉 One cooperative paper is accepted by CVPR 2023.  
+- 09/2021: 🏆 I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
 
 ## 📝 Publications  
 **Summary**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**1**), AAAI & IJCAI & ACM MM (**1**), *IEEE* Transactions (**0**).  
 
 \* indicates equal contribution, † indicates corresponding author.  
+
+### 💡Conference Papers
 
 ### ACM
 ![pub|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.png) 
@@ -76,6 +79,16 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - ***NeurIPS 2024*** (<span style="color:#ae1324;">CCF-A</span>) 	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:WF5omc3nYNoC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topoLogic?style=social)](https://github.com/franpin/topoLogic)
 - [PDF](https://proceedings.neurips.cc/paper_files/paper/2024/file/7116cda41d75d580bae15d9e484a8466-Paper-Conference.pdf) / [Supp](https://proceedings.neurips.cc/paper_files/paper/2024/file/7116cda41d75d580bae15d9e484a8466-Supplemental-Conference.zip) / [arXiv](https://arxiv.org/abs/2405.14747) / [Code](https://github.com/franpin/topoLogic) / [Slides](docs/neurips2024/topologic_slides.pdf) / [Poster](docs/neurips2024/topologic_poster.pdf) / [BibTex](docs/neurips2024/bibtex.txt)  
 
+### 🔬Journal Papers
+
+### GDL
+![pub|Rotated Object Detection with Circular Gaussian Distribution](docs/electronics2023/thumbnail.png)  
+- **Rotated Object Detection with Circular Gaussian Distribution**  
+- Hang Xu, **Xinyuan Liu**, Yike Ma, Zunjie Zhu, Shuai Wang, Chenggang Yan and Feng Dai†  
+- ***Electronics 2023***  (SCI-Q2, IF=2.6)	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:2osOgNQ5qMEC)
+- [PDF](https://www.mdpi.com/2079-9292/12/15/3265/pdf?version=1690623242) / Supp / arXiv / Code / Slides / Poster / [BibTex](docs/electronics2023/bibtex.txt)
+
+### ⏳Preprint Papers
 
 ### TopoPoint
 ![pub|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.png)  

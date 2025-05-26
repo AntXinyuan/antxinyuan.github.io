@@ -1,0 +1,10 @@
+@article{xu2023rotated,
+  title={Rotated object detection with circular gaussian distribution},
+  author={Xu, Hang and Liu, Xinyuan and Ma, Yike and Zhu, Zunjie and Wang, Shuai and Yan, Chenggang and Dai, Feng},
+  journal={Electronics},
+  volume={12},
+  number={15},
+  pages={3265},
+  year={2023},
+  publisher={MDPI}
+}
