@@ -17,6 +17,7 @@ jobs:
       run: |
         sudo apt-get install python3-setuptools
         pip3 install scholarly
+        pip3 install gitpython
 
     - name: Execute scripts
       run: |

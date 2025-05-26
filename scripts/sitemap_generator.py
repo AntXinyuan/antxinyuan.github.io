@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from git import Repo
 
 # 网站基础 URL
 BASE_URL = "https://antxinyuan.github.io"
@@ -10,7 +11,35 @@ EXCLUDE = {
     "scripts/", "legacy/jemdoc.css"  # 排除旧版 CSS 文件
 }
 
-def generate_sitemap():
+def get_all_git_updated_times_gitpython(work_dir):
+    """使用 gitpython 库获取所有文件的最后更新时间"""
+    try:
+        # 打开 Git 仓库
+        repo = Repo(work_dir, search_parent_directories=True)
+        
+        # 获取所有跟踪文件
+        tracked_files = repo.git.ls_files().split('\n')
+        
+        # 获取每个文件的最后更新时间
+        result = {}
+        for file_path in tracked_files:
+            if not file_path:
+                continue
+                
+            # 获取文件的最新提交
+            commits = list(repo.iter_commits(paths=file_path, max_count=1))
+            if commits:
+                # 转换为 ISO 格式
+                timestamp = commits[0].committed_datetime.strftime("%Y-%m-%d %H:%M:%S")
+                result[file_path] = timestamp
+        
+        return result
+    
+    except Exception as e:
+        print(e)
+        return {}
+
+def generate_sitemap(time_map=None):
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
@@ -31,7 +60,11 @@ def generate_sitemap():
             url = f"{BASE_URL}/{file_path}"
             
             # 获取文件最后修改时间（格式：YYYY-MM-DD）
-            mtime = datetime.fromtimestamp(os.path.getmtime(os.path.join(root, file))).strftime("%Y-%m-%d")
+            if time_map and file_path in time_map:
+                mtime = time_map[file_path]
+            else:
+                # 如果没有提供时间映射，则使用文件系统的修改时间
+                mtime = datetime.fromtimestamp(os.path.getmtime(os.path.join(root, file))).strftime("%Y-%m-%d %H:%M:%S")
             
             # 根据文件类型设置更新频率和优先级
             if file == "index.html":
@@ -64,4 +97,5 @@ def generate_sitemap():
     print(xml)
 
 if __name__ == "__main__":
-    generate_sitemap()
+    time_map = get_all_git_updated_times_gitpython('..')
+    generate_sitemap(time_map)
