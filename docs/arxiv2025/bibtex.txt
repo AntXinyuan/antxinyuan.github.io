@@ -1,0 +1,6 @@
+@article{fu2025topopoint,
+  title={TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving},
+  author={Fu, Yanping and Liu, Xinyuan and Li, Tianyu and Ma, Yike and Zhang, Yucheng and Dai, Feng},
+  journal={arXiv preprint arXiv:2505.17771},
+  year={2025}
+}

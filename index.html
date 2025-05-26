@@ -210,7 +210,8 @@
                             const badge = href.match(/citation_for_view=([^&]+)/)
                             if (badge) {
                                 const badgeId = badge[1];
-                                const num_citation = data['publications'][badgeId]['num_citations']
+                                //const num_citation = data['publications'][badgeId]['num_citations']
+                                const num_citation = data?.publications?.[badgeId]?.num_citations ?? 0;
                                 img.src = `https://img.shields.io/badge/Citations-${num_citation}-blue.svg?logo=google-scholar`;
                                 img.parentNode.href = `https://scholar.google.com/citations?view_op=view_citation&citation_for_view=${badgeId}`;
                             }
