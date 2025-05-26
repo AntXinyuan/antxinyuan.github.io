@@ -58,9 +58,10 @@ def generate_sitemap():
     xml += '</urlset>'
     
     # 保存到 sitemap.xml
-    with open("./sitemap.xml", "w") as f:
+    with open("../sitemap.xml", "w") as f:
         f.write(xml)
     print("Sitemap generated successfully!")
+    print(xml)
 
 if __name__ == "__main__":
     generate_sitemap()
