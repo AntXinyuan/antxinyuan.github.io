@@ -95,7 +95,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 - **TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving**  
 - Yanping Fu, **Xinyuan Liu**, Tianyu Li, Yike Ma, Yucheng Zhang and Feng Dai†  
-- ***arXiv 2025***  	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:000000000000) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topopoint?style=social)](https://github.com/franpin/topopoint)
+- ***arXiv 2025*** (preprint) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:000000000000) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topopoint?style=social)](https://github.com/franpin/topopoint)
 - [PDF](https://arxiv.org/pdf/2505.17771) / [Supp](https://arxiv.org/pdf/2505.17771#page=11) / [arXiv](https://arxiv.org/abs/2505.17771) / [Code](https://github.com/franpin/topopoint) / Slides / Poster / [BibTex](docs/arxiv2025/bibtex.txt)  
 
 ## 🎓 Education
