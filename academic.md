@@ -15,6 +15,8 @@ Email: [liuxinyuan21s@ict.ac.cn](mailto:liuxinyuan21s@ict.ac.cn)
 
 <i class="ai ai-google-scholar" style="color: #0c4994;"></i>
 [Google Scholar](https://scholar.google.com/citations?user=eXwizz8AAAAJ) / 
+<i class="ai ai-semantic-scholar" style="color: #3B5998;"></i>
+[Semantic Scholar](https://www.semanticscholar.org/author/Xinyuan-Liu/150344255) /
 <i class="ai ai-dblp" style="color: #0c4994;"></i>
 [DBLP](https://dblp.org/pid/202/2370-3) / 
 <i class="fa fa-github" style="color: #171515;"></i>
@@ -86,7 +88,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - **Rotated Object Detection with Circular Gaussian Distribution**  
 - Hang Xu, **Xinyuan Liu**, Yike Ma, Zunjie Zhu, Shuai Wang, Chenggang Yan and Feng Dai†  
 - ***Electronics 2023***  (SCI-Q2, IF=2.6)	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:2osOgNQ5qMEC)
-- [PDF](https://www.mdpi.com/2079-9292/12/15/3265/pdf?version=1690623242) / Supp / arXiv / Code / Slides / Poster / [BibTex](docs/electronics2023/bibtex.txt)
+- [PDF](https://pdfs.semanticscholar.org/e6c0/7c88e0dca164d5f318c9dc3eac69f5c82f88.pdf) / Supp / arXiv / Code / Slides / Poster / [BibTex](docs/electronics2023/bibtex.txt)
 
 ### ⏳Preprint Papers
 
