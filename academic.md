@@ -47,7 +47,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ### 💡Conference Papers
 
 ### ACM
-![pub|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.png) 
+![pub|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.webp) 
 
 - **Rethinking Boundary Discontinuity Problem for Oriented Object Detection**
 - Hang Xu\*, **Xinyuan Liu\***, Haonan Xu, Yike Ma, Zunjie Zhu, Chenggang Yan and Feng Dai†
@@ -56,7 +56,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 
 ### Sph2Pob
-![pub|Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods](docs/ijcai2023/thumbnail.png)  
+![pub|Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods](docs/ijcai2023/thumbnail.webp)  
 
 - **Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods**
 - **Xinyuan Liu**, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
@@ -65,7 +65,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 
 ### GLDL
-![pub|Gaussian Label Distribution Learning for Spherical Image Object Detection](docs/cvpr2023/thumbnail.png)  
+![pub|Gaussian Label Distribution Learning for Spherical Image Object Detection](docs/cvpr2023/thumbnail.webp)  
 
 - **Gaussian Label Distribution Learning for Spherical Image Object Detection**  
 - Hang Xu, **Xinyuan Liu**, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
@@ -74,7 +74,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 
 ### TopoLogic
-![pub|TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes](docs/neurips2024/thumbnail.png)  
+![pub|TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes](docs/neurips2024/thumbnail.webp)  
 
 - **TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes**  
 - Yanping Fu, Wenbin Liao, **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  
@@ -84,7 +84,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ### 🔬Journal Papers
 
 ### GDL
-![pub|Rotated Object Detection with Circular Gaussian Distribution](docs/electronics2023/thumbnail.png)  
+![pub|Rotated Object Detection with Circular Gaussian Distribution](docs/electronics2023/thumbnail.webp)  
 - **Rotated Object Detection with Circular Gaussian Distribution**  
 - Hang Xu, **Xinyuan Liu**, Yike Ma, Zunjie Zhu, Shuai Wang, Chenggang Yan and Feng Dai†  
 - ***Electronics 2023***  (SCI-Q2, IF=2.6)	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:2osOgNQ5qMEC)
@@ -93,7 +93,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ### ⏳Preprint Papers
 
 ### TopoPoint
-![pub|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.png)  
+![pub|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.webp)  
 
 - **TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving**  
 - Yanping Fu, **Xinyuan Liu**, Tianyu Li, Yike Ma, Yucheng Zhang and Feng Dai†  
@@ -102,21 +102,21 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 ## 🎓 Education
 ### UCAS
-![edu|UCAS](images/ucas.jpg)
+![edu|UCAS](images/ucas.webp)
 
 - **Ph.D.** candidate, [Institute of Computing Technology, Chinese Academy of Science (ICT,CAS)](http://www.ict.ac.cn) 
 - Beijing, China 
 - Sep. 2021 - Now 
 
 ### XDU
-![edu|Xidian University](images/xidian.png)
+![edu|Xidian University](images/xidian.webp)
 
 - **B.E.** degree, [School of Computer Science and Technology](https://cs.xidian.edu.cn), [Xidian University (XDU)](https://www.xidian.edu.cn) 
 - Xi'an, China 
 - Sep. 2017 - Jun. 2021 
 
 ### FGZX
-![edu|Fugu Middle School](images/fgzx.png)
+![edu|Fugu Middle School](images/fgzx.webp)
 
 - Fugu Middle School of Shaanxi 
 - Fugu, China 
