@@ -64,15 +64,6 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - [PDF](https://www.ijcai.org/proceedings/2023/0137.pdf) / Supp / arXiv / [Code](https://github.com/antxinyuan/sph2pob) / [Slides](docs/ijcai2023/sph2pob_slides.pdf) / [Poster](docs/ijcai2023/sph2pob_poster.pdf) / [BibTex](docs/ijcai2023/bibtex.txt)  
 
 
-### GLDL
-![pub|Gaussian Label Distribution Learning for Spherical Image Object Detection](docs/cvpr2023/thumbnail.webp)  
-
-- **Gaussian Label Distribution Learning for Spherical Image Object Detection**  
-- Hang Xu, **Xinyuan Liu**, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
-- ***CVPR 2023*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:9yKSN-GCB0IC) 
-- [PDF](https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_Gaussian_Label_Distribution_Learning_for_Spherical_Image_Object_Detection_CVPR_2023_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2023/supplemental/Xu_Gaussian_Label_Distribution_CVPR_2023_supplemental.pdf) / arXiv / Code / [Slides](docs/cvpr2023/gldl_slides.pdf) / [Poster](docs/cvpr2023/gldl_poster.pdf) / [BibTex](docs/cvpr2023/bibtex.txt)  
-
-
 ### TopoLogic
 ![pub|TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes](docs/neurips2024/thumbnail.webp)  
 
@@ -80,6 +71,15 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - Yanping Fu, Wenbin Liao, **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  
 - ***NeurIPS 2024*** (<span style="color:#ae1324;">CCF-A</span>) 	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:WF5omc3nYNoC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topoLogic?style=social)](https://github.com/franpin/topoLogic)
 - [PDF](https://proceedings.neurips.cc/paper_files/paper/2024/file/7116cda41d75d580bae15d9e484a8466-Paper-Conference.pdf) / [Supp](https://proceedings.neurips.cc/paper_files/paper/2024/file/7116cda41d75d580bae15d9e484a8466-Supplemental-Conference.zip) / [arXiv](https://arxiv.org/abs/2405.14747) / [Code](https://github.com/franpin/topoLogic) / [Slides](docs/neurips2024/topologic_slides.pdf) / [Poster](docs/neurips2024/topologic_poster.pdf) / [BibTex](docs/neurips2024/bibtex.txt)  
+
+
+### GLDL
+![pub|Gaussian Label Distribution Learning for Spherical Image Object Detection](docs/cvpr2023/thumbnail.webp)  
+
+- **Gaussian Label Distribution Learning for Spherical Image Object Detection**  
+- Hang Xu, **Xinyuan Liu**, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
+- ***CVPR 2023*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:9yKSN-GCB0IC) 
+- [PDF](https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_Gaussian_Label_Distribution_Learning_for_Spherical_Image_Object_Detection_CVPR_2023_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2023/supplemental/Xu_Gaussian_Label_Distribution_CVPR_2023_supplemental.pdf) / arXiv / Code / [Slides](docs/cvpr2023/gldl_slides.pdf) / [Poster](docs/cvpr2023/gldl_poster.pdf) / [BibTex](docs/cvpr2023/bibtex.txt)  
 
 ### 🔬Journal Papers
 
