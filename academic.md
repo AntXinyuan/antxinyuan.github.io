@@ -48,7 +48,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ### 💡Conference Papers
 
 ### ACM
-![pub|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.webp) 
+![pub|CVPR24|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.webp) 
 
 - **Rethinking Boundary Discontinuity Problem for Oriented Object Detection**
 - Hang Xu\*, **Xinyuan Liu\***, Haonan Xu, Yike Ma, Zunjie Zhu, Chenggang Yan and Feng Dai†
@@ -57,7 +57,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 
 ### Sph2Pob
-![pub|Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods](docs/ijcai2023/thumbnail.webp)  
+![pub|IJCAI23|Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods](docs/ijcai2023/thumbnail.webp)  
 
 - **Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods**
 - **Xinyuan Liu**, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
@@ -66,7 +66,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 
 ### TopoLogic
-![pub|TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes](docs/neurips2024/thumbnail.webp)  
+![pub|NeurIPS24|TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes](docs/neurips2024/thumbnail.webp)  
 
 - **TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes**  
 - Yanping Fu, Wenbin Liao, **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  
@@ -75,7 +75,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 
 ### GLDL
-![pub|Gaussian Label Distribution Learning for Spherical Image Object Detection](docs/cvpr2023/thumbnail.webp)  
+![pub|CVPR23|Gaussian Label Distribution Learning for Spherical Image Object Detection](docs/cvpr2023/thumbnail.webp)  
 
 - **Gaussian Label Distribution Learning for Spherical Image Object Detection**  
 - Hang Xu, **Xinyuan Liu**, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
@@ -85,7 +85,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ### 🔬Journal Papers
 
 ### GDL
-![pub|Rotated Object Detection with Circular Gaussian Distribution](docs/electronics2023/thumbnail.webp)  
+![pub|Electrons23|Rotated Object Detection with Circular Gaussian Distribution](docs/electronics2023/thumbnail.webp)  
 - **Rotated Object Detection with Circular Gaussian Distribution**  
 - Hang Xu, **Xinyuan Liu**, Yike Ma, Zunjie Zhu, Shuai Wang, Chenggang Yan and Feng Dai†  
 - ***Electronics 2023***  (SCI-Q2, IF=2.6)	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:2osOgNQ5qMEC)
@@ -94,7 +94,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ### ⏳Preprint Papers
 
 ### SSP
-![pub|Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection](docs/arxiv2025b/thumbnail.webp)  
+![pub|arXiv25|Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection](docs/arxiv2025b/thumbnail.webp)  
 
 - **Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection**  
 - **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  
@@ -102,7 +102,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - [PDF](https://arxiv.org/pdf/2506.10601) / Supp / [arXiv](https://arxiv.org/abs/2506.10601) / [Code](https://github.com/antxinyuan/ssp) / Slides / Poster / [BibTex](docs/arxiv2025b/bibtex.txt)
 
 ### TopoPoint
-![pub|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.webp)  
+![pub|arXiv25|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.webp)  
 
 - **TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving**  
 - Yanping Fu, **Xinyuan Liu**, Tianyu Li, Yike Ma, Yucheng Zhang and Feng Dai†  
