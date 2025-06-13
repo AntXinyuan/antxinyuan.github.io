@@ -1,0 +1,6 @@
+@article{liu2025ssp,
+  title={Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection}, 
+  author={Xinyuan Liu and Hang Xu and Yike Ma and Yucheng Zhang and Feng Dai},
+  journal={arXiv preprint arXiv:2506.10601},
+  year={2025}
+}

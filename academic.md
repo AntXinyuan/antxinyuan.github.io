@@ -92,6 +92,14 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 ### ⏳Preprint Papers
 
+### SSP
+![pub|Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection](docs/arxiv2025b/thumbnail.webp)  
+
+- **Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection**  
+- **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  
+- ***arXiv 2025*** (preprint) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:000000000000) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/ssp?style=social)](https://github.com/antxinyuan/ssp)
+- [PDF](https://arxiv.org/pdf/2506.10601) / Supp / [arXiv](https://arxiv.org/abs/2506.10601) / [Code](https://github.com/antxinyuan/ssp) / Slides / Poster / [BibTex](docs/arxiv2025b/bibtex.txt)
+
 ### TopoPoint
 ![pub|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.webp)  
 
