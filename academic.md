@@ -30,6 +30,7 @@ I received the B.E. degree from [School of Computer Science and Technology](http
 I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
 
 ## 🔥 News
+- 06/2025: 🎉 One paper is released on arXiv. 
 - 05/2025: 🎉 One cooperative paper is released on arXiv. 
 - 05/2024: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2024).  
 - 03/2024: 🏆 I’m becoming a Ph.D. student at [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn).  
