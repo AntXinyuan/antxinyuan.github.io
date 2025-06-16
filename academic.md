@@ -85,7 +85,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ### 🔬Journal Papers
 
 ### GDL
-![pub|Electrons23|Rotated Object Detection with Circular Gaussian Distribution](docs/electronics2023/thumbnail.webp)  
+![pub|Electronics23|Rotated Object Detection with Circular Gaussian Distribution](docs/electronics2023/thumbnail.webp)  
 - **Rotated Object Detection with Circular Gaussian Distribution**  
 - Hang Xu, **Xinyuan Liu**, Yike Ma, Zunjie Zhu, Shuai Wang, Chenggang Yan and Feng Dai†  
 - ***Electronics 2023***  (SCI-Q2, IF=2.6)	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:2osOgNQ5qMEC)
