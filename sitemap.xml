@@ -7,13 +7,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/docs/arxiv2025b/thumbnail.webp</loc>
-    <lastmod>2025-06-13 12:45:16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://antxinyuan.github.io/docs/neurips2024/thumbnail.png</loc>
+    <loc>https://antxinyuan.github.io/docs/neurips2024/topologic_slides.pdf</loc>
     <lastmod>2025-02-21 14:56:18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -25,13 +19,25 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/docs/neurips2024/topologic_slides.pdf</loc>
+    <loc>https://antxinyuan.github.io/docs/neurips2024/thumbnail.webp</loc>
+    <lastmod>2025-06-05 19:51:04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/docs/neurips2024/thumbnail.png</loc>
     <lastmod>2025-02-21 14:56:18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/docs/neurips2024/thumbnail.webp</loc>
+    <loc>https://antxinyuan.github.io/docs/arxiv2025b/thumbnail.webp</loc>
+    <lastmod>2025-06-13 12:45:16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/docs/cvpr2023/thumbnail.webp</loc>
     <lastmod>2025-06-05 19:51:04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -43,26 +49,32 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/docs/cvpr2023/gldl_poster.pdf</loc>
-    <lastmod>2024-03-21 10:46:28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://antxinyuan.github.io/docs/cvpr2023/thumbnail.webp</loc>
-    <lastmod>2025-06-05 19:51:04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://antxinyuan.github.io/docs/cvpr2023/gldl_slides.pdf</loc>
     <lastmod>2024-03-21 10:46:28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/docs/cvpr2024/thumbnail.png</loc>
-    <lastmod>2024-05-24 14:33:46</lastmod>
+    <loc>https://antxinyuan.github.io/docs/cvpr2023/gldl_poster.pdf</loc>
+    <lastmod>2024-03-21 10:46:28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/docs/arxiv2025/thumbnail.webp</loc>
+    <lastmod>2025-06-05 19:51:04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/docs/arxiv2025/thumbnail.png</loc>
+    <lastmod>2025-05-26 13:02:39</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/docs/cvpr2024/acm_poster.pdf</loc>
+    <lastmod>2024-06-03 14:59:08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -79,14 +91,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/docs/cvpr2024/acm_poster.pdf</loc>
-    <lastmod>2024-06-03 14:59:08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://antxinyuan.github.io/docs/electronics2023/thumbnail.png</loc>
-    <lastmod>2025-05-26 15:03:33</lastmod>
+    <loc>https://antxinyuan.github.io/docs/cvpr2024/thumbnail.png</loc>
+    <lastmod>2024-05-24 14:33:46</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -97,8 +103,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/docs/ijcai2023/thumbnail.png</loc>
-    <lastmod>2024-05-24 14:33:46</lastmod>
+    <loc>https://antxinyuan.github.io/docs/electronics2023/thumbnail.png</loc>
+    <lastmod>2025-05-26 15:03:33</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -115,28 +121,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://antxinyuan.github.io/docs/ijcai2023/thumbnail.png</loc>
+    <lastmod>2024-05-24 14:33:46</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://antxinyuan.github.io/docs/ijcai2023/sph2pob_poster.pdf</loc>
     <lastmod>2024-03-21 10:46:28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://antxinyuan.github.io/docs/arxiv2025/thumbnail.png</loc>
-    <lastmod>2025-05-26 13:02:39</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://antxinyuan.github.io/docs/arxiv2025/thumbnail.webp</loc>
-    <lastmod>2025-06-05 19:51:04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://antxinyuan.github.io/legacy/jemdoc.css</loc>
-    <lastmod>2025-05-15 17:21:05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://antxinyuan.github.io/legacy/index.html</loc>
@@ -145,25 +139,13 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/images/ucas.webp</loc>
-    <lastmod>2025-06-05 19:51:04</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://antxinyuan.github.io/images/logo.ico</loc>
-    <lastmod>2024-03-20 16:31:54</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://antxinyuan.github.io/images/fgzx.png</loc>
+    <loc>https://antxinyuan.github.io/legacy/jemdoc.css</loc>
     <lastmod>2025-05-15 17:21:05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/images/xidian.webp</loc>
+    <loc>https://antxinyuan.github.io/images/ucas.webp</loc>
     <lastmod>2025-06-05 19:51:04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -175,13 +157,31 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/images/ucas.jpg</loc>
+    <loc>https://antxinyuan.github.io/images/logo.ico</loc>
+    <lastmod>2024-03-20 16:31:54</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/images/xidian.webp</loc>
+    <lastmod>2025-06-05 19:51:04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/images/fgzx.png</loc>
     <lastmod>2025-05-15 17:21:05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://antxinyuan.github.io/images/xidian.png</loc>
+    <lastmod>2025-05-15 17:21:05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/images/ucas.jpg</loc>
     <lastmod>2025-05-15 17:21:05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
