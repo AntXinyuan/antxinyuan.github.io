@@ -12,6 +12,6 @@ try:
     print(json.dumps(author, indent=2))
     os.makedirs('results', exist_ok=True)
     with open(f'scholar.json', 'w') as outfile:
-        json.dump(author, outfile, ensure_ascii=False)
+        json.dump(author, outfile, ensure_ascii=False, indent=2)
 except Exception as e:
     print(e)
