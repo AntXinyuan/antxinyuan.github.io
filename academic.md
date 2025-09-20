@@ -31,7 +31,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 ## 🔥 News
 - 06/2025: 🎉 One paper is released on arXiv. 
-- 05/2025: 🎉 One cooperative paper is released on arXiv. 
+- 05/2025: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2025). 
 - 05/2024: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2024).  
 - 03/2024: 🏆 I’m becoming a Ph.D. student at [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn).  
 - 02/2024: 🎉 One paper is accepted by CVPR 2024. 
@@ -64,6 +64,13 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - ***IJCAI 2024*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:qjMakFHDy7sC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/sph2pob?style=social)](https://github.com/antxinyuan/sph2pob) (Tags: Object Detection, Panoramic Image)
 - [PDF](https://www.ijcai.org/proceedings/2023/0137.pdf) / Supp / arXiv / [Code](https://github.com/antxinyuan/sph2pob) / [Slides](docs/ijcai2023/sph2pob_slides.pdf) / [Poster](docs/ijcai2023/sph2pob_poster.pdf) / [BibTex](docs/ijcai2023/bibtex.txt)  
 
+### TopoPoint
+![pub|arXiv25|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.webp)  
+
+- **TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving**  
+- Yanping Fu, **Xinyuan Liu**, Tianyu Li, Yike Ma, Yucheng Zhang and Feng Dai†  
+- ***arXiv 2025*** (preprint) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:ufrVoPGSRksC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topopoint?style=social)](https://github.com/franpin/topopoint) (Tags: Object Detection, Lane Topology Resonsing)
+- [PDF](https://arxiv.org/pdf/2505.17771) / [Supp](https://arxiv.org/pdf/2505.17771#page=11) / [arXiv](https://arxiv.org/abs/2505.17771) / [Code](https://github.com/franpin/topopoint) / Slides / Poster / [BibTex](docs/arxiv2025/bibtex.txt)  
 
 ### TopoLogic
 ![pub|NeurIPS24|TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes](docs/neurips2024/thumbnail.webp)  
@@ -100,14 +107,6 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  
 - ***arXiv 2025*** (preprint) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:_FxGoFyzp5QC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/ssp?style=social)](https://github.com/antxinyuan/ssp) (Tags: Object Detection, Remote-sensing Image)
 - [PDF](https://arxiv.org/pdf/2506.10601) / Supp / [arXiv](https://arxiv.org/abs/2506.10601) / [Code](https://github.com/antxinyuan/ssp) / Slides / Poster / [BibTex](docs/arxiv2025b/bibtex.txt)
-
-### TopoPoint
-![pub|arXiv25|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.webp)  
-
-- **TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving**  
-- Yanping Fu, **Xinyuan Liu**, Tianyu Li, Yike Ma, Yucheng Zhang and Feng Dai†  
-- ***arXiv 2025*** (preprint) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:ufrVoPGSRksC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topopoint?style=social)](https://github.com/franpin/topopoint) (Tags: Object Detection, Lane Topology Resonsing)
-- [PDF](https://arxiv.org/pdf/2505.17771) / [Supp](https://arxiv.org/pdf/2505.17771#page=11) / [arXiv](https://arxiv.org/abs/2505.17771) / [Code](https://github.com/franpin/topopoint) / Slides / Poster / [BibTex](docs/arxiv2025/bibtex.txt)  
 
 ## 🎓 Education
 ### UCAS
