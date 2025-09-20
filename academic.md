@@ -64,7 +64,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - [PDF](https://www.ijcai.org/proceedings/2023/0137.pdf) / Supp / arXiv / [Code](https://github.com/antxinyuan/sph2pob) / [Slides](docs/ijcai2023/sph2pob_slides.pdf) / [Poster](docs/ijcai2023/sph2pob_poster.pdf) / [BibTex](docs/ijcai2023/bibtex.txt)  
 
 ### TopoPoint
-![pub|arXiv25|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.webp)  
+![pub|NeurIPS25|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/arxiv2025/thumbnail.webp)  
 
 - **TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving**  
 - Yanping Fu, **Xinyuan Liu**, Tianyu Li, Yike Ma, Yucheng Zhang and Feng Dai†  
