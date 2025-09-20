@@ -52,8 +52,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 - **Rethinking Boundary Discontinuity Problem for Oriented Object Detection**
 - Hang Xu\*, **Xinyuan Liu\***, Haonan Xu, Yike Ma, Zunjie Zhu, Chenggang Yan and Feng Dai†
-- ***CVPR 2024*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:d1gkVwhDpl0C) / [![GitHub Stars](https://img.shields.io/github/stars/hangxu-cv/cvpr24acm?style=social)](https://github.com/hangxu-cv/cvpr24acm) (Tags: Oriented Object Detection)
-- [PDF](https://openaccess.thecvf.com/content/CVPR2024/papers/Xu_Rethinking_Boundary_Discontinuity_Problem_for_Oriented_Object_Detection_CVPR_2024_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2024/supplemental/Xu_Rethinking_Boundary_Discontinuity_CVPR_2024_supplemental.pdf) / [arXiv](https://arxiv.org/abs/2305.10061) / [Code](https://github.com/hangxu-cv/cvpr24acm) / [Slides](docs/cvpr2024/acm_slides.pdf) / [Poster](docs/cvpr2024/acm_poster.pdf) / [BibTex](docs/cvpr2024/bibtex.txt)  
+- ***CVPR 2024*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:d1gkVwhDpl0C) / [![GitHub Stars](https://img.shields.io/github/stars/hangxu-cv/cvpr24acm?style=social)](https://github.com/hangxu-cv/cvpr24acm)Xu_Rethinking_Boundary_Discontinuity_Problem_for_Oriented_Object_Detection_CVPR_2024_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2024/supplemental/Xu_Rethinking_Boundary_Discontinuity_CVPR_2024_supplemental.pdf) / [arXiv](https://arxiv.org/abs/2305.10061) / [Code](https://github.com/hangxu-cv/cvpr24acm) / [Slides](docs/cvpr2024/acm_slides.pdf) / [Poster](docs/cvpr2024/acm_poster.pdf) / [BibTex](docs/cvpr2024/bibtex.txt)  
 
 
 ### Sph2Pob
@@ -61,7 +60,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 - **Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods**
 - **Xinyuan Liu**, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
-- ***IJCAI 2024*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:qjMakFHDy7sC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/sph2pob?style=social)](https://github.com/antxinyuan/sph2pob) (Tags: Object Detection, Panoramic Image)
+- ***IJCAI 2024*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:qjMakFHDy7sC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/sph2pob?style=social)](https://github.com/antxinyuan/sph2pob)
 - [PDF](https://www.ijcai.org/proceedings/2023/0137.pdf) / Supp / arXiv / [Code](https://github.com/antxinyuan/sph2pob) / [Slides](docs/ijcai2023/sph2pob_slides.pdf) / [Poster](docs/ijcai2023/sph2pob_poster.pdf) / [BibTex](docs/ijcai2023/bibtex.txt)  
 
 ### TopoPoint
@@ -69,7 +68,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 - **TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving**  
 - Yanping Fu, **Xinyuan Liu**, Tianyu Li, Yike Ma, Yucheng Zhang and Feng Dai†  
-- ***arXiv 2025*** (preprint) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:ufrVoPGSRksC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topopoint?style=social)](https://github.com/franpin/topopoint) (Tags: Object Detection, Lane Topology Resonsing)
+- ***arXiv 2025*** (preprint) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:ufrVoPGSRksC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topopoint?style=social)](https://github.com/franpin/topopoint)
 - [PDF](https://arxiv.org/pdf/2505.17771) / [Supp](https://arxiv.org/pdf/2505.17771#page=11) / [arXiv](https://arxiv.org/abs/2505.17771) / [Code](https://github.com/franpin/topopoint) / Slides / Poster / [BibTex](docs/arxiv2025/bibtex.txt)  
 
 ### TopoLogic
@@ -77,7 +76,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 - **TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes**  
 - Yanping Fu, Wenbin Liao, **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  
-- ***NeurIPS 2024*** (<span style="color:#ae1324;">CCF-A</span>) 	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:WF5omc3nYNoC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topoLogic?style=social)](https://github.com/franpin/topoLogic) (Tags: Object Detection, Lane Topology Resonsing)
+- ***NeurIPS 2024*** (<span style="color:#ae1324;">CCF-A</span>) 	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:WF5omc3nYNoC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topoLogic?style=social)](https://github.com/franpin/topoLogic)
 - [PDF](https://proceedings.neurips.cc/paper_files/paper/2024/file/7116cda41d75d580bae15d9e484a8466-Paper-Conference.pdf) / [Supp](https://proceedings.neurips.cc/paper_files/paper/2024/file/7116cda41d75d580bae15d9e484a8466-Supplemental-Conference.zip) / [arXiv](https://arxiv.org/abs/2405.14747) / [Code](https://github.com/franpin/topoLogic) / [Slides](docs/neurips2024/topologic_slides.pdf) / [Poster](docs/neurips2024/topologic_poster.pdf) / [BibTex](docs/neurips2024/bibtex.txt)  
 
 
@@ -86,7 +85,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 - **Gaussian Label Distribution Learning for Spherical Image Object Detection**  
 - Hang Xu, **Xinyuan Liu**, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
-- ***CVPR 2023*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:9yKSN-GCB0IC) (Tags: Object Detection, Panoramic Image)
+- ***CVPR 2023*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:9yKSN-GCB0IC)
 - [PDF](https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_Gaussian_Label_Distribution_Learning_for_Spherical_Image_Object_Detection_CVPR_2023_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2023/supplemental/Xu_Gaussian_Label_Distribution_CVPR_2023_supplemental.pdf) / arXiv / Code / [Slides](docs/cvpr2023/gldl_slides.pdf) / [Poster](docs/cvpr2023/gldl_poster.pdf) / [BibTex](docs/cvpr2023/bibtex.txt)  
 
 ### 🔬Journal Papers
@@ -95,7 +94,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ![pub|Electronics23|Rotated Object Detection with Circular Gaussian Distribution](docs/electronics2023/thumbnail.webp)  
 - **Rotated Object Detection with Circular Gaussian Distribution**  
 - Hang Xu, **Xinyuan Liu**, Yike Ma, Zunjie Zhu, Shuai Wang, Chenggang Yan and Feng Dai†  
-- ***Electronics 2023***  (SCI-Q2, IF=2.6)	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:2osOgNQ5qMEC) (Tags: Object Detection, Remote-sensing Image)
+- ***Electronics 2023***  (SCI-Q2, IF=2.6)	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:2osOgNQ5qMEC)
 - [PDF](https://pdfs.semanticscholar.org/e6c0/7c88e0dca164d5f318c9dc3eac69f5c82f88.pdf) / Supp / arXiv / Code / Slides / Poster / [BibTex](docs/electronics2023/bibtex.txt)
 
 ### ⏳Preprint Papers
@@ -105,7 +104,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 - **Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection**  
 - **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  
-- ***arXiv 2025*** (preprint) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:_FxGoFyzp5QC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/ssp?style=social)](https://github.com/antxinyuan/ssp) (Tags: Object Detection, Remote-sensing Image)
+- ***arXiv 2025*** (preprint) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:_FxGoFyzp5QC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/ssp?style=social)](https://github.com/antxinyuan/ssp)
 - [PDF](https://arxiv.org/pdf/2506.10601) / Supp / [arXiv](https://arxiv.org/abs/2506.10601) / [Code](https://github.com/antxinyuan/ssp) / Slides / Poster / [BibTex](docs/arxiv2025b/bibtex.txt)
 
 ## 🎓 Education
