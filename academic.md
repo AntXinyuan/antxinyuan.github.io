@@ -41,7 +41,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - 09/2021: 🏆 I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
 
 ## 📝 Publications  
-**Summary**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**1**), AAAI & IJCAI & ACM MM (**1**), *IEEE* Transactions (**0**).  
+**Summary**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**1**), IEEE Transactions (**0**).  
 
 \* indicates equal contribution, † indicates corresponding author.  
 
@@ -138,5 +138,5 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - First-Class Academic Scholarship, 2018, 2019, 2020, 2022, 2023  
 
 <center>
-&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: May, 2025</a>
+&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Aug, 2025</a>
 </center>
