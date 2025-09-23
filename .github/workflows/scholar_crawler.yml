@@ -1,7 +1,6 @@
 name: Automatic Information Update
 
 on: 
- page_build: 
  schedule:
   - cron:  '0 8 * * 0'
 
