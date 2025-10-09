@@ -61,7 +61,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 - **Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods**
 - **Xinyuan Liu**, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
-- ***IJCAI 2024*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:qjMakFHDy7sC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/sph2pob?style=social)](https://github.com/antxinyuan/sph2pob)
+- ***IJCAI 2023*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:qjMakFHDy7sC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/sph2pob?style=social)](https://github.com/antxinyuan/sph2pob)
 - [PDF](https://www.ijcai.org/proceedings/2023/0137.pdf) / Supp / arXiv / [Code](https://github.com/antxinyuan/sph2pob) / [Slides](docs/ijcai2023/sph2pob_slides.pdf) / [Poster](docs/ijcai2023/sph2pob_poster.pdf) / [BibTex](docs/ijcai2023/bibtex.txt)  
 
 ### TopoPoint
