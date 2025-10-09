@@ -16,7 +16,7 @@
   ],
   "email_domain": "@ict.ac.cn",
   "homepage": "https://antxinyuan.github.io/",
-  "citedby": 64,
+  "citedby": 67,
   "publications": {
     "eXwizz8AAAAJ:d1gkVwhDpl0C": {
       "container_type": "Publication",
@@ -44,7 +44,7 @@
       },
       "filled": false,
       "author_pub_id": "eXwizz8AAAAJ:WF5omc3nYNoC",
-      "num_citations": 15,
+      "num_citations": 16,
       "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=17940048768269899219",
       "cites_id": [
         "17940048768269899219"
@@ -60,7 +60,7 @@
       },
       "filled": false,
       "author_pub_id": "eXwizz8AAAAJ:9yKSN-GCB0IC",
-      "num_citations": 10,
+      "num_citations": 11,
       "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13973028967109303026",
       "cites_id": [
         "13973028967109303026"
@@ -82,6 +82,22 @@
         "12832594709099459459"
       ]
     },
+    "eXwizz8AAAAJ:ufrVoPGSRksC": {
+      "container_type": "Publication",
+      "source": "AUTHOR_PUBLICATION_ENTRY",
+      "bib": {
+        "title": "TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving",
+        "pub_year": "2025",
+        "citation": "arXiv preprint arXiv:2505.17771, 2025"
+      },
+      "filled": false,
+      "author_pub_id": "eXwizz8AAAAJ:ufrVoPGSRksC",
+      "num_citations": 3,
+      "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13110888873972411017",
+      "cites_id": [
+        "13110888873972411017"
+      ]
+    },
     "eXwizz8AAAAJ:2osOgNQ5qMEC": {
       "container_type": "Publication",
       "source": "AUTHOR_PUBLICATION_ENTRY",
@@ -98,22 +114,6 @@
         "7132374231750233237"
       ]
     },
-    "eXwizz8AAAAJ:ufrVoPGSRksC": {
-      "container_type": "Publication",
-      "source": "AUTHOR_PUBLICATION_ENTRY",
-      "bib": {
-        "title": "TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving",
-        "pub_year": "2025",
-        "citation": "arXiv preprint arXiv:2505.17771, 2025"
-      },
-      "filled": false,
-      "author_pub_id": "eXwizz8AAAAJ:ufrVoPGSRksC",
-      "num_citations": 2,
-      "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13110888873972411017",
-      "cites_id": [
-        "13110888873972411017"
-      ]
-    },
     "eXwizz8AAAAJ:_FxGoFyzp5QC": {
       "container_type": "Publication",
       "source": "AUTHOR_PUBLICATION_ENTRY",
@@ -127,5 +127,5 @@
       "num_citations": 0
     }
   },
-  "updated": "2025-09-26 10:21:42.351993"
+  "updated": "2025-10-09 11:02:07.700367"
 }
