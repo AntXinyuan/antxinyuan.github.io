@@ -19,6 +19,8 @@ Email: [liuxinyuan21s@ict.ac.cn](mailto:liuxinyuan21s@ict.ac.cn)
 [Semantic Scholar](https://www.semanticscholar.org/author/Xinyuan-Liu/150344255) /
 <i class="ai ai-dblp" style="color: #0c4994;"></i>
 [DBLP](https://dblp.org/pid/202/2370-3) / 
+<i class="ai ai-orcid" style="color: #A6CE39;"></i>
+[ORCID](https://orcid.org/0000-0002-8595-7156) / 
 <i class="fa fa-github" style="color: #171515;"></i>
 [Github](https://github.com/antxinyuan)  
 
