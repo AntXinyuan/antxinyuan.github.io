@@ -1,0 +1,6 @@
+@inproceedings{gao2025iqgs,
+  title={IQGS: Instance Query-based Gaussian Segmentation}, 
+  author={Yichao Gao and Xinyuan Liu and Yike Ma and Yucheng Zhang and Feng Dai},
+  booktitle={Proceedings of the AAAI conference on artificial intelligence},
+  year={2025}
+}

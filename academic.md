@@ -30,6 +30,7 @@ I received the B.E. degree from [School of Computer Science and Technology](http
 I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
 
 ## 🔥 News
+- 11/2025: 🎉 One cooperative paper is accepted by AAAI 2025. 
 - 06/2025: 🎉 One paper is released on arXiv. 
 - 05/2025: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2025). 
 - 05/2024: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2024).  
@@ -41,7 +42,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - 09/2021: 🏆 I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
 
 ## 📝 Publications  
-**Summary**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**1**), IEEE Transactions (**0**).  
+**Summary**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**2**), IEEE Transactions (**0**).  
 
 \* indicates equal contribution, † indicates corresponding author.  
 
@@ -63,6 +64,14 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - **Xinyuan Liu**, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
 - ***IJCAI 2023*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:qjMakFHDy7sC) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/sph2pob?style=social)](https://github.com/antxinyuan/sph2pob)
 - [PDF](https://www.ijcai.org/proceedings/2023/0137.pdf) / Supp / arXiv / [Code](https://github.com/antxinyuan/sph2pob) / [Slides](docs/ijcai2023/sph2pob_slides.pdf) / [Poster](docs/ijcai2023/sph2pob_poster.pdf) / [BibTex](docs/ijcai2023/bibtex.txt)  
+
+### IQGS
+![pub|AAAI25|IQGS: Instance Query-based Gaussian Segmentation](docs/aaai2025/thumbnail.webp)  
+
+- **IQGS: Instance Query-based Gaussian Segmentation**  
+- Yichao Gao, **Xinyuan Liu**, Yike Ma, Yucheng Zhang and Feng Dai†  
+- ***AAAI 2025*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:0000000000)
+- PDF / Supp / arXiv / Code / Slides / Poster / [BibTex](docs/aaai2025/bibtex.txt)  
 
 ### TopoPoint
 ![pub|NeurIPS25|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/neurips2025/thumbnail.webp)  
@@ -138,5 +147,5 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - First-Class Academic Scholarship, 2018, 2019, 2020, 2022, 2023  
 
 <center>
-&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Sep, 2025</a>
+&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Nov, 2025</a>
 </center>
