@@ -81,7 +81,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - **TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving**  
 - Yanping Fu, **Xinyuan Liu**, Tianyu Li, Yike Ma, Yucheng Zhang and Feng Dai†  
 - ***NeurIPS 2025*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:ufrVoPGSRksC) / [![GitHub Stars](https://img.shields.io/github/stars/franpin/topopoint?style=social)](https://github.com/franpin/topopoint)
-- [PDF](https://arxiv.org/pdf/2505.17771) / [Supp](https://arxiv.org/pdf/2505.17771#page=11) / [arXiv](https://arxiv.org/abs/2505.17771) / [Code](https://github.com/franpin/topopoint) / Slides / Poster / [BibTex](docs/neurips2025/bibtex.txt)  
+- [PDF](https://arxiv.org/pdf/2505.17771) / [Supp](https://arxiv.org/pdf/2505.17771#page=11) / [arXiv](https://arxiv.org/abs/2505.17771) / [Code](https://github.com/franpin/topopoint) / [Slides](docs/neurips2025/topopoint_slides.pdf) / [Poster](docs/neurips2025/topopoint_poster.pdf) / [BibTex](docs/neurips2025/bibtex.txt)  
 
 ### TopoLogic
 ![pub|NeurIPS24|TopoLogic: An Interpretable Pipeline for Lane Topology Reasoning on Driving Scenes](docs/neurips2024/thumbnail.webp)  
