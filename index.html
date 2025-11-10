@@ -260,8 +260,38 @@
                 });
         }
 
+        function clickEffects(event) {
+            let words = [
+                "CVPR", "ICCV", "ECCV",
+                "ICML", "NeurIPS", "ICLR",
+                "AAAI", "IJCAI", "ACM MM",
+                "IEEE Transactions",
+            ];
+            words = words.map(word => word + '+1');
+
+            const span = document.createElement("span");
+            span.textContent = words[Math.floor(Math.random() * words.length)];
+            span.style.position = "absolute";
+            span.style.left = event.pageX + "px";
+            span.style.top = event.pageY + "px";
+            //span.style.fontSize = "20px";
+            span.style.fontWeight = "600";
+            span.style.color = "#ae1324";
+            span.style.zIndex = 9999;
+            span.style.transition = "all 1.2s ease-out";
+            document.body.appendChild(span);
+
+            setTimeout(() => {
+              span.style.top = (event.pageY - 60) + "px";
+              span.style.opacity = 0;
+            }, 10);
+        
+            setTimeout(() => span.remove(), 1300);
+        }
+
         // 页面加载后执行
         document.addEventListener('DOMContentLoaded', renderPage);
+        document.addEventListener("click", clickEffects);
     </script>
 </body>
 
