@@ -32,7 +32,7 @@ I received the B.E. degree from [School of Computer Science and Technology](http
 I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
 
 ## 🔥 News
-- 11/2025: 🎉 One cooperative paper is accepted by AAAI 2025. 
+- 11/2025: 🎉 One cooperative paper is accepted by AAAI 2026. 
 - 06/2025: 🎉 One paper is released on arXiv. 
 - 05/2025: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2025). 
 - 05/2024: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2024).  
@@ -68,12 +68,12 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - [PDF](https://www.ijcai.org/proceedings/2023/0137.pdf) / Supp / arXiv / [Code](https://github.com/antxinyuan/sph2pob) / [Slides](docs/ijcai2023/sph2pob_slides.pdf) / [Poster](docs/ijcai2023/sph2pob_poster.pdf) / [BibTex](docs/ijcai2023/bibtex.txt)  
 
 ### IQGS
-![pub|AAAI25|IQGS: Instance Query-based Gaussian Segmentation](docs/aaai2025/thumbnail.webp)  
+![pub|AAAI26|IQGS: Instance Query-based Gaussian Segmentation](docs/aaai2026/thumbnail.webp)  
 
 - **IQGS: Instance Query-based Gaussian Segmentation**  
 - Yichao Gao, **Xinyuan Liu**, Yike Ma, Yucheng Zhang and Feng Dai†  
-- ***AAAI 2025*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:0000000000)
-- PDF / Supp / arXiv / Code / Slides / Poster / [BibTex](docs/aaai2025/bibtex.txt)  
+- ***AAAI 2026*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:0000000000)
+- PDF / Supp / arXiv / Code / Slides / Poster / [BibTex](docs/aaai2026/bibtex.txt)  
 
 ### TopoPoint
 ![pub|NeurIPS25|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/neurips2025/thumbnail.webp)  
