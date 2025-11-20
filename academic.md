@@ -72,8 +72,8 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 - **IQGS: Instance Query-based Gaussian Segmentation**  
 - Yichao Gao, **Xinyuan Liu**, Yike Ma, Yucheng Zhang and Feng Dai†  
-- ***AAAI 2026*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:0000000000)
-- PDF / Supp / arXiv / Code / Slides / Poster / [BibTex](docs/aaai2026/bibtex.txt)  
+- ***AAAI 2026*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:0000000000)  / [![GitHub Stars](https://img.shields.io/github/stars/tom-gao-gyc/iqgs?style=social)](https://github.com/tom-gao-gyc/iqgs)
+- PDF / Supp / arXiv / [Code](https://github.com/tom-gao-gyc/iqgs) / Slides / Poster / [BibTex](docs/aaai2026/bibtex.txt)  
 
 ### TopoPoint
 ![pub|NeurIPS25|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/neurips2025/thumbnail.webp)  
