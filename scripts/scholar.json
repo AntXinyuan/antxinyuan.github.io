@@ -16,7 +16,7 @@
   ],
   "email_domain": "@ict.ac.cn",
   "homepage": "https://antxinyuan.github.io/",
-  "citedby": 83,
+  "citedby": 85,
   "publications": {
     "eXwizz8AAAAJ:d1gkVwhDpl0C": {
       "container_type": "Publication",
@@ -28,7 +28,7 @@
       },
       "filled": false,
       "author_pub_id": "eXwizz8AAAAJ:d1gkVwhDpl0C",
-      "num_citations": 36,
+      "num_citations": 38,
       "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=879864320092800065",
       "cites_id": [
         "879864320092800065"
@@ -127,5 +127,5 @@
       "num_citations": 0
     }
   },
-  "updated": "2025-12-07 08:13:39.949093"
+  "updated": "2025-12-21 08:14:23.690643"
 }
