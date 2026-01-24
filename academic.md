@@ -22,7 +22,9 @@ Email: [liuxinyuan21s@ict.ac.cn](mailto:liuxinyuan21s@ict.ac.cn)
 <i class="ai ai-orcid" style="color: #A6CE39;"></i>
 [ORCID](https://orcid.org/0000-0002-8595-7156) / 
 <i class="fa fa-github" style="color: #171515;"></i>
-[Github](https://github.com/antxinyuan)  
+[Github](https://github.com/antxinyuan) 
+
+![profile](images/profile.webp)
 
 ## 🇨🇳 Biography 
 I'm now a Ph.D. student in [Institute of Computing Technology, Chinese Academy of Science](http://www.ict.ac.cn), Beijing, China, starting from Autumn 2021.  

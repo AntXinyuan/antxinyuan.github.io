@@ -105,6 +105,19 @@
             height: 100%;
         }
 
+    .profile-photo {
+        float: right;
+        margin-left: 30px;
+        margin-top: 10px;
+    }
+
+    .profile-photo img {
+        width: 165px; /* 个人照片宽度 */
+        height: auto;
+        border-radius: 8px; /* 圆角 */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
         /* 期刊名称标签样式 */
         .pub-tag {
             position: absolute;
@@ -174,10 +187,25 @@
 
                 // 添加交互和布局处理
                 /* addInteractions();*/
+                processProfilephoto();
                 processPublications();
                 processAnnalysis();
             } catch (error) {
                 console.error('Error loading Markdown:', error);
+            }
+        }
+
+        function processProfilephoto(){
+            const container = document.getElementById('main-content');
+            const firstImg = container.querySelector('img');
+            if (firstImg && firstImg.alt.includes('profile')) {
+                const photoDiv = document.createElement('div');
+                photoDiv.className = 'profile-photo';
+                photoDiv.appendChild(firstImg.cloneNode(true));
+                // 将照片插入到 H1 标题之前
+                container.insertBefore(photoDiv, container.firstChild);
+                // 删除原 Markdown 渲染出的孤立图片节点
+                firstImg.parentNode.remove(); 
             }
         }
 
