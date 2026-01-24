@@ -34,6 +34,7 @@ I received the B.E. degree from [School of Computer Science and Technology](http
 I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
 
 ## 🔥 News
+- 01/2026: 🎉 Two cooperative paper is accepted by ICASSP 2026.
 - 11/2025: 🎉 One cooperative paper is accepted by AAAI 2026. 
 - 06/2025: 🎉 One paper is released on arXiv. 
 - 05/2025: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2025). 
@@ -151,5 +152,5 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - First-Class Academic Scholarship, 2018, 2019, 2020, 2022, 2023  
 
 <center>
-&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Nov, 2025</a>
+&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Jan, 2026</a>
 </center>
