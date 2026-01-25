@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://antxinyuan.github.io/index.html</loc>
-    <lastmod>2025-11-10 19:22:19</lastmod>
+    <lastmod>2026-01-24 15:34:37</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -27,6 +27,18 @@
   <url>
     <loc>https://antxinyuan.github.io/images/xidian.webp</loc>
     <lastmod>2025-06-05 19:51:04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/images/profile.jpg</loc>
+    <lastmod>2026-01-24 15:34:37</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/images/profile.webp</loc>
+    <lastmod>2026-01-24 15:34:37</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
