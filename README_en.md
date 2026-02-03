@@ -94,6 +94,19 @@ Edit the **`academic.md`** file (core content file) and replace the content with
 #### 📌 Other Content (Highly Extensible)
 Add sections like "Research Interests", "Project Experience", "Awards", or "Contact Information" to `academic.md` using the same format—HTML will auto-adapt the style!
 
+### 3. 🔄 Modify Automated Scripts (Google Scholar Statistics, Sitemap)
+
+#### 🗺️ Automatic Crawling of Google Scholar Citations
+- Script location: `scripts/scholar_crawler.py`
+- It automatically updates the `scripts/scholar.json` file, which contains the citation counts of all papers and is used to display citation counts on web pages.
+- It runs automatically once every Monday by default. You can modify the execution frequency as needed or run it manually.
+- You need to manually modify the `GOOGLE_SCHOLAR_UID` in `scripts/scholar_crawler.py` to the UID of your personal Google Scholar profile.
+
+#### 🗺️ Automatic Sitemap Generation
+- Script location: `scripts/sitemap_generator.py`
+- It automatically updates the `sitemap.xml` file, which contains links to all public repository pages and facilitates indexing by search engines.
+- It runs automatically once every Monday by default. You can modify the execution frequency as needed or run it manually.
+- You need to manually modify the  `SITE_URL` in `scripts/sitemap_generator.py` to the URL of your personal homepage.
 
 ## 📂 File Structure Explanation
 ```shell

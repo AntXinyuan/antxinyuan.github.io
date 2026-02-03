@@ -91,6 +91,19 @@ python -m http.server -b 127.0.0.1
 #### 📌 其他内容（可自由扩展）
 可在 `academic.md` 中添加「研究方向」「项目经历」「获奖情况」「联系方式」等模块，格式与上述一致，HTML 会自动适配样式～
 
+### 3. 🔄 修改自动化脚本（谷歌学术统计、站点地图）
+
+#### 🗺️ 谷歌学术引用量自动抓取
+- 脚本位置：`scripts/scholar_crawler.py`
+- 会自动更新 `scripts/scholar.json` 文件，包含所有论文的引用量，用于在网页中展示引用量
+- 默认每周一自动执行一次，可根据需求修改执行频率,也可以手动运行
+- 需手动修改 `scripts/scholar_crawler.py` 中的 `GOOGLE_SCHOLAR_UID` 为你的谷歌学术个人ID
+
+#### 🗺️ 站点地图自动生成
+- 脚本位置：`scripts/sitemap_generator.py`
+- 会自动更新 `sitemap.xml` 文件，包含所有公开的仓库页面链接，方便搜索引擎索引
+- 默认每周一自动执行一次，可根据需求修改执行频率,也可以手动运行
+- 需手动修改 `scripts/sitemap_generator.py` 中的 `SITE_URL` 为你的个人主页URL
 
 ## 📂 文件结构说明
 ```shell
