@@ -1,0 +1,7 @@
+@inproceedings{hua2025pipo,
+  title={PanoIndoor and PanoOutdoor: Towards Comprehensive Datasets for Panoramic Instance Segmentation},
+  author={Hua, Liang and Liu, Xinyuan and Sun, Yaoqi and Yan, Chenggang and Dai, Feng and Xum, Hang},
+  booktitle={ICASSP 2026-2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  year={2026},
+  organization={IEEE}
+}

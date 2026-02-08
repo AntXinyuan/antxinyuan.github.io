@@ -47,14 +47,15 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - 09/2021: 🏆 I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
 
 ## 📝 Publications  
-**Summary**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**2**), IEEE Transactions (**0**).  
+**Summary(10)**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**2**), IEEE Trans. (**0**).
+**Summary(10)**: 1st-author (**3**), 2st-author (**5**), 3st-author (**2**), corresponding-author (**0**), other-author (**0**).
 
 \* indicates equal contribution, † indicates corresponding author.  
 
 ### 💡Conference Papers
 
 ### ACM
-![pub|CVPR24|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.webp) 
+![pub|CVPR24✨|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.webp) 
 
 - **Rethinking Boundary Discontinuity Problem for Oriented Object Detection**
 - Hang Xu\*, **Xinyuan Liu\***, Haonan Xu, Yike Ma, Zunjie Zhu, Chenggang Yan and Feng Dai†
@@ -63,7 +64,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 
 ### Sph2Pob
-![pub|IJCAI23|Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods](docs/ijcai2023/thumbnail.webp)  
+![pub|IJCAI23✨|Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods](docs/ijcai2023/thumbnail.webp)  
 
 - **Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods**
 - **Xinyuan Liu**, Hang Xu, Bin Chen, Qiang Zhao, Yike Ma, Chenggang Yan and Feng Dai†  
@@ -77,6 +78,22 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - Yichao Gao, **Xinyuan Liu**, Yike Ma, Yucheng Zhang and Feng Dai†  
 - ***AAAI 2026*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:0000000000)  / [![GitHub Stars](https://img.shields.io/github/stars/tom-gao-gyc/iqgs?style=social)](https://github.com/tom-gao-gyc/iqgs)
 - PDF / Supp / arXiv / [Code](https://github.com/tom-gao-gyc/iqgs) / Slides / Poster / [BibTex](docs/aaai2026/bibtex.txt)  
+
+### PIPO
+![pub|ICASSP26|PanoIndoor and PanoOutdoor: Towards Comprehensive Datasets for Panoramic Instance Segmentation](docs/icassp2026a/thumbnail.webp)  
+
+- **PanoIndoor and PanoOutdoor: Towards Comprehensive Datasets for Panoramic Instance Segmentation**
+- Liang Hua, **Xinyuan Liu**, Yaoqi Sun, Chenggang Yan, Feng Dai and Hang Xu† 
+- ***ICASSP 2026*** (<span style="color:#ae1324;">CCF-B</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:000000000000) / [![GitHub Stars](https://img.shields.io/github/stars/antxinyuan/sph2pob?style=social)](https://github.com/pandora-cv/panoindoor-outdoor)
+- PDF / Supp / arXiv / [Code](https://github.com/pandora-cv/panoindoor-outdoor) / Slides / Poster / [BibTex](docs/icassp2026a/bibtex.txt)
+
+### HCA
+![pub|ICASSP26|Homomorphic-Controlled Augmentation for Time Series Forecasting](docs/icassp2026b/thumbnail.webp)  
+
+- **Homomorphic-Controlled Augmentation for Time Series Forecasting**
+- Hu Li, Lin Cheng, **Xinyuan Liu**, Zichen Liu, Long Long, Yucheng Zhang and Feng Dai† 
+- ***ICASSP 2026*** (<span style="color:#ae1324;">CCF-B</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:000000000000) 
+- PDF / Supp / arXiv / Code / Slides / Poster / [BibTex](docs/icassp2026b/bibtex.txt)
 
 ### TopoPoint
 ![pub|NeurIPS25|TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving](docs/neurips2025/thumbnail.webp)  
@@ -115,7 +132,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 ### ⏳Preprint Papers
 
 ### SSP
-![pub|arXiv25|Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection](docs/arxiv2025b/thumbnail.webp)  
+![pub|arXiv25✨|Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection](docs/arxiv2025b/thumbnail.webp)  
 
 - **Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection**  
 - **Xinyuan Liu**, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†  

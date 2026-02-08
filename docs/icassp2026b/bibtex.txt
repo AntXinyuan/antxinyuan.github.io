@@ -1,0 +1,7 @@
+@inproceedings{hua2025pipo,
+  title={Homomorphic-Controlled Augmentation for Time Series Forecasting},
+  author={Li, Hu and Cheng, Lin and Liu, Xinyuan and Liu, Zichen and Long, Long and Zhang, Yucheng and Dai, Feng},
+  booktitle={ICASSP 2026-2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  year={2026},
+  organization={IEEE}
+}
