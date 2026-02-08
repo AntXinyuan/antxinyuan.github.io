@@ -48,7 +48,7 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 ## 📝 Publications  
 **Summary(10)**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**2**), IEEE Trans. (**0**).
-**Summary(10)**: 1st-author (**3**), 2st-author (**5**), 3st-author (**2**), corresponding-author (**0**), other-author (**0**).
+**Summary(10)**: 1st-author (**3**), 2nd-author (**5**), 3rd-author (**2**), corresponding-author (**0**), other-author (**0**).
 
 \* indicates equal contribution, † indicates corresponding author.  
 
