@@ -34,6 +34,8 @@ I received the B.E. degree from [School of Computer Science and Technology](http
 I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
 
 ## 🔥 News
+- 02/2026: 🏆 I have received a total of 100 citations on Google Scholar.
+- 02/2026: 🎉 One cooperative paper is accepted by TMM 2026.
 - 01/2026: 🎉 Two cooperative paper is accepted by ICASSP 2026.
 - 11/2025: 🎉 One cooperative paper is accepted by AAAI 2026. 
 - 06/2025: 🎉 One paper is released on arXiv. 
@@ -47,8 +49,8 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - 09/2021: 🏆 I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
 
 ## 📝 Publications  
-**Summary(10)**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**2**), IEEE Trans. (**0**).
-**Summary(10)**: 1st-author (**3**), 2nd-author (**5**), 3rd-author (**2**), corresponding-author (**0**), other-author (**0**).
+**Summary(11)**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**2**), IEEE Trans. (**1**).
+**Summary(11)**: 1st-author (**3**), 2nd-author (**5**), 3rd-author (**2**), corresponding-author (**0**), other-author (**1**).
 
 \* indicates equal contribution, † indicates corresponding author.  
 
@@ -122,6 +124,13 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 
 ### 🔬Journal Papers
 
+### PAN-COCO
+![pub|TMM26|Enhance Panoramic Object Detection Using Planar Image Datasets](docs/tmm2026/thumbnail.webp)  
+- **Enhance Panoramic Object Detection Using Planar Image Datasets**  
+- Longlong Yu, Qiang Zhao, Bin Wang, **Xinyuan Liu**, Wenting Zhao, Tingyu Wang, Hong He, Feng Dai and Chenggang Yan†  
+- ***IEEE Transactions on Multimedia 2026***  (SCI-Q1, IF=9.7, <span style="color:#ae1324;">CCF-B</span>)	[![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:LkGwnXOMwfcC) / [![GitHub Stars](https://img.shields.io/github/stars/longlong-yu/official-panorama-coco?style=social)](https://github.com/longlong-yu/official-panorama-coco)
+- [PDF](https://ieeexplore.ieee.org/abstract/document/11397097) / Supp / arXiv / [Code](https://github.com/longlong-yu/official-panorama-coco) / Slides / Poster / [BibTex](docs/tmm2026/bibtex.txt)
+
 ### GDL
 ![pub|Electronics23|Rotated Object Detection with Circular Gaussian Distribution](docs/electronics2023/thumbnail.webp)  
 - **Rotated Object Detection with Circular Gaussian Distribution**  
@@ -169,5 +178,5 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - First-Class Academic Scholarship, 2018, 2019, 2020, 2022, 2023  
 
 <center>
-&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Jan, 2026</a>
+&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Feb, 2026</a>
 </center>
