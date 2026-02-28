@@ -34,7 +34,8 @@ I received the B.E. degree from [School of Computer Science and Technology](http
 I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
 
 ## 🔥 News
-- 02/2026: 🏆 I have received a total of 100 citations on Google Scholar.
+- 02/2026: 🎉 One cooperative paper is accepted by TMM 2026.
+- 02/2026: 🏆 I have received a total of <img src="https://img.shields.io/badge/Citations-100-blue.svg?logo=google-scholar" style="height: 1em;" alt="Scholar Citations"> on Google Scholar.
 - 02/2026: 🎉 One cooperative paper is accepted by TMM 2026.
 - 01/2026: 🎉 Two cooperative paper is accepted by ICASSP 2026.
 - 11/2025: 🎉 One cooperative paper is accepted by AAAI 2026. 
