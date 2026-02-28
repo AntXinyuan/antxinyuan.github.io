@@ -97,6 +97,7 @@ Add sections like "Research Interests", "Project Experience", "Awards", or "Cont
 ### 3. 🔄 Modify Automated Scripts (Google Scholar Statistics, Sitemap)
 
 #### 🗺️ Automatic Crawling of Google Scholar Citations
+> ⚠️ An extra manual extraction method is added for frequent crawling failures of the scholarly Python package: save Google Scholar page HTML manually to `scripts/scholar.html`, format it with `scripts/scholar_format.py`, and update citation counts to `scripts/scholar.json` (same format as `s`cripts/scholar_crawler.py`).
 - Script location: `scripts/scholar_crawler.py`
 - It automatically updates the `scripts/scholar.json` file, which contains the citation counts of all papers and is used to display citation counts on web pages.
 - It runs automatically once every Monday by default. You can modify the execution frequency as needed or run it manually.

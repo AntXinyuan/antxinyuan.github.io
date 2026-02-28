@@ -94,6 +94,8 @@ python -m http.server -b 127.0.0.1
 ### 3. 🔄 修改自动化脚本（谷歌学术统计、站点地图）
 
 #### 🗺️ 谷歌学术引用量自动抓取
+> ⚠️ 由于scholarly python-package总是爬取失败，所以额外增加了一种手动抓取的方法：我们手动从谷歌学术主页保存一份页面html到`scripts/scholar.html`，再利用`scripts/scholar_format.py`格式化后，即可得到论文引用量等信息，更新到`scripts/scholar.json`中，格式与之前`scripts/scholar_crawler.py`得到的相同
+
 - 脚本位置：`scripts/scholar_crawler.py`
 - 会自动更新 `scripts/scholar.json` 文件，包含所有论文的引用量，用于在网页中展示引用量
 - 默认每周一自动执行一次，可根据需求修改执行频率,也可以手动运行

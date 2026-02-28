@@ -1,131 +1,78 @@
 {
-  "container_type": "Author",
-  "filled": [
-    "basics",
-    "publications"
-  ],
-  "scholar_id": "eXwizz8AAAAJ",
-  "source": "AUTHOR_PROFILE_PAGE",
+  "user_id": "eXwizz8AAAAJ",
   "name": "Xinyuan Liu (刘 鑫源)",
-  "url_picture": "https://scholar.googleusercontent.com/citations?view_op=view_photo&user=eXwizz8AAAAJ&citpid=6",
   "affiliation": "PhD student, Institute of Computing Technology, Chinese Academy of Sciences",
-  "organization": 8095408014149788983,
+  "homepage": "https://antxinyuan.github.io/",
   "interests": [
     "Computer Vision",
     "Object Detection"
   ],
-  "email_domain": "@ict.ac.cn",
-  "homepage": "https://antxinyuan.github.io/",
-  "citedby": 93,
+  "citedby": "102",
   "publications": {
     "eXwizz8AAAAJ:d1gkVwhDpl0C": {
-      "container_type": "Publication",
-      "source": "AUTHOR_PUBLICATION_ENTRY",
-      "bib": {
-        "title": "Rethinking boundary discontinuity problem for oriented object detection",
-        "pub_year": "2024",
-        "citation": "Proceedings of the IEEE conference on Computer Vision and Pattern …, 2024"
-      },
-      "filled": false,
-      "author_pub_id": "eXwizz8AAAAJ:d1gkVwhDpl0C",
-      "num_citations": 45,
-      "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=879864320092800065",
-      "cites_id": [
-        "879864320092800065"
-      ]
+      "pub_id": "eXwizz8AAAAJ:d1gkVwhDpl0C",
+      "title": "Rethinking boundary discontinuity problem for oriented object detection",
+      "authors": "H Xu*, X Liu*, H Xu, Y Ma, Z Zhu, C Yan, F Dai",
+      "venue": "Proceedings of the IEEE conference on Computer Vision and Pattern …, 2024",
+      "pub_year": "2024",
+      "num_citations": "48"
     },
     "eXwizz8AAAAJ:WF5omc3nYNoC": {
-      "container_type": "Publication",
-      "source": "AUTHOR_PUBLICATION_ENTRY",
-      "bib": {
-        "title": "Topologic: An interpretable pipeline for lane topology reasoning on driving scenes",
-        "pub_year": "2024",
-        "citation": "Advances in Neural Information Processing Systems 37, 61658-61676, 2024"
-      },
-      "filled": false,
-      "author_pub_id": "eXwizz8AAAAJ:WF5omc3nYNoC",
-      "num_citations": 24,
-      "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=17940048768269899219",
-      "cites_id": [
-        "17940048768269899219"
-      ]
+      "pub_id": "eXwizz8AAAAJ:WF5omc3nYNoC",
+      "title": "Topologic: An interpretable pipeline for lane topology reasoning on driving scenes",
+      "authors": "Y Fu, W Liao, X Liu, H Xu, Y Ma, Y Zhang, F Dai",
+      "venue": "Advances in Neural Information Processing Systems 37, 61658-61676, 2024",
+      "pub_year": "2024",
+      "num_citations": "26"
     },
     "eXwizz8AAAAJ:9yKSN-GCB0IC": {
-      "container_type": "Publication",
-      "source": "AUTHOR_PUBLICATION_ENTRY",
-      "bib": {
-        "title": "Gaussian Label Distribution Learning for Spherical Image Object Detection",
-        "pub_year": "2023",
-        "citation": "Proceedings of the IEEE conference on Computer Vision and Pattern …, 2023"
-      },
-      "filled": false,
-      "author_pub_id": "eXwizz8AAAAJ:9yKSN-GCB0IC",
-      "num_citations": 12,
-      "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13973028967109303026",
-      "cites_id": [
-        "13973028967109303026"
-      ]
+      "pub_id": "eXwizz8AAAAJ:9yKSN-GCB0IC",
+      "title": "Gaussian Label Distribution Learning for Spherical Image Object Detection",
+      "authors": "H Xu, X Liu, Q Zhao, Y Ma, C Yan, F Dai",
+      "venue": "Proceedings of the IEEE conference on Computer Vision and Pattern …, 2023",
+      "pub_year": "2023",
+      "num_citations": "14"
     },
     "eXwizz8AAAAJ:qjMakFHDy7sC": {
-      "container_type": "Publication",
-      "source": "AUTHOR_PUBLICATION_ENTRY",
-      "bib": {
-        "title": "Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods.",
-        "pub_year": "2023",
-        "citation": "IJCAI, 1231-1239, 2023"
-      },
-      "filled": false,
-      "author_pub_id": "eXwizz8AAAAJ:qjMakFHDy7sC",
-      "num_citations": 5,
-      "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12832594709099459459",
-      "cites_id": [
-        "12832594709099459459"
-      ]
+      "pub_id": "eXwizz8AAAAJ:qjMakFHDy7sC",
+      "title": "Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods.",
+      "authors": "X Liu, H Xu, B Chen, Q Zhao, Y Ma, C Yan, F Dai",
+      "venue": "IJCAI, 1231-1239, 2023",
+      "pub_year": "2023",
+      "num_citations": "7"
     },
     "eXwizz8AAAAJ:ufrVoPGSRksC": {
-      "container_type": "Publication",
-      "source": "AUTHOR_PUBLICATION_ENTRY",
-      "bib": {
-        "title": "TopoPoint: Enhance Topology Reasoning via Endpoint Detection in Autonomous Driving",
-        "pub_year": "2025",
-        "citation": "arXiv preprint arXiv:2505.17771, 2025"
-      },
-      "filled": false,
-      "author_pub_id": "eXwizz8AAAAJ:ufrVoPGSRksC",
-      "num_citations": 4,
-      "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13110888873972411017",
-      "cites_id": [
-        "13110888873972411017"
-      ]
+      "pub_id": "eXwizz8AAAAJ:ufrVoPGSRksC",
+      "title": "Topopoint: Enhance topology reasoning via endpoint detection in autonomous driving",
+      "authors": "Y Fu, X Liu, T Li, Y Ma, Y Zhang, F Dai",
+      "venue": "arXiv preprint arXiv:2505.17771, 2025",
+      "pub_year": "2025",
+      "num_citations": "4"
     },
     "eXwizz8AAAAJ:2osOgNQ5qMEC": {
-      "container_type": "Publication",
-      "source": "AUTHOR_PUBLICATION_ENTRY",
-      "bib": {
-        "title": "Rotated object detection with circular gaussian distribution",
-        "pub_year": "2023",
-        "citation": "Electronics 12 (15), 3265, 2023"
-      },
-      "filled": false,
-      "author_pub_id": "eXwizz8AAAAJ:2osOgNQ5qMEC",
-      "num_citations": 3,
-      "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7132374231750233237",
-      "cites_id": [
-        "7132374231750233237"
-      ]
+      "pub_id": "eXwizz8AAAAJ:2osOgNQ5qMEC",
+      "title": "Rotated object detection with circular gaussian distribution",
+      "authors": "H Xu, X Liu, Y Ma, Z Zhu, S Wang, C Yan, F Dai",
+      "venue": "Electronics 12 (15), 3265, 2023",
+      "pub_year": "2023",
+      "num_citations": "3"
+    },
+    "eXwizz8AAAAJ:LkGwnXOMwfcC": {
+      "pub_id": "eXwizz8AAAAJ:LkGwnXOMwfcC",
+      "title": "Enhance Panoramic Object Detection Using Planar Image Datasets",
+      "authors": "L Yu, Q Zhao, B Wang, X Liu, W Zhao, T Wang, H He, F Dai, C Yan",
+      "venue": "IEEE Transactions on Multimedia, 2026",
+      "pub_year": "2026",
+      "num_citations": "0"
     },
     "eXwizz8AAAAJ:_FxGoFyzp5QC": {
-      "container_type": "Publication",
-      "source": "AUTHOR_PUBLICATION_ENTRY",
-      "bib": {
-        "title": "Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection",
-        "pub_year": "2025",
-        "citation": "arXiv preprint arXiv:2506.10601, 2025"
-      },
-      "filled": false,
-      "author_pub_id": "eXwizz8AAAAJ:_FxGoFyzp5QC",
-      "num_citations": 0
+      "pub_id": "eXwizz8AAAAJ:_FxGoFyzp5QC",
+      "title": "Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection",
+      "authors": "X Liu, H Xu, Y Ma, Y Zhang, F Dai",
+      "venue": "arXiv preprint arXiv:2506.10601, 2025",
+      "pub_year": "2025",
+      "num_citations": "0"
     }
   },
-  "updated": "2026-02-15 08:20:37.622088"
+  "updated": "2026-02-28 11:33:44.717275"
 }
