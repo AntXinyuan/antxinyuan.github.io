@@ -50,8 +50,8 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - 09/2021: 📍 I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
 
 ## 📝 Publications  
-**Summary(11)**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**2**), IEEE Trans. (**1**).
-**Summary(11)**: 1st-author (**3**), 2nd-author (**5**), 3rd-author (**2**), corresponding-author (**0**), other-author (**1**).
+**Summary(12)**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**2**), IEEE Trans. (**1**).
+**Summary(12)**: 1st-author (**3**), 2nd-author (**5**), 3rd-author (**3**), corresponding-author (**0**), other-author (**1**).
 
 \* indicates equal contribution, † indicates corresponding author.  
 
