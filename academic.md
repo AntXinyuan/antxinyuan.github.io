@@ -34,6 +34,7 @@ I received the B.E. degree from [School of Computer Science and Technology](http
 I'm interested in computer vision, with a focus on **panoramic/oriented/3D object detection.**  [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?user=eXwizz8AAAAJ)
 
 ## 🔥 News
+- 03/2026: 🎉 One cooperative paper is accepted by ICME 2026.
 - 02/2026: 🏆 I have received a total of <img src="https://img.shields.io/badge/Citations-100-blue.svg?logo=google-scholar" style="height: 1em;" alt="Scholar Citations"> on Google Scholar.
 - 02/2026: 🎉 One cooperative paper is accepted by TMM 2026.
 - 01/2026: 🎉 Two cooperative paper is accepted by ICASSP 2026.
@@ -41,12 +42,12 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - 06/2025: 🎉 One paper is released on arXiv. 
 - 05/2025: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2025). 
 - 05/2024: 🎉 One cooperative paper is released on arXiv (accepted by NeurIPS 2024).  
-- 03/2024: 🏆 I’m becoming a Ph.D. student at [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn).  
+- 03/2024: 📍 I’m becoming a Ph.D. student at [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn).  
 - 02/2024: 🎉 One paper is accepted by CVPR 2024. 
 - 10/2023: 🏆 I am awarded the National Scholarship for Master's Students. 
 - 05/2023: 🎉 One paper is accepted by IJCAI 2023.  
 - 02/2023: 🎉 One cooperative paper is accepted by CVPR 2023.  
-- 09/2021: 🏆 I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
+- 09/2021: 📍 I’m joining [Institute of Computing Technology, Chinese Academy of Sciences](http://www.ict.ac.cn) as a M.S. student.  
 
 ## 📝 Publications  
 **Summary(11)**: CVPR & ICCV & ECCV (**2**), ICML & NeurIPS & ICLR (**2**), AAAI & IJCAI & ACM MM (**2**), IEEE Trans. (**1**).
@@ -80,6 +81,14 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - Yichao Gao, **Xinyuan Liu**, Yike Ma, Yucheng Zhang and Feng Dai†  
 - ***AAAI 2026*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:0000000000)  / [![GitHub Stars](https://img.shields.io/github/stars/tom-gao-gyc/iqgs?style=social)](https://github.com/tom-gao-gyc/iqgs)
 - PDF / Supp / arXiv / [Code](https://github.com/tom-gao-gyc/iqgs) / Slides / Poster / [BibTex](docs/aaai2026/bibtex.txt)  
+
+### PIPO
+![pub|ICME26|TEAR of the SUNSET: A Benchmark for Road Detection in Off-Road Environment](docs/icme2026/thumbnail.webp)  
+
+- **TEAR of the SUNSET: A Benchmark for Road Detection in Off-Road Environment**
+- Haonan Xu, Qirui Hu, **Xinyuan Liu**, Hu Li, Hang Xu, Yike Ma†, Yucheng Zhang and Feng Dai 
+- ***ICME 2026*** (<span style="color:#ae1324;">CCF-B</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:000000000000) / [![GitHub Stars](https://img.shields.io/github/stars/DoubleFlicker7?style=social)](https://github.com/DoubleFlicker7)
+- PDF / Supp / arXiv / [Code](https://github.com/DoubleFlicker7) / Slides / Poster / [BibTex](docs/icme2026/bibtex.txt)
 
 ### PIPO
 ![pub|ICASSP26|PanoIndoor and PanoOutdoor: Towards Comprehensive Datasets for Panoramic Instance Segmentation](docs/icassp2026a/thumbnail.webp)  
