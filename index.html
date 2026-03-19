@@ -17,8 +17,10 @@
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 78px 20px 20px;
             color: #333;
+            scroll-behavior: smooth;
+            background: linear-gradient(to bottom, #f8fbff 0, #ffffff 150px);
         }
 
         h1, h2, h3 {
@@ -33,6 +35,11 @@
             border-bottom: 2px solid #e8e8e8;
             margin: 40px 0 20px;
             font-size: 1.6em;
+            scroll-margin-top: 78px;
+        }
+
+        h3 {
+            scroll-margin-top: 78px;
         }
     
         a, a > tt {
@@ -105,18 +112,75 @@
             height: 100%;
         }
 
-    .profile-photo {
-        float: right;
-        margin-left: 30px;
-        margin-top: 10px;
-    }
+        .site-nav {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(880px, calc(100% - 28px));
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 8px 14px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(12, 73, 148, 0.12);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(12, 73, 148, 0.08);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
 
-    .profile-photo img {
-        width: 165px; /* 个人照片宽度 */
-        height: auto;
-        border-radius: 8px; /* 圆角 */
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
+        .site-nav-title {
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #0c4994;
+            white-space: nowrap;
+            opacity: 0.75;
+        }
+
+        .site-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .site-nav-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: #37567f;
+            font-size: 0.93rem;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .site-nav-links a:hover {
+            border-bottom: none;
+            background: rgba(12, 73, 148, 0.08);
+            border-color: rgba(12, 73, 148, 0.12);
+            color: #0c4994;
+            transform: translateY(-1px);
+        }
+
+        .profile-photo {
+            float: right;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        .profile-photo img {
+            width: 165px; /* 个人照片宽度 */
+            height: auto;
+            border-radius: 8px; /* 圆角 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
 
         /* 期刊名称标签样式 */
         .pub-tag {
@@ -135,6 +199,32 @@
 
         /* 新增手机端响应式布局 */
         @media (max-width: 768px) {
+            body {
+                padding-top: 120px;
+            }
+
+            h2, h3 {
+                scroll-margin-top: 120px;
+            }
+
+            .site-nav {
+                top: 8px;
+                width: calc(100% - 16px);
+                padding: 10px 12px;
+                gap: 6px 10px;
+            }
+
+            .site-nav-title {
+                width: 100%;
+                text-align: center;
+                font-size: 0.76rem;
+            }
+
+            .site-nav-links a {
+                font-size: 0.86rem;
+                padding: 4px 9px;
+            }
+
             /* 针对Publication和Education的表格 */
             .pub-table, .edu-table {
                 width: 100%;
@@ -169,6 +259,10 @@
 </head>
 
 <body>
+    <nav class="site-nav" aria-label="Section navigation">
+        <div class="site-nav-title">Navigate</div>
+        <div class="site-nav-links" id="site-nav-links"></div>
+    </nav>
     <div id="main-content"></div>
 
     <!-- Markdown 解析库 -->
@@ -190,6 +284,7 @@
                 processProfilephoto();
                 processPublications();
                 processAnnalysis();
+                buildNavigation();
             } catch (error) {
                 console.error('Error loading Markdown:', error);
             }
@@ -288,6 +383,50 @@
                 });
         }
 
+        function slugifyHeading(text, usedIds) {
+            const normalized = text
+                .toLowerCase()
+                .trim()
+                .replace(/<[^>]+>/g, '')
+                .replace(/[^\w\u4e00-\u9fa5\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-');
+
+            const baseId = normalized || 'section';
+            let candidate = baseId;
+            let counter = 2;
+
+            while (usedIds.has(candidate)) {
+                candidate = `${baseId}-${counter}`;
+                counter += 1;
+            }
+
+            usedIds.add(candidate);
+            return candidate;
+        }
+
+        function buildNavigation() {
+            const navLinks = document.getElementById('site-nav-links');
+            const mainContent = document.getElementById('main-content');
+            const headings = mainContent.querySelectorAll('h2');
+            const usedIds = new Set();
+
+            navLinks.innerHTML = '';
+
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = slugifyHeading(heading.textContent, usedIds);
+                } else {
+                    usedIds.add(heading.id);
+                }
+
+                const link = document.createElement('a');
+                link.href = `#${heading.id}`;
+                link.textContent = heading.textContent.trim();
+                navLinks.appendChild(link);
+            });
+        }
+
         function clickEffects(event) {
             let words = [
                 "CVPR", "ICCV", "ECCV",
@@ -324,4 +463,3 @@
 </body>
 
 </html>
-
