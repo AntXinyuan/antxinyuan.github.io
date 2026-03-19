@@ -8,77 +8,11 @@
     <meta name="description" content="Complete news archive of Xinyuan Liu with filters for year and theme.">
     <meta name="keywords" content="Xinyuan Liu, News, Awards, Publications, Timeline">
     <link rel="shortcut icon" type="image/png" href="images/logo.ico" />
-    <link rel="stylesheet" href="styles/publications.css" />
-
-    <style>
-        body {
-            font-family: "Trebuchet MS", Helvetica, sans-serif;
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 28px 20px 48px;
-            color: #333;
-            background: linear-gradient(to bottom, #f8fbff 0, #ffffff 180px);
-        }
-
-        a {
-            color: #224b8d;
-            text-decoration: none;
-        }
-
-        a:hover {
-            border-bottom: 1px gray dotted;
-        }
-
-        .archive-shell {
-            padding: 26px 24px 34px;
-            border: 1px solid #dfe8f4;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 18px 46px rgba(12, 73, 148, 0.07);
-        }
-
-        .archive-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 18px;
-            padding: 7px 13px;
-            border-radius: 999px;
-            border: 1px solid rgba(12, 73, 148, 0.14);
-            background: #f5f9fe;
-            color: #0c4994;
-            font-weight: 700;
-        }
-
-        .archive-back:hover {
-            border-bottom: none;
-            background: #edf4fc;
-        }
-
-        h1 {
-            margin: 0;
-            color: #17365d;
-            font-size: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 16px 12px 28px;
-            }
-
-            .archive-shell {
-                padding: 18px 14px 24px;
-                border-radius: 18px;
-            }
-
-            h1 {
-                font-size: 1.6rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/site.css" />
+    <link rel="stylesheet" href="styles/details.css" />
 </head>
 
-<body>
+<body class="archive-page">
     <main class="archive-shell">
         <a class="archive-back" href="index.html">← Back to Homepage</a>
         <h1>All News</h1>
@@ -86,6 +20,7 @@
         <div id="news-archive"></div>
     </main>
 
+    <script src="scripts/site-utils.js"></script>
     <script src="scripts/news.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

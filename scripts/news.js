@@ -1,37 +1,15 @@
 (function () {
     const NEWS_PATH = 'data/news.json';
+    const {
+        fetchJson,
+        createElement,
+        createActionLink,
+        getFilterOptions,
+        renderHomepageArchiveIntro,
+        renderFilterBar
+    } = window.SiteUiUtils;
 
     let newsDataPromise = null;
-
-    async function fetchJson(path) {
-        const response = await fetch(path);
-        if (!response.ok) {
-            throw new Error(`Failed to load ${path}: ${response.status}`);
-        }
-        return response.json();
-    }
-
-    function createElement(tagName, className, textContent) {
-        const element = document.createElement(tagName);
-        if (className) {
-            element.className = className;
-        }
-        if (textContent !== undefined) {
-            element.textContent = textContent;
-        }
-        return element;
-    }
-
-    function createActionLink(label, url, className = 'publication-action') {
-        const link = createElement('a', className, label);
-        link.href = url;
-        const isExternal = /^https?:\/\//.test(url);
-        if (isExternal) {
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-        }
-        return link;
-    }
 
     function formatDateLabel(dateValue) {
         const date = new Date(dateValue);
@@ -78,17 +56,6 @@
 
         article.appendChild(body);
         return article;
-    }
-
-    function getFilterOptions(items, key) {
-        return Array.from(new Set(items.map(item => item[key]).filter(Boolean)));
-    }
-
-    function renderHomepageArchiveIntro(target, text, url, label) {
-        const intro = createElement('div', 'homepage-section-intro');
-        intro.appendChild(createElement('div', 'homepage-section-intro-text', text));
-        intro.appendChild(createActionLink(label, url, 'publication-archive-link'));
-        target.appendChild(intro);
     }
 
     function renderRecentNews(containerId) {
@@ -153,69 +120,24 @@
     }
 
     function renderArchiveFilters(container, news, onChange) {
-        if (!container) {
-            return;
-        }
-
-        container.innerHTML = '';
-
-        const bar = createElement('div', 'publication-filter-bar');
-
-        const yearField = createElement('label', 'publication-filter-field');
-        yearField.appendChild(createElement('span', 'publication-filter-label', 'Filter by Year'));
-        const yearSelect = createElement('select', 'publication-filter-select');
-        yearSelect.innerHTML = '<option value="all">All Years</option>';
-        getFilterOptions(news, 'year')
-            .sort((left, right) => right - left)
-            .forEach(year => {
-                const option = document.createElement('option');
-                option.value = String(year);
-                option.textContent = String(year);
-                yearSelect.appendChild(option);
-            });
-        yearField.appendChild(yearSelect);
-        bar.appendChild(yearField);
-
-        const themeField = createElement('label', 'publication-filter-field');
-        themeField.appendChild(createElement('span', 'publication-filter-label', 'Filter by Theme'));
-        const themeSelect = createElement('select', 'publication-filter-select');
-        themeSelect.innerHTML = '<option value="all">All Themes</option>';
-        getFilterOptions(news, 'theme')
-            .sort((left, right) => left.localeCompare(right))
-            .forEach(theme => {
-                const option = document.createElement('option');
-                option.value = theme;
-                option.textContent = theme;
-                themeSelect.appendChild(option);
-            });
-        themeField.appendChild(themeSelect);
-        bar.appendChild(themeField);
-
-        const resetButton = createElement('button', 'publication-filter-reset', 'Reset');
-        resetButton.type = 'button';
-        bar.appendChild(resetButton);
-
-        const count = createElement('div', 'publication-filter-count');
-        bar.appendChild(count);
-
-        const triggerChange = () => {
-            onChange({
-                year: yearSelect.value,
-                theme: themeSelect.value,
-                countElement: count
-            });
-        };
-
-        yearSelect.addEventListener('change', triggerChange);
-        themeSelect.addEventListener('change', triggerChange);
-        resetButton.addEventListener('click', () => {
-            yearSelect.value = 'all';
-            themeSelect.value = 'all';
-            triggerChange();
-        });
-
-        container.appendChild(bar);
-        triggerChange();
+        renderFilterBar(container, [
+            {
+                name: 'year',
+                label: 'Filter by Year',
+                defaultLabel: 'All Years',
+                options: getFilterOptions(news, 'year')
+                    .sort((left, right) => right - left)
+                    .map(year => ({ value: String(year), label: String(year) }))
+            },
+            {
+                name: 'theme',
+                label: 'Filter by Theme',
+                defaultLabel: 'All Themes',
+                options: getFilterOptions(news, 'theme')
+                    .sort((left, right) => left.localeCompare(right))
+                    .map(theme => ({ value: theme, label: theme }))
+            }
+        ], onChange);
     }
 
     function renderNewsArchive(containerId, filterId) {

@@ -1,144 +1,281 @@
-# 🌟 个人学术主页模板 | 自适应 & 极简部署
+# 个人学术主页模板
 
-在寻找中文版本？ [README (English)](README_en.md)
+[English README](README_en.md)
 
-这是一个兼顾 **PC/移动端自适应**、**极简二次开发** 和 **内容快速更新** 的个人学术主页模板，基于纯 HTML+CSS 构建，无需复杂依赖。既可直接作为个人主页使用（当前是[Antxinyuan的学术主页](https://antxinyuan.github.io/)），也能通过几分钟的简单修改，部署属于你自己的专业学术主页～
+这是一个基于静态 HTML / CSS / JavaScript 的个人学术主页模板，适合部署到 GitHub Pages。当前仓库已经演化成“Markdown + JSON + 轻量脚本”的内容管理方式：
 
-如果这个模板帮到了你，欢迎点亮 ⭐️ Star 支持；若我的研究工作对你有启发，也欢迎引用相关成果！
+- 主页主体内容来自 `data/academic.md`
+- 论文列表来自 `data/publications.json`
+- 新闻列表来自 `data/news.json`
+- Google Scholar 引用数据来自 `scripts/scholar.json`
 
+整体目标是：内容结构化、前端无框架、部署简单、维护成本低。
 
-## ✨ 核心特性
-- 📱 **全端自适应**：自动适配电脑、平板、手机等设备，布局简洁优雅，阅读体验流畅
-- 🛠️ **极简开发**：仅依赖基础 HTML+CSS，代码结构清晰，二次开发门槛极低
-- 📝 **内容与样式分离**：所有个人信息（论文、教育经历等）集中在单个 Markdown 文件中，更新无需改动样式
-- 🔄 **自动同步数据**：支持一键抓取并更新谷歌学术引用量、Github 仓库 Star 数，无需手动维护
-- 🚀 **零配置部署**：依托 Github Pages + Github Action，push 代码后自动部署，无需额外操作
+## 特性
 
+- 主页与归档页分离：主页只展示精选论文和近一年新闻，完整列表放到独立页面
+- 内容结构化：论文、新闻都使用 JSON 管理，便于筛选、统计和批量维护
+- 轻量前端：无构建工具、无依赖安装，直接用浏览器即可运行
+- 自动数据融合：前端会将手工维护的论文信息与 Scholar 引用量合并
+- 响应式布局：桌面和移动端都可正常浏览
 
-## 🚀 快速安装部署
-### 步骤 1：基于模板创建仓库
-1. 点击本仓库右上角的 **Use this template → Create a new repository**
-2. 仓库命名必须为 `<your-username>.github.io`（⚠️ 关键！`your-username` 需与你的 Github 用户名完全一致，例如我的用户名为 `antxinyuan`，仓库名即为 `antxinyuan.github.io`）
-3. 完成创建后，Github 会自动复制模板所有文件到你的仓库
+## 当前结构
 
-
-### 步骤 2：本地预览（可选但推荐）
-在推送代码到 Github 前，可先本地预览效果，确保修改无误：
-```shell
-# 1. 克隆你的仓库到本地
-git clone https://github.com/<your-username>/<your-username>.github.io.git
-cd <your-username>.github.io
-
-# 2. 启动 Python 简易 HTTP 服务（无需额外安装依赖）
-python -m http.server -b 127.0.0.1
-```
-启动后，打开浏览器访问 `127.0.0.1:8000` 即可查看本地版本。
-
-
-### 步骤 3：云端自动部署
-1. 本地修改完成后，提交并 push 到 Github 仓库：
-   ```shell
-   git add .
-   git commit -m "Update personal info"
-   git push origin main
-   ```
-2. Push 后会自动触发 Github Action 部署流程（无需手动配置）
-3. 等待 1-2 分钟后，访问 `https://<your-username>.github.io` 即可看到在线版本的个人主页～
-
-
-## 📝 个性化信息修改
-所有核心内容都集中在 **单个文件** 中，修改无需触碰样式代码，新手也能快速上手！
-
-### 1. 修改网页元信息（SEO 优化）
-编辑 `index.html` 中的 `<head>` 部分，替换为你的个人信息（有助于搜索引擎索引）：
-```html
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>你的名字 | 单位</title> <!-- 网页标题 -->
-    <meta name="description" content="一句话介绍自己（例如：XX大学博士生，研究方向为计算机视觉）"> <!-- 搜索描述 -->
-    <meta name="keywords" content="你的名字, 研究方向, 单位, 关键词"> <!-- 搜索关键词 -->
-    <link rel="shortcut icon" type="image/png" href="images/logo.ico" /> <!-- 网页图标（替换 images/logo.ico 即可） -->
-</head>
+```text
+.
+├── index.html                 # 主页入口
+├── publications.html          # 完整论文页
+├── news.html                  # 完整新闻页
+├── data/
+│   ├── academic.md            # 主页的非结构化正文内容（Biography / Education / Awards 等）
+│   ├── publications.json      # 论文数据源
+│   └── news.json              # 新闻数据源
+├── scripts/
+│   ├── homepage.js            # 主页渲染逻辑
+│   ├── publications.js        # 论文渲染逻辑
+│   ├── news.js                # 新闻渲染逻辑
+│   ├── site-utils.js          # 共享前端工具
+│   ├── scholar.json           # Scholar 数据缓存
+│   ├── scholar_fetch.py       # Scholar 抓取
+│   ├── scholar_format.py      # Scholar HTML 格式化
+│   ├── scholar_crawler.py     # Scholar 兼容抓取脚本
+│   └── sitemap_generator.py   # 站点地图生成
+├── styles/
+│   ├── site.css               # 页面级共享样式
+│   └── details.css            # 论文 / 新闻 / 筛选 / 归档等内容样式
+├── docs/                      # 论文资源（缩略图、BibTex、Slides、Poster 等）
+└── images/                    # 站点图片资源
 ```
 
-### 2. 修改核心内容（论文、教育经历等）
-编辑 **`academic.md`** 文件（核心内容文件），按以下格式替换为你的信息即可：
+## 内容维护方式
 
-#### 🔍 论文信息格式（自动渲染标签+链接）
-⚠️ 关键规则：图片 caption 格式为 `pub|会议缩写`（例如 `pub|CVPR24`），用于自动渲染会议标签
-```markdown
-### ACM
-![pub|CVPR24|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.webp) 
+### 1. 修改主页普通内容
 
-- **Rethinking Boundary Discontinuity Problem for Oriented Object Detection**
-- Hang Xu\*, **Xinyuan Liu\***, Haonan Xu, Yike Ma, Zunjie Zhu, Chenggang Yan and Feng Dai†
-- ***CVPR 2024*** (<span style="color:#ae1324;">CCF-A</span>) [![Scholar Citatinos](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=eXwizz8AAAAJ:d1gkVwhDpl0C) / [![GitHub Stars](https://img.shields.io/github/stars/hangxu-cv/cvpr24acm?style=social)](https://github.com/hangxu-cv/cvpr24acm)
-- [PDF](https://openaccess.thecvf.com/content/CVPR2024/papers/Xu_Rethinking_Boundary_Discontinuity_Problem_for_Oriented_Object_Detection_CVPR_2024_paper.pdf) / [Supp](https://openaccess.thecvf.com/content/CVPR2024/supplemental/Xu_Rethinking_Boundary_Discontinuity_CVPR_2024_supplemental.pdf) / [arXiv](https://arxiv.org/abs/2305.10061) / [Code](https://github.com/hangxu-cv/cvpr24acm) / [Slides](docs/cvpr2024/acm_slides.pdf) / [Poster](docs/cvpr2024/acm_poster.pdf) / [BibTex](docs/cvpr2024/bibtex.txt)  
+编辑 `data/academic.md`。
+
+这里适合放：
+
+- 个人简介
+- 教育经历
+- 获奖
+- 联系方式
+- 主页中需要自由写作的其它部分
+
+注意：
+
+- `News` 区块只保留 `<div id="recent-news-section"></div>`
+- `Publications` 区块只保留 `<div id="featured-publications-section"></div>`
+
+这两个容器会由前端脚本自动渲染。
+
+### 2. 修改论文列表
+
+编辑 `data/publications.json`。
+
+每篇论文目前支持的核心字段包括：
+
+- `id`
+- `order`
+- `featured`
+- `section`
+- `type`
+- `level`
+- `keyword`
+- `author_role`
+- `tag`
+- `year`
+- `title`
+- `authors_html`
+- `venue_html`
+- `thumbnail`
+- `thumbnail_alt`
+- `scholar_id`
+- `github_repo`
+- `links`
+
+其中：
+
+- `featured: true` 的论文会进入主页精选区
+- `keyword` 用于完整论文页筛选
+- `author_role` 用于作者身份筛选
+- `scholar_id` 只负责和 `scripts/scholar.json` 中的引用量数据对齐
+
+主页中的论文统计摘要也在同一个文件里：
+
+- `homepage_featured_limit`
+- `homepage_summary`
+
+### 3. 修改新闻列表
+
+编辑 `data/news.json`。
+
+每条新闻目前支持的核心字段包括：
+
+- `id`
+- `order`
+- `date`
+- `year`
+- `theme`
+- `icon`
+- `content_html`
+
+其中：
+
+- 首页只展示最近一年的新闻
+- 完整新闻页支持按 `Year` 和 `Theme` 筛选
+
+## Scholar 数据说明
+
+当前论文的标题、作者、会议信息都以 `data/publications.json` 为准，不再依赖 Google Scholar 返回的元数据。
+
+Scholar 只负责提供：
+
+- 论文 ID 对应的引用量
+- 总引用量
+
+相关文件：
+
+- `scripts/scholar.json`
+- `scripts/scholar_fetch.py`
+- `scripts/scholar_format.py`
+- `scripts/scholar_crawler.py`
+
+推荐流程：
+
+1. 获取 Scholar 页面原始内容
+2. 更新 `scripts/scholar.json`
+3. 前端在渲染论文时自动合并 citation 数据
+
+## 本地预览
+
+```bash
+python3 -m http.server 8000
 ```
 
-#### 🏫 教育经历格式
-⚠️ 关键规则：图片 caption 格式为 `edu|单位缩写`（例如 `edu|UCAS`），用于自动渲染教育卡片
-```markdown
-### UCAS
-![edu|UCAS](images/ucas.webp)
+然后访问：
 
-- **Ph.D.** candidate, [Institute of Computing Technology, Chinese Academy of Science (ICT,CAS)](http://www.ict.ac.cn) 
-- Beijing, China 
-- Sep. 2021 - Now 
+```text
+http://127.0.0.1:8000
 ```
 
-#### 📌 其他内容（可自由扩展）
-可在 `academic.md` 中添加「研究方向」「项目经历」「获奖情况」「联系方式」等模块，格式与上述一致，HTML 会自动适配样式～
+建议同时检查：
 
-### 3. 🔄 修改自动化脚本（谷歌学术统计、站点地图）
+- `/index.html`
+- `/publications.html`
+- `/news.html`
 
-#### 🗺️ 谷歌学术引用量自动抓取
-> ⚠️ 由于scholarly python-package总是爬取失败，所以额外增加了一种手动抓取的方法：我们手动从谷歌学术主页保存一份页面html到`scripts/scholar.html`，再利用`scripts/scholar_format.py`格式化后，即可得到论文引用量等信息，更新到`scripts/scholar.json`中，格式与之前`scripts/scholar_crawler.py`得到的相同
+## 如何改造成你自己的主页
 
-- 脚本位置：`scripts/scholar_crawler.py`
-- 会自动更新 `scripts/scholar.json` 文件，包含所有论文的引用量，用于在网页中展示引用量
-- 默认每周一自动执行一次，可根据需求修改执行频率,也可以手动运行
-- 需手动修改 `scripts/scholar_crawler.py` 中的 `GOOGLE_SCHOLAR_UID` 为你的谷歌学术个人ID
+如果你希望把这个仓库直接改成自己的个人主页，推荐按下面的顺序进行。
 
-#### 🗺️ 站点地图自动生成
-- 脚本位置：`scripts/sitemap_generator.py`
-- 会自动更新 `sitemap.xml` 文件，包含所有公开的仓库页面链接，方便搜索引擎索引
-- 默认每周一自动执行一次，可根据需求修改执行频率,也可以手动运行
-- 需手动修改 `scripts/sitemap_generator.py` 中的 `SITE_URL` 为你的个人主页URL
+### 1. 创建你自己的仓库
 
-## 📂 文件结构说明
-```shell
-<your-username>.github.io/
-├── .github/
-│   └── workflows/          # 自动化配置（无需修改）
-│       ├── static.yml      # 网页自动部署脚本
-│       └── scholar_crawler.yml # 谷歌学术引用量自动抓取脚本
-├── README.md               # 本说明文档
-├── academic.md             # 🔴 核心！个人所有内容都在这里修改
-├── index.html              # 网页样式框架（仅需修改 <head> 元信息）
-├── docs/                   # 📁 论文相关资源（海报、slides、BibTex 等）
-│   └── cvpr2024/           # 按会议/年份分类存放
-├── images/                 # 📁 图片资源（校徽、网页图标、论文缩略图等）
-│   └── logo.ico            # 网页图标（可替换）
-├── scripts/                # 🛠️ 辅助脚本（无需修改）
-│   ├── scholar_crawler.py  # 谷歌学术引用量抓取脚本
-│   ├── sitemap_generator.py # 站点地图生成脚本
-│   └── scholar.json        # 抓取结果存储
-├── sitemap.xml             # 搜索引擎站点地图（自动生成）
-└── robots.txt              # 搜索引擎爬取配置
+推荐两种方式：
+
+- 直接 Fork 本仓库
+- 使用 GitHub 的 “Use this template” 创建新仓库
+
+如果你希望把它部署成 GitHub Pages 个人主页，仓库名通常应设置为：
+
+```text
+<your-username>.github.io
 ```
 
+### 2. 先完成最小替换
 
-## 🎯 进阶功能：自动更新引用量 & Star 数
-模板内置自动化脚本，无需手动更新数据：
-1. 谷歌学术引用量：通过 `scripts/scholar_crawler.py` 定期抓取，配置在 `.github/workflows/scholar_crawler.yml` 中（默认每周执行一次，可修改频率）
-2. Github Star 数：通过徽章链接 `https://img.shields.io/github/stars/<your github repo>?style=social` 实时同步，无需额外配置
+第一次改造时，优先改这些最关键的信息：
 
+1. `index.html`、`publications.html`、`news.html` 中的页面标题和 meta 信息
+2. `data/academic.md` 中的个人简介、教育经历、获奖、联系方式
+3. `data/publications.json` 中的论文条目
+4. `data/news.json` 中的新闻条目
+5. `images/` 中的头像和站点图片
 
-## 🙏 致谢 & 反馈
-如果使用过程中遇到问题、有优化建议，或者想要分享你的主页，欢迎通过以下方式联系我：
-- 提交 Github Issue
-- 直接 Fork 仓库进行优化，提交 Pull Request
+这样通常就能在不碰前端逻辑的情况下，快速得到一个属于你自己的主页版本。
 
-再次感谢你的支持！🌟 祝大家都能拥有一个简洁美观的学术主页～
+### 3. 论文和新闻尽量只改数据，不改脚本
+
+这个仓库现在的设计目标，是把“内容”和“渲染逻辑”尽量分开：
+
+- 论文改 `data/publications.json`
+- 新闻改 `data/news.json`
+- 普通主页内容改 `data/academic.md`
+
+除非你想改交互逻辑、筛选方式或视觉设计，否则一般不需要先修改：
+
+- `scripts/homepage.js`
+- `scripts/publications.js`
+- `scripts/news.js`
+- `scripts/site-utils.js`
+
+### 4. 替换你的 Scholar 对齐信息
+
+如果你也希望显示 Scholar 引用量：
+
+1. 用你自己的 Scholar 页面更新原始数据
+2. 重新生成或替换 `scripts/scholar.json`
+3. 在 `data/publications.json` 中给每篇论文填好对应的 `scholar_id`
+
+注意：这个项目默认以手工维护的论文 JSON 为准，Scholar 只负责补充 citation，不负责覆盖标题、作者或 venue。
+
+### 5. 本地检查后再推送
+
+建议每次做完主要修改后，都先本地预览一次：
+
+```bash
+python3 -m http.server 8000
+```
+
+重点检查：
+
+- 首页是否正常显示 Biography / News / Publications / Education / Awards
+- 精选论文和近一年新闻是否正确加载
+- `publications.html` 和 `news.html` 的筛选是否正常
+- 图片、论文链接、代码链接、Badge 是否都能显示
+
+### 6. 推送到 GitHub Pages
+
+内容确认无误后，直接提交并推送即可：
+
+```bash
+git add .
+git commit -m "Customize homepage"
+git push
+```
+
+如果仓库名是 `<your-username>.github.io`，通常推送后 GitHub Pages 就会自动更新。
+
+## 自定义建议
+
+如果你要基于这个模板做自己的主页，优先修改这些地方：
+
+1. `index.html`、`publications.html`、`news.html` 里的 `<title>` / `<meta>`
+2. `data/academic.md`
+3. `data/publications.json`
+4. `data/news.json`
+5. `images/` 和 `docs/` 中的资源
+
+通常不需要先改：
+
+- `scripts/homepage.js`
+- `scripts/publications.js`
+- `scripts/news.js`
+- `scripts/site-utils.js`
+- `styles/site.css`
+- `styles/details.css`
+
+## 部署
+
+如果仓库名是 `<your-username>.github.io`，直接推送到 GitHub 即可使用 GitHub Pages 部署。
+
+常见步骤：
+
+```bash
+git add .
+git commit -m "Update homepage content"
+git push
+```
+
+## 致谢
+
+如果这个模板对你有帮助，欢迎 Star 仓库。也欢迎基于它继续修改、精简或扩展成你自己的主页版本。

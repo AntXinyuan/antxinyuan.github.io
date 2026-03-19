@@ -1,147 +1,283 @@
-# 🌟 Personal Academic Homepage Template | Responsive & Minimal Deployment
+# Academic Homepage Template
 
-Looking for the Chinese version? [README (中文)](README_cn.md)
+[中文说明](README_cn.md)
 
-This is a personal academic homepage template that balances **PC/mobile responsiveness**, **minimal secondary development**, and **fast content updates**. Built with pure HTML+CSS (no complex dependencies), it can be used directly as a personal homepage (currently [Antxinyuan's academic homepage](https://antxinyuan.github.io/)) or customized in minutes to deploy your own professional academic site!
+This repository is a static academic homepage template designed for GitHub Pages. It now uses a lightweight “Markdown + JSON + plain JavaScript” content model:
 
-If this template helps you, please star ⭐️ the repository to show support. If my research work inspires you, feel free to cite the related achievements!
+- main homepage content comes from `data/academic.md`
+- publications come from `data/publications.json`
+- news comes from `data/news.json`
+- Google Scholar citation data comes from `scripts/scholar.json`
 
+The goal is to keep the site structured, easy to maintain, and simple to deploy without a build system.
 
-## ✨ Core Features
-- 📱 **Full-device Responsiveness**: Automatically adapts to desktops, tablets, and mobile phones with an elegant layout and smooth reading experience
-- 🛠️ **Minimal Development**: Relies only on basic HTML+CSS with a clear code structure, making secondary development extremely accessible
-- 📝 **Separation of Content & Style**: All personal information (publications, education, etc.) is centralized in a single Markdown file—no style modifications needed for updates
-- 🔄 **Auto-synced Data**: One-click crawling and updating of Google Scholar citations and GitHub repo stars (no manual maintenance required)
-- 🚀 **Zero-configuration Deployment**: Powered by GitHub Pages + GitHub Actions—automatic deployment after pushing code, no extra setup needed
+## Features
 
+- Split homepage and archive pages: the homepage shows selected publications and recent news, while full lists live on dedicated pages
+- Structured content: publications and news are managed with JSON
+- Lightweight frontend: no framework, no bundler, no dependency installation
+- Citation merge pipeline: manually maintained publication metadata is merged with Scholar citation counts
+- Responsive layout for both desktop and mobile
 
-## 🚀 Quick Installation & Deployment
-### Step 1: Create a Repository from the Template
-1. Click **Use this template → Create a new repository** in the top-right corner of this repo
-2. Name the repository `<your-username>.github.io` (⚠️ Critical: `your-username` must match your GitHub username exactly. For example, my username is `antxinyuan`, so the repo name is `antxinyuan.github.io`)
-3. After creation, GitHub will automatically copy all template files to your new repository
+## Project Structure
 
-
-### Step 2: Local Preview (Optional but Recommended)
-Preview locally before pushing to GitHub to ensure no issues:
-```shell
-# 1. Clone your repository to your local machine
-git clone https://github.com/<your-username>/<your-username>.github.io.git
-cd <your-username>.github.io
-
-# 2. Start a simple Python HTTP server (no extra dependencies required)
-python -m http.server -b 127.0.0.1
-```
-Once started, open your browser and visit `127.0.0.1:8000` to view the local version.
-
-
-### Step 3: Cloud Automatic Deployment
-1. After local modifications, commit and push to your GitHub repository:
-   ```shell
-   git add .
-   git commit -m "Update personal info"
-   git push origin main
-   ```
-2. Pushing will automatically trigger the GitHub Actions deployment workflow (no manual configuration needed)
-3. After 1-2 minutes, visit `https://<your-username>.github.io` to access your online personal homepage!
-
-
-## 📝 Customizing Personal Information
-All core content is concentrated in **a single file**—no need to touch style code, making it easy for beginners to get started!
-
-### 1. Modify Page Meta Information (SEO Optimization)
-Edit the `<head>` section in `index.html` and replace it with your personal information (helps with search engine indexing):
-```html
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Affiliation</title> <!-- Page title -->
-    <meta name="description" content="A brief introduction (e.g., PhD student at XX University, research focus on Computer Vision)"> <!-- Search description -->
-    <meta name="keywords" content="Your Name, Research Field, Affiliation, Keywords"> <!-- Search keywords -->
-    <link rel="shortcut icon" type="image/png" href="images/logo.ico" /> <!-- Favicon (replace images/logo.ico as needed) -->
-</head>
+```text
+.
+├── index.html                 # Homepage
+├── publications.html          # Full publication archive
+├── news.html                  # Full news archive
+├── data/
+│   ├── academic.md            # Non-structured homepage content (Biography / Education / Awards / etc.)
+│   ├── publications.json      # Publication data source
+│   └── news.json              # News data source
+├── scripts/
+│   ├── homepage.js            # Homepage rendering logic
+│   ├── publications.js        # Publication rendering logic
+│   ├── news.js                # News rendering logic
+│   ├── site-utils.js          # Shared frontend utilities
+│   ├── scholar.json           # Cached Scholar data
+│   ├── scholar_fetch.py       # Scholar fetching script
+│   ├── scholar_format.py      # Scholar HTML formatter
+│   ├── scholar_crawler.py     # Compatibility crawler
+│   └── sitemap_generator.py   # Sitemap generator
+├── styles/
+│   ├── site.css               # Page-level shared styles
+│   └── details.css            # Publication / news / filter / archive component styles
+├── docs/                      # Publication assets (thumbnails, BibTeX, slides, posters, etc.)
+└── images/                    # Site image assets
 ```
 
-### 2. Modify Core Content (Publications, Education, etc.)
-Edit the **`academic.md`** file (core content file) and replace the content with your own following these formats:
+## Content Management
 
-#### 🔍 Publication Format (Auto-renders Tags & Links)
-⚠️ Important Rule: Image caption format is `pub|Conference Abbreviation` (e.g., `pub|CVPR24`) to auto-render the conference tag
-```markdown
-### Publication Category (e.g., 2024 Research Outputs)
-![pub|CVPR24|Rethinking Boundary Discontinuity Problem for Oriented Object Detection](docs/cvpr2024/thumbnail.webp) 
+### 1. Edit general homepage content
 
-- **Title**: Rethinking Boundary Discontinuity Problem for Oriented Object Detection
-- **Authors**: Hang Xu\*, **Xinyuan Liu\***, Haonan Xu, Yike Ma, Zunjie Zhu, Chenggang Yan and Feng Dai† (\* Co-first author, † Corresponding author)
-- **Venue**: ***CVPR 2024*** (<span style="color:#ae1324;">CCF-A</span>) 
-  [![Scholar Citations](https://img.shields.io/badge/Citations--blue.svg?logo=google-scholar)](Google Scholar Citation Link) 
-  [![GitHub Stars](https://img.shields.io/github/stars/Repo URL?style=social)](Repo URL)
-- **Resources**: [PDF](Paper PDF Link) / [Supp](Supplementary Material Link) / [arXiv](arXiv Link) / [Code](Code Repo Link) / [Slides](Presentation Slides Link) / [Poster](Poster Link) / [BibTex](Citation Format Link)  
+Edit `data/academic.md`.
+
+This file is best for:
+
+- biography
+- education
+- awards
+- contact information
+- any homepage content that is easier to write as Markdown
+
+Notes:
+
+- the `News` section should only keep `<div id="recent-news-section"></div>`
+- the `Publications` section should only keep `<div id="featured-publications-section"></div>`
+
+Those containers are filled by frontend scripts.
+
+### 2. Edit publications
+
+Edit `data/publications.json`.
+
+Each publication currently supports fields such as:
+
+- `id`
+- `order`
+- `featured`
+- `section`
+- `type`
+- `level`
+- `keyword`
+- `author_role`
+- `tag`
+- `year`
+- `title`
+- `authors_html`
+- `venue_html`
+- `thumbnail`
+- `thumbnail_alt`
+- `scholar_id`
+- `github_repo`
+- `links`
+
+Important behavior:
+
+- publications with `featured: true` appear on the homepage
+- `keyword` is used by archive filtering
+- `author_role` is used by author-role filtering
+- `scholar_id` is only used to align manual metadata with citation data in `scripts/scholar.json`
+
+Homepage publication summary data is also stored in the same file:
+
+- `homepage_featured_limit`
+- `homepage_summary`
+
+### 3. Edit news
+
+Edit `data/news.json`.
+
+Each news item currently supports fields such as:
+
+- `id`
+- `order`
+- `date`
+- `year`
+- `theme`
+- `icon`
+- `content_html`
+
+Important behavior:
+
+- the homepage shows only the most recent year of news
+- the full news archive supports filtering by `Year` and `Theme`
+
+## Scholar Data
+
+Publication title, author list, venue, links, and other metadata are now maintained manually in `data/publications.json`.
+
+Google Scholar is only used for:
+
+- per-paper citation counts
+- total citation count
+
+Relevant files:
+
+- `scripts/scholar.json`
+- `scripts/scholar_fetch.py`
+- `scripts/scholar_format.py`
+- `scripts/scholar_crawler.py`
+
+Recommended workflow:
+
+1. obtain raw Scholar page content
+2. update `scripts/scholar.json`
+3. let the frontend merge citation counts during rendering
+
+## Local Preview
+
+```bash
+python3 -m http.server 8000
 ```
 
-#### 🏫 Education Format
-⚠️ Important Rule: Image caption format is `edu|Institution Abbreviation` (e.g., `edu|UCAS`) to auto-render the education card
-```markdown
-### Educational Background
-![edu|UCAS](images/ucas.webp) <!-- Institution logo -->
+Then open:
 
-- **Degree**: Ph.D. candidate
-- **Institution**: [Institute of Computing Technology, Chinese Academy of Science (ICT,CAS)](http://www.ict.ac.cn) (replace with your institution's official website)
-- **Location**: Beijing, China
-- **Period**: Sep. 2021 - Present 
+```text
+http://127.0.0.1:8000
 ```
 
-#### 📌 Other Content (Highly Extensible)
-Add sections like "Research Interests", "Project Experience", "Awards", or "Contact Information" to `academic.md` using the same format—HTML will auto-adapt the style!
+Recommended pages to check:
 
-### 3. 🔄 Modify Automated Scripts (Google Scholar Statistics, Sitemap)
+- `/index.html`
+- `/publications.html`
+- `/news.html`
 
-#### 🗺️ Automatic Crawling of Google Scholar Citations
-> ⚠️ An extra manual extraction method is added for frequent crawling failures of the scholarly Python package: save Google Scholar page HTML manually to `scripts/scholar.html`, format it with `scripts/scholar_format.py`, and update citation counts to `scripts/scholar.json` (same format as `s`cripts/scholar_crawler.py`).
-- Script location: `scripts/scholar_crawler.py`
-- It automatically updates the `scripts/scholar.json` file, which contains the citation counts of all papers and is used to display citation counts on web pages.
-- It runs automatically once every Monday by default. You can modify the execution frequency as needed or run it manually.
-- You need to manually modify the `GOOGLE_SCHOLAR_UID` in `scripts/scholar_crawler.py` to the UID of your personal Google Scholar profile.
+## Turning It Into Your Own Homepage
 
-#### 🗺️ Automatic Sitemap Generation
-- Script location: `scripts/sitemap_generator.py`
-- It automatically updates the `sitemap.xml` file, which contains links to all public repository pages and facilitates indexing by search engines.
-- It runs automatically once every Monday by default. You can modify the execution frequency as needed or run it manually.
-- You need to manually modify the  `SITE_URL` in `scripts/sitemap_generator.py` to the URL of your personal homepage.
+If you want to adapt this repository into your own academic homepage, the workflow below is the most practical starting point.
 
-## 📂 File Structure Explanation
-```shell
-<your-username>.github.io/
-├── .github/
-│   └── workflows/          # Automation configurations (no modifications needed)
-│       ├── static.yml      # Automatic webpage deployment script
-│       └── scholar_crawler.yml # Automatic Google Scholar citation crawling script
-├── README.md               # This documentation (English version)
-├── README_CN.md            # Chinese version of the documentation
-├── academic.md             # 🔴 Core! Modify all personal content here
-├── index.html              # Webpage style framework (only modify <head> meta info)
-├── docs/                   # 📁 Publication-related resources (posters, slides, BibTex, etc.)
-│   └── cvpr2024/           # Organize by conference/year
-├── images/                 # 📁 Image resources (logos, favicon, publication thumbnails, etc.)
-│   └── logo.ico            # Favicon (replaceable)
-├── scripts/                # 🛠️ Helper scripts (no modifications needed)
-│   ├── scholar_crawler.py  # Google Scholar citation crawling script
-│   ├── sitemap_generator.py # Sitemap generation script
-│   └── scholar.json        # Crawled data storage
-├── sitemap.xml             # Search engine sitemap (auto-generated)
-└── robots.txt              # Search engine crawling configuration
+### 1. Create your own repository
+
+Two common options work well:
+
+- fork this repository
+- use GitHub's "Use this template" button
+
+If you want to deploy it as a GitHub Pages personal site, the repository name is usually:
+
+```text
+<your-username>.github.io
 ```
 
+### 2. Make the minimum first-pass replacements
 
-## 🎯 Advanced Feature: Auto-update Citations & Stars
-The template includes built-in automation scripts for hassle-free data updates:
-1. Google Scholar Citations: Crawled periodically via `scripts/scholar_crawler.py`, configured in `.github/workflows/scholar_crawler.yml` (runs weekly by default—adjust frequency as needed)
-2. GitHub Stars: Real-time sync via the badge link `https://img.shields.io/github/stars/<your-github-repo>?style=social`—no extra configuration required
+For the first round of customization, focus on the most important identity/content files:
 
+1. page titles and meta tags in `index.html`, `publications.html`, and `news.html`
+2. biography, education, awards, and contact information in `data/academic.md`
+3. publication entries in `data/publications.json`
+4. news entries in `data/news.json`
+5. profile and site assets in `images/`
 
-## 🙏 Acknowledgements & Feedback
-If you encounter issues, have optimization suggestions, or want to share your customized homepage, feel free to reach out via:
-- Submitting a GitHub Issue
-- Forking the repository, making improvements, and submitting a Pull Request
+In most cases, that is enough to turn the project into a usable personal homepage without touching the frontend logic.
 
-Thank you for your support! 🌟 Wishing everyone a sleek and professional academic homepage～
+### 3. Prefer editing data files instead of scripts
+
+The current structure is designed to keep content and rendering logic separate:
+
+- edit publications in `data/publications.json`
+- edit news in `data/news.json`
+- edit general homepage content in `data/academic.md`
+
+Unless you want to change the interaction logic, filtering behavior, or visual design, you usually do not need to touch:
+
+- `scripts/homepage.js`
+- `scripts/publications.js`
+- `scripts/news.js`
+- `scripts/site-utils.js`
+
+### 4. Replace Scholar alignment data with your own
+
+If you also want Scholar citation badges:
+
+1. fetch data from your own Scholar page
+2. regenerate or replace `scripts/scholar.json`
+3. make sure each paper in `data/publications.json` has the correct `scholar_id`
+
+Important: this project treats `data/publications.json` as the source of truth for titles, authors, venues, and links. Scholar is only used for citation counts.
+
+### 5. Preview locally before pushing
+
+After major edits, preview the site locally:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then check:
+
+- whether the homepage still renders Biography / News / Publications / Education / Awards
+- whether selected publications and recent news load correctly
+- whether filters still work on `publications.html` and `news.html`
+- whether images, publication links, code links, and badges all render correctly
+
+### 6. Push to GitHub Pages
+
+Once everything looks right, commit and push:
+
+```bash
+git add .
+git commit -m "Customize homepage"
+git push
+```
+
+If the repository is named `<your-username>.github.io`, GitHub Pages will usually update automatically after the push.
+
+## Customization Checklist
+
+If you are adapting this template for your own site, start with:
+
+1. `<title>` and `<meta>` tags in `index.html`, `publications.html`, and `news.html`
+2. `data/academic.md`
+3. `data/publications.json`
+4. `data/news.json`
+5. assets in `images/` and `docs/`
+
+You usually do not need to edit first:
+
+- `scripts/homepage.js`
+- `scripts/publications.js`
+- `scripts/news.js`
+- `scripts/site-utils.js`
+- `styles/site.css`
+- `styles/details.css`
+
+## Deployment
+
+If your repository is named `<your-username>.github.io`, you can deploy it directly with GitHub Pages.
+
+Typical workflow:
+
+```bash
+git add .
+git commit -m "Update homepage content"
+git push
+```
+
+## Notes
+
+This project intentionally avoids frameworks and build tooling. The tradeoff is that some structure is handled manually, but the benefit is very low deployment and maintenance complexity.
+
+If this template is useful for you, feel free to star the repository or adapt it into your own homepage.

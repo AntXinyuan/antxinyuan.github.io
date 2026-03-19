@@ -1,16 +1,16 @@
 (function () {
     const PUBLICATIONS_PATH = 'data/publications.json';
     const SCHOLAR_PATH = 'scripts/scholar.json';
+    const {
+        fetchJson,
+        createElement,
+        createActionLink,
+        getFilterOptions,
+        renderHomepageArchiveIntro,
+        renderFilterBar
+    } = window.SiteUiUtils;
 
     let publicationDataPromise = null;
-
-    async function fetchJson(path) {
-        const response = await fetch(path);
-        if (!response.ok) {
-            throw new Error(`Failed to load ${path}: ${response.status}`);
-        }
-        return response.json();
-    }
 
     function normalizeCitationCount(value) {
         const parsed = Number.parseInt(value ?? '0', 10);
@@ -50,28 +50,6 @@
         }
 
         return publicationDataPromise;
-    }
-
-    function createElement(tagName, className, textContent) {
-        const element = document.createElement(tagName);
-        if (className) {
-            element.className = className;
-        }
-        if (textContent !== undefined) {
-            element.textContent = textContent;
-        }
-        return element;
-    }
-
-    function createActionLink(label, url, className = 'publication-action') {
-        const link = createElement('a', className, label);
-        link.href = url;
-        const isExternal = /^https?:\/\//.test(url);
-        if (isExternal) {
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-        }
-        return link;
     }
 
     function createImageBadgeLink(imageUrl, altText, targetUrl, className = 'publication-metric') {
@@ -153,17 +131,6 @@
         modal.classList.add('is-open');
     }
 
-    function createPreviewButton(publication, label = 'Preview Figure') {
-        if (!publication.thumbnail) {
-            return null;
-        }
-
-        const button = createElement('button', 'publication-preview-button', label);
-        button.type = 'button';
-        button.addEventListener('click', () => openImageModal(publication.thumbnail, publication.thumbnail_alt || publication.title));
-        return button;
-    }
-
     function appendCommonPublicationBody(container, publication, options) {
         const shouldShowHeaderTag = options.showHeaderTag !== false;
         if (shouldShowHeaderTag) {
@@ -199,13 +166,6 @@
         }
 
         const actions = createElement('div', 'publication-actions');
-        if (options.includePreviewButton) {
-            const previewButton = createPreviewButton(publication);
-            if (previewButton) {
-                actions.appendChild(previewButton);
-            }
-        }
-
         (publication.links || []).forEach(link => {
             actions.appendChild(createActionLink(link.label, link.url));
         });
@@ -236,7 +196,6 @@
 
         const body = createElement('div', 'publication-card-body');
         appendCommonPublicationBody(body, publication, {
-            includePreviewButton: false,
             titleClass: 'publication-title',
             showHeaderTag: false
         });
@@ -254,7 +213,6 @@
         body.appendChild(topLine);
 
         appendCommonPublicationBody(body, publication, {
-            includePreviewButton: false,
             titleClass: 'publication-archive-title',
             showHeaderTag: false
         });
@@ -324,20 +282,9 @@
         target.appendChild(block);
     }
 
-    function getFilterOptions(publications, key) {
-        return Array.from(new Set(publications.map(publication => publication[key]).filter(Boolean)));
-    }
-
     function getAuthorRoleOptions(publications) {
         const roleOrder = ['1st-author', '2nd-author', '3rd-author', 'corresponding-author', 'other-author'];
         return roleOrder;
-    }
-
-    function renderHomepageArchiveIntro(target, text, url, label) {
-        const intro = createElement('div', 'homepage-section-intro');
-        intro.appendChild(createElement('div', 'homepage-section-intro-text', text));
-        intro.appendChild(createActionLink(label, url, 'publication-archive-link'));
-        target.appendChild(intro);
     }
 
     function renderArchiveGroups(target, publications) {
@@ -361,104 +308,39 @@
     }
 
     function renderArchiveFilters(container, publications, onChange) {
-        if (!container) {
-            return;
-        }
-
-        container.innerHTML = '';
-
-        const bar = createElement('div', 'publication-filter-bar');
-
-        const yearField = createElement('label', 'publication-filter-field');
-        yearField.appendChild(createElement('span', 'publication-filter-label', 'Filter by Year'));
-        const yearSelect = createElement('select', 'publication-filter-select');
-        yearSelect.innerHTML = '<option value="all">All Years</option>';
-        getFilterOptions(publications, 'year')
-            .sort((left, right) => right - left)
-            .forEach(year => {
-                const option = document.createElement('option');
-                option.value = String(year);
-                option.textContent = String(year);
-                yearSelect.appendChild(option);
-            });
-        yearField.appendChild(yearSelect);
-        bar.appendChild(yearField);
-
-        const levelField = createElement('label', 'publication-filter-field');
-        levelField.appendChild(createElement('span', 'publication-filter-label', 'Filter by Level'));
-        const levelSelect = createElement('select', 'publication-filter-select');
-        levelSelect.innerHTML = '<option value="all">All Levels</option>';
-        getFilterOptions(publications, 'level')
-            .forEach(level => {
-                const option = document.createElement('option');
-                option.value = level;
-                option.textContent = level;
-                levelSelect.appendChild(option);
-            });
-        levelField.appendChild(levelSelect);
-        bar.appendChild(levelField);
-
-        const keywordField = createElement('label', 'publication-filter-field');
-        keywordField.appendChild(createElement('span', 'publication-filter-label', 'Filter by Keyword'));
-        const keywordSelect = createElement('select', 'publication-filter-select');
-        keywordSelect.innerHTML = '<option value="all">All Keywords</option>';
-        getFilterOptions(publications, 'keyword')
-            .sort((left, right) => left.localeCompare(right))
-            .forEach(keyword => {
-                const option = document.createElement('option');
-                option.value = keyword;
-                option.textContent = keyword;
-                keywordSelect.appendChild(option);
-            });
-        keywordField.appendChild(keywordSelect);
-        bar.appendChild(keywordField);
-
-        const authorField = createElement('label', 'publication-filter-field');
-        authorField.appendChild(createElement('span', 'publication-filter-label', 'Filter by Author'));
-        const authorSelect = createElement('select', 'publication-filter-select');
-        authorSelect.classList.add('publication-filter-select-author');
-        authorSelect.innerHTML = '<option value="all">All Author Roles</option>';
-        getAuthorRoleOptions(publications)
-            .forEach(role => {
-                const option = document.createElement('option');
-                option.value = role;
-                option.textContent = role;
-                authorSelect.appendChild(option);
-            });
-        authorField.appendChild(authorSelect);
-        bar.appendChild(authorField);
-
-        const resetButton = createElement('button', 'publication-filter-reset', 'Reset');
-        resetButton.type = 'button';
-        bar.appendChild(resetButton);
-
-        const count = createElement('div', 'publication-filter-count');
-        bar.appendChild(count);
-
-        const triggerChange = () => {
-            onChange({
-                year: yearSelect.value,
-                level: levelSelect.value,
-                keyword: keywordSelect.value,
-                authorRole: authorSelect.value,
-                countElement: count
-            });
-        };
-
-        yearSelect.addEventListener('change', triggerChange);
-        levelSelect.addEventListener('change', triggerChange);
-        keywordSelect.addEventListener('change', triggerChange);
-        authorSelect.addEventListener('change', triggerChange);
-        resetButton.addEventListener('click', () => {
-            yearSelect.value = 'all';
-            levelSelect.value = 'all';
-            keywordSelect.value = 'all';
-            authorSelect.value = 'all';
-            triggerChange();
-        });
-
-        container.appendChild(bar);
-        triggerChange();
+        renderFilterBar(container, [
+            {
+                name: 'year',
+                label: 'Filter by Year',
+                defaultLabel: 'All Years',
+                options: getFilterOptions(publications, 'year')
+                    .sort((left, right) => right - left)
+                    .map(year => ({ value: String(year), label: String(year) }))
+            },
+            {
+                name: 'level',
+                label: 'Filter by Level',
+                defaultLabel: 'All Levels',
+                options: getFilterOptions(publications, 'level')
+                    .map(level => ({ value: level, label: level }))
+            },
+            {
+                name: 'keyword',
+                label: 'Filter by Keyword',
+                defaultLabel: 'All Keywords',
+                options: getFilterOptions(publications, 'keyword')
+                    .sort((left, right) => left.localeCompare(right))
+                    .map(keyword => ({ value: keyword, label: keyword }))
+            },
+            {
+                name: 'authorRole',
+                label: 'Filter by Author',
+                defaultLabel: 'All Author Roles',
+                selectClassName: 'publication-filter-select publication-filter-select-author',
+                options: getAuthorRoleOptions(publications)
+                    .map(role => ({ value: role, label: role }))
+            }
+        ], onChange);
     }
 
     async function renderFeaturedPublications(containerId) {
