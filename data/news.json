@@ -1,0 +1,132 @@
+{
+  "updated": "2026-03-19",
+  "homepage_window_days": 365,
+  "news": [
+    {
+      "id": "icme-2026-accept",
+      "order": 1,
+      "date": "2026-03-01",
+      "year": 2026,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One cooperative paper is accepted by ICME 2026."
+    },
+    {
+      "id": "scholar-100-citations",
+      "order": 2,
+      "date": "2026-02-15",
+      "year": 2026,
+      "theme": "Award",
+      "icon": "🏆",
+      "content_html": "I have received a total of <img src=\"https://img.shields.io/badge/Citations-100-blue.svg?logo=google-scholar\" style=\"height: 1em;\" alt=\"Scholar Citations\"> on Google Scholar."
+    },
+    {
+      "id": "tmm-2026-accept",
+      "order": 3,
+      "date": "2026-02-01",
+      "year": 2026,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One cooperative paper is accepted by TMM 2026."
+    },
+    {
+      "id": "icassp-2026-accept",
+      "order": 4,
+      "date": "2026-01-01",
+      "year": 2026,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "Two cooperative paper is accepted by ICASSP 2026."
+    },
+    {
+      "id": "aaai-2026-accept",
+      "order": 5,
+      "date": "2025-11-01",
+      "year": 2025,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One cooperative paper is accepted by AAAI 2026."
+    },
+    {
+      "id": "ssp-arxiv-release",
+      "order": 6,
+      "date": "2025-06-01",
+      "year": 2025,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One paper is released on arXiv."
+    },
+    {
+      "id": "topopoint-arxiv-release",
+      "order": 7,
+      "date": "2025-05-15",
+      "year": 2025,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One cooperative paper is released on arXiv (accepted by NeurIPS 2025)."
+    },
+    {
+      "id": "topologic-arxiv-release",
+      "order": 8,
+      "date": "2024-05-01",
+      "year": 2024,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One cooperative paper is released on arXiv (accepted by NeurIPS 2024)."
+    },
+    {
+      "id": "phd-start-ict-cas",
+      "order": 9,
+      "date": "2024-03-01",
+      "year": 2024,
+      "theme": "Experience",
+      "icon": "📍",
+      "content_html": "I’m becoming a Ph.D. student at <a href=\"http://www.ict.ac.cn\">Institute of Computing Technology, Chinese Academy of Sciences</a>."
+    },
+    {
+      "id": "cvpr-2024-accept",
+      "order": 10,
+      "date": "2024-02-01",
+      "year": 2024,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One paper is accepted by CVPR 2024."
+    },
+    {
+      "id": "national-scholarship-2023",
+      "order": 11,
+      "date": "2023-10-01",
+      "year": 2023,
+      "theme": "Award",
+      "icon": "🏆",
+      "content_html": "I am awarded the National Scholarship for Master's Students."
+    },
+    {
+      "id": "ijcai-2023-accept",
+      "order": 12,
+      "date": "2023-05-01",
+      "year": 2023,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One paper is accepted by IJCAI 2023."
+    },
+    {
+      "id": "cvpr-2023-accept",
+      "order": 13,
+      "date": "2023-02-01",
+      "year": 2023,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One cooperative paper is accepted by CVPR 2023."
+    },
+    {
+      "id": "ms-start-ict-cas",
+      "order": 14,
+      "date": "2021-09-01",
+      "year": 2021,
+      "theme": "Experience",
+      "icon": "📍",
+      "content_html": "I’m joining <a href=\"http://www.ict.ac.cn\">Institute of Computing Technology, Chinese Academy of Sciences</a> as a M.S. student."
+    }
+  ]
+}

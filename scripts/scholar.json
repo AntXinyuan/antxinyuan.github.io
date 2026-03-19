@@ -11,66 +11,34 @@
   "publications": {
     "eXwizz8AAAAJ:d1gkVwhDpl0C": {
       "pub_id": "eXwizz8AAAAJ:d1gkVwhDpl0C",
-      "title": "Rethinking boundary discontinuity problem for oriented object detection",
-      "authors": "H Xu*, X Liu*, H Xu, Y Ma, Z Zhu, C Yan, F Dai",
-      "venue": "Proceedings of the IEEE conference on Computer Vision and Pattern …, 2024",
-      "pub_year": "2024",
       "num_citations": "50"
     },
     "eXwizz8AAAAJ:WF5omc3nYNoC": {
       "pub_id": "eXwizz8AAAAJ:WF5omc3nYNoC",
-      "title": "Topologic: An interpretable pipeline for lane topology reasoning on driving scenes",
-      "authors": "Y Fu, W Liao, X Liu, H Xu, Y Ma, Y Zhang, F Dai",
-      "venue": "Advances in Neural Information Processing Systems 37, 61658-61676, 2024",
-      "pub_year": "2024",
       "num_citations": "27"
     },
     "eXwizz8AAAAJ:9yKSN-GCB0IC": {
       "pub_id": "eXwizz8AAAAJ:9yKSN-GCB0IC",
-      "title": "Gaussian Label Distribution Learning for Spherical Image Object Detection",
-      "authors": "H Xu, X Liu, Q Zhao, Y Ma, C Yan, F Dai",
-      "venue": "Proceedings of the IEEE conference on Computer Vision and Pattern …, 2023",
-      "pub_year": "2023",
       "num_citations": "14"
     },
     "eXwizz8AAAAJ:qjMakFHDy7sC": {
       "pub_id": "eXwizz8AAAAJ:qjMakFHDy7sC",
-      "title": "Sph2Pob: Boosting Object Detection on Spherical Images with Planar Oriented Boxes Methods.",
-      "authors": "X Liu, H Xu, B Chen, Q Zhao, Y Ma, C Yan, F Dai",
-      "venue": "IJCAI, 1231-1239, 2023",
-      "pub_year": "2023",
       "num_citations": "7"
     },
     "eXwizz8AAAAJ:ufrVoPGSRksC": {
       "pub_id": "eXwizz8AAAAJ:ufrVoPGSRksC",
-      "title": "Topopoint: Enhance topology reasoning via endpoint detection in autonomous driving",
-      "authors": "Y Fu, X Liu, T Li, Y Ma, Y Zhang, F Dai",
-      "venue": "arXiv preprint arXiv:2505.17771, 2025",
-      "pub_year": "2025",
       "num_citations": "5"
     },
     "eXwizz8AAAAJ:2osOgNQ5qMEC": {
       "pub_id": "eXwizz8AAAAJ:2osOgNQ5qMEC",
-      "title": "Rotated object detection with circular gaussian distribution",
-      "authors": "H Xu, X Liu, Y Ma, Z Zhu, S Wang, C Yan, F Dai",
-      "venue": "Electronics 12 (15), 3265, 2023",
-      "pub_year": "2023",
       "num_citations": "3"
     },
     "eXwizz8AAAAJ:LkGwnXOMwfcC": {
       "pub_id": "eXwizz8AAAAJ:LkGwnXOMwfcC",
-      "title": "Enhance Panoramic Object Detection Using Planar Image Datasets",
-      "authors": "L Yu, Q Zhao, B Wang, X Liu, W Zhao, T Wang, H He, F Dai, C Yan",
-      "venue": "IEEE Transactions on Multimedia, 2026",
-      "pub_year": "2026",
       "num_citations": "0"
     },
     "eXwizz8AAAAJ:_FxGoFyzp5QC": {
       "pub_id": "eXwizz8AAAAJ:_FxGoFyzp5QC",
-      "title": "Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection",
-      "authors": "X Liu, H Xu, Y Ma, Y Zhang, F Dai",
-      "venue": "arXiv preprint arXiv:2506.10601, 2025",
-      "pub_year": "2025",
       "num_citations": "0"
     }
   },

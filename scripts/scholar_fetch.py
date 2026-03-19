@@ -100,36 +100,26 @@ def parse_scholar_html(html):
      "citedby": citations_total
     }
 
-    # --- 提取论文信息 ---
+    # --- 提取论文引用信息 ---
     papers = OrderedDict()
     for tr in soup.find_all('tr', class_='gsc_a_tr'):
         title_tag = tr.find('a', class_='gsc_a_at')
-        title = title_tag.text.strip() if title_tag else ""
         
         paper_id = ""
         if title_tag and 'href' in title_tag.attrs:
             href = title_tag['href']
             parsed_href = urllib.parse.urlparse(href)
             paper_id = urllib.parse.parse_qs(parsed_href.query).get('citation_for_view', [''])[0]
-        
-        grays = tr.find_all('div', class_='gs_gray')
-        authors = grays[0].text.strip() if len(grays) > 0 else ""
-        venue = grays[1].text.replace('\xa0', ' ').strip() if len(grays) > 1 else ""
-        
+
         cit_tag = tr.find('a', class_='gsc_a_ac')
         paper_citations = cit_tag.text.strip() if cit_tag else "0"
-        
-        year_tag = tr.find('span', class_='gsc_a_h')
-        year = year_tag.text.strip() if year_tag else ""
-        
-        papers[paper_id] = {
-            "pub_id": paper_id,
-            "title": title,
-            "authors": authors,
-            "venue": venue,
-            "pub_year": year,
-            "num_citations": paper_citations
-        }
+        paper_citations = paper_citations if paper_citations != "" else "0"
+
+        if paper_id:
+            papers[paper_id] = {
+                "pub_id": paper_id,
+                "num_citations": paper_citations
+            }
 
     result = {
         **user_info,

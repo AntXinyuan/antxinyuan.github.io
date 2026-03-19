@@ -9,6 +9,7 @@
 	<meta name="keywords" content="Xinyuan Liu, CS, PhD, ICT,CAS">
 	<meta name="google-site-verification" content="eo1C_ZAjnTic0BbWGkvWGHRa5-g46dUvZ5IvOdfotb4" />
     <link rel="shortcut icon" type="image/png" href="images/logo.ico" />
+    <link rel="stylesheet" href="styles/publications.css" />
     
     <style>
         /* 基础全局样式 */
@@ -267,6 +268,8 @@
 
     <!-- Markdown 解析库 -->
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+    <script src="scripts/publications.js"></script>
+    <script src="scripts/news.js"></script>
     <script>
         const MARKDOWN_PATH = 'academic.md';
 
@@ -283,7 +286,11 @@
                 /* addInteractions();*/
                 processProfilephoto();
                 processPublications();
-                processAnnalysis();
+                await Promise.all([
+                    processScholarAnalysis(),
+                    window.PublicationSite.renderFeaturedPublications('featured-publications-section'),
+                    window.NewsSite.renderRecentNews('recent-news-section')
+                ]);
                 buildNavigation();
             } catch (error) {
                 console.error('Error loading Markdown:', error);
@@ -352,35 +359,29 @@
             });
         }
 
-        function processAnnalysis() {
-            fetch('scripts/scholar.json')
-                .then(response => response.json())
-                .then(data => {
-                    console.info(data)
-                    document.querySelectorAll('img').forEach(img => {
-                        const href = img.parentNode.href;
-                        if (href && (href.includes('github') || href.includes('scholar'))) {
-                            img.style = "height: 1em;"
-                        }
-                        if (href && href.includes('scholar')) {
-                            const badge = href.match(/citation_for_view=([^&]+)/)
-                            if (badge) {
-                                const badgeId = badge[1];
-                                //const num_citation = data['publications'][badgeId]['num_citations']
-                                const num_citation = data?.publications?.[badgeId]?.num_citations ?? 0;
-                                img.src = `https://img.shields.io/badge/Citations-${num_citation}-blue.svg?logo=google-scholar`;
-                                img.parentNode.href = `https://scholar.google.com/citations?view_op=view_citation&citation_for_view=${badgeId}`;
-                            }
-                            else {
-                                const num_citation = data['citedby']
-                                img.src = `https://img.shields.io/badge/Citations-${num_citation}-blue.svg?logo=google-scholar`;
-                            }
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error loading badges:', img, error);
+        async function processScholarAnalysis() {
+            try {
+                const response = await fetch('scripts/scholar.json');
+                const data = await response.json();
+
+                document.querySelectorAll('img').forEach(img => {
+                    const parentHref = img.parentNode?.href;
+                    if (!parentHref) {
+                        return;
+                    }
+
+                    if (parentHref.includes('github') || parentHref.includes('scholar')) {
+                        img.style = 'height: 1em;';
+                    }
+
+                    if (parentHref.includes('scholar.google.com/citations?user=')) {
+                        const totalCitations = data.citedby ?? 0;
+                        img.src = `https://img.shields.io/badge/Citations-${totalCitations}-blue.svg?logo=google-scholar`;
+                    }
                 });
+            } catch (error) {
+                console.error('Error loading scholar data:', error);
+            }
         }
 
         function slugifyHeading(text, usedIds) {
