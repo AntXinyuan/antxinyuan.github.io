@@ -1,6 +1,11 @@
 # 个人学术主页模板
 
-[English README](README_en.md)
+[English README](README_en.md) | [快速开始](#-如何改造成你自己的主页)
+
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Ready-222222?logo=githubpages)
+![Static Site](https://img.shields.io/badge/Static%20Site-HTML%2FCSS%2FJS-0f766e)
+![No Build](https://img.shields.io/badge/No%20Build-Required-2563eb)
+![Content Model](https://img.shields.io/badge/Content-Markdown%20%2B%20JSON-a21caf)
 
 这是一个基于静态 HTML / CSS / JavaScript 的个人学术主页模板，适合部署到 GitHub Pages。当前仓库已经演化成“Markdown + JSON + 轻量脚本”的内容管理方式：
 
@@ -11,7 +16,7 @@
 
 整体目标是：内容结构化、前端无框架、部署简单、维护成本低。
 
-## 特性
+## ✨ 特性
 
 - 主页与归档页分离：主页只展示精选论文和近一年新闻，完整列表放到独立页面
 - 内容结构化：论文、新闻都使用 JSON 管理，便于筛选、统计和批量维护
@@ -19,7 +24,7 @@
 - 自动数据融合：前端会将手工维护的论文信息与 Scholar 引用量合并
 - 响应式布局：桌面和移动端都可正常浏览
 
-## 当前结构
+## 🗂️ 当前结构
 
 ```text
 .
@@ -47,9 +52,9 @@
 └── images/                    # 站点图片资源
 ```
 
-## 内容维护方式
+## ✍️ 内容维护方式
 
-### 1. 修改主页普通内容
+### 1. 🏠 修改主页普通内容
 
 编辑 `data/academic.md`。
 
@@ -68,7 +73,7 @@
 
 这两个容器会由前端脚本自动渲染。
 
-### 2. 修改论文列表
+### 2. 📚 修改论文列表
 
 编辑 `data/publications.json`。
 
@@ -105,7 +110,7 @@
 - `homepage_featured_limit`
 - `homepage_summary`
 
-### 3. 修改新闻列表
+### 3. 📰 修改新闻列表
 
 编辑 `data/news.json`。
 
@@ -124,7 +129,7 @@
 - 首页只展示最近一年的新闻
 - 完整新闻页支持按 `Year` 和 `Theme` 筛选
 
-## Scholar 数据说明
+## 📈 Scholar 数据说明
 
 当前论文的标题、作者、会议信息都以 `data/publications.json` 为准，不再依赖 Google Scholar 返回的元数据。
 
@@ -146,7 +151,7 @@ Scholar 只负责提供：
 2. 更新 `scripts/scholar.json`
 3. 前端在渲染论文时自动合并 citation 数据
 
-## 本地预览
+## 🧪 本地预览
 
 ```bash
 python3 -m http.server 8000
@@ -164,11 +169,11 @@ http://127.0.0.1:8000
 - `/publications.html`
 - `/news.html`
 
-## 如何改造成你自己的主页
+## 🚀 如何改造成你自己的主页
 
 如果你希望把这个仓库直接改成自己的个人主页，推荐按下面的顺序进行。
 
-### 1. 创建你自己的仓库
+### 1. 🧱 创建你自己的仓库
 
 推荐两种方式：
 
@@ -181,7 +186,7 @@ http://127.0.0.1:8000
 <your-username>.github.io
 ```
 
-### 2. 先完成最小替换
+### 2. 🎯 先完成最小替换
 
 第一次改造时，优先改这些最关键的信息：
 
@@ -193,7 +198,7 @@ http://127.0.0.1:8000
 
 这样通常就能在不碰前端逻辑的情况下，快速得到一个属于你自己的主页版本。
 
-### 3. 论文和新闻尽量只改数据，不改脚本
+### 3. 🧩 论文和新闻尽量只改数据，不改脚本
 
 这个仓库现在的设计目标，是把“内容”和“渲染逻辑”尽量分开：
 
@@ -208,7 +213,7 @@ http://127.0.0.1:8000
 - `scripts/news.js`
 - `scripts/site-utils.js`
 
-### 4. 替换你的 Scholar 对齐信息
+### 4. 🔄 替换你的 Scholar 对齐信息
 
 如果你也希望显示 Scholar 引用量：
 
@@ -218,7 +223,7 @@ http://127.0.0.1:8000
 
 注意：这个项目默认以手工维护的论文 JSON 为准，Scholar 只负责补充 citation，不负责覆盖标题、作者或 venue。
 
-### 5. 本地检查后再推送
+### 5. 👀 本地检查后再推送
 
 建议每次做完主要修改后，都先本地预览一次：
 
@@ -233,7 +238,7 @@ python3 -m http.server 8000
 - `publications.html` 和 `news.html` 的筛选是否正常
 - 图片、论文链接、代码链接、Badge 是否都能显示
 
-### 6. 推送到 GitHub Pages
+### 6. ☁️ 推送到 GitHub Pages
 
 内容确认无误后，直接提交并推送即可：
 
@@ -245,7 +250,7 @@ git push
 
 如果仓库名是 `<your-username>.github.io`，通常推送后 GitHub Pages 就会自动更新。
 
-## 自定义建议
+## 🛠️ 自定义建议
 
 如果你要基于这个模板做自己的主页，优先修改这些地方：
 
@@ -264,7 +269,7 @@ git push
 - `styles/site.css`
 - `styles/details.css`
 
-## 部署
+## 📦 部署
 
 如果仓库名是 `<your-username>.github.io`，直接推送到 GitHub 即可使用 GitHub Pages 部署。
 
@@ -276,6 +281,6 @@ git commit -m "Update homepage content"
 git push
 ```
 
-## 致谢
+## 🙌 致谢
 
 如果这个模板对你有帮助，欢迎 Star 仓库。也欢迎基于它继续修改、精简或扩展成你自己的主页版本。

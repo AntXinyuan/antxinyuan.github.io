@@ -1,6 +1,11 @@
 # Academic Homepage Template
 
-[中文说明](README_cn.md)
+[中文说明](README_cn.md) | [Quick Start](#-turning-it-into-your-own-homepage)
+
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Ready-222222?logo=githubpages)
+![Static Site](https://img.shields.io/badge/Static%20Site-HTML%2FCSS%2FJS-0f766e)
+![No Build](https://img.shields.io/badge/No%20Build-Required-2563eb)
+![Content Model](https://img.shields.io/badge/Content-Markdown%20%2B%20JSON-a21caf)
 
 This repository is a static academic homepage template designed for GitHub Pages. It now uses a lightweight “Markdown + JSON + plain JavaScript” content model:
 
@@ -11,7 +16,7 @@ This repository is a static academic homepage template designed for GitHub Pages
 
 The goal is to keep the site structured, easy to maintain, and simple to deploy without a build system.
 
-## Features
+## ✨ Features
 
 - Split homepage and archive pages: the homepage shows selected publications and recent news, while full lists live on dedicated pages
 - Structured content: publications and news are managed with JSON
@@ -19,7 +24,7 @@ The goal is to keep the site structured, easy to maintain, and simple to deploy 
 - Citation merge pipeline: manually maintained publication metadata is merged with Scholar citation counts
 - Responsive layout for both desktop and mobile
 
-## Project Structure
+## 🗂️ Project Structure
 
 ```text
 .
@@ -47,9 +52,9 @@ The goal is to keep the site structured, easy to maintain, and simple to deploy 
 └── images/                    # Site image assets
 ```
 
-## Content Management
+## ✍️ Content Management
 
-### 1. Edit general homepage content
+### 1. 🏠 Edit general homepage content
 
 Edit `data/academic.md`.
 
@@ -68,7 +73,7 @@ Notes:
 
 Those containers are filled by frontend scripts.
 
-### 2. Edit publications
+### 2. 📚 Edit publications
 
 Edit `data/publications.json`.
 
@@ -105,7 +110,7 @@ Homepage publication summary data is also stored in the same file:
 - `homepage_featured_limit`
 - `homepage_summary`
 
-### 3. Edit news
+### 3. 📰 Edit news
 
 Edit `data/news.json`.
 
@@ -124,7 +129,7 @@ Important behavior:
 - the homepage shows only the most recent year of news
 - the full news archive supports filtering by `Year` and `Theme`
 
-## Scholar Data
+## 📈 Scholar Data
 
 Publication title, author list, venue, links, and other metadata are now maintained manually in `data/publications.json`.
 
@@ -146,7 +151,7 @@ Recommended workflow:
 2. update `scripts/scholar.json`
 3. let the frontend merge citation counts during rendering
 
-## Local Preview
+## 🧪 Local Preview
 
 ```bash
 python3 -m http.server 8000
@@ -164,11 +169,11 @@ Recommended pages to check:
 - `/publications.html`
 - `/news.html`
 
-## Turning It Into Your Own Homepage
+## 🚀 Turning It Into Your Own Homepage
 
 If you want to adapt this repository into your own academic homepage, the workflow below is the most practical starting point.
 
-### 1. Create your own repository
+### 1. 🧱 Create your own repository
 
 Two common options work well:
 
@@ -181,7 +186,7 @@ If you want to deploy it as a GitHub Pages personal site, the repository name is
 <your-username>.github.io
 ```
 
-### 2. Make the minimum first-pass replacements
+### 2. 🎯 Make the minimum first-pass replacements
 
 For the first round of customization, focus on the most important identity/content files:
 
@@ -193,7 +198,7 @@ For the first round of customization, focus on the most important identity/conte
 
 In most cases, that is enough to turn the project into a usable personal homepage without touching the frontend logic.
 
-### 3. Prefer editing data files instead of scripts
+### 3. 🧩 Prefer editing data files instead of scripts
 
 The current structure is designed to keep content and rendering logic separate:
 
@@ -208,7 +213,7 @@ Unless you want to change the interaction logic, filtering behavior, or visual d
 - `scripts/news.js`
 - `scripts/site-utils.js`
 
-### 4. Replace Scholar alignment data with your own
+### 4. 🔄 Replace Scholar alignment data with your own
 
 If you also want Scholar citation badges:
 
@@ -218,7 +223,7 @@ If you also want Scholar citation badges:
 
 Important: this project treats `data/publications.json` as the source of truth for titles, authors, venues, and links. Scholar is only used for citation counts.
 
-### 5. Preview locally before pushing
+### 5. 👀 Preview locally before pushing
 
 After major edits, preview the site locally:
 
@@ -233,7 +238,7 @@ Then check:
 - whether filters still work on `publications.html` and `news.html`
 - whether images, publication links, code links, and badges all render correctly
 
-### 6. Push to GitHub Pages
+### 6. ☁️ Push to GitHub Pages
 
 Once everything looks right, commit and push:
 
@@ -245,7 +250,7 @@ git push
 
 If the repository is named `<your-username>.github.io`, GitHub Pages will usually update automatically after the push.
 
-## Customization Checklist
+## 🛠️ Customization Checklist
 
 If you are adapting this template for your own site, start with:
 
@@ -264,7 +269,7 @@ You usually do not need to edit first:
 - `styles/site.css`
 - `styles/details.css`
 
-## Deployment
+## 📦 Deployment
 
 If your repository is named `<your-username>.github.io`, you can deploy it directly with GitHub Pages.
 
@@ -276,7 +281,7 @@ git commit -m "Update homepage content"
 git push
 ```
 
-## Notes
+## 🙌 Notes
 
 This project intentionally avoids frameworks and build tooling. The tradeoff is that some structure is handled manually, but the benefit is very low deployment and maintenance complexity.
 
