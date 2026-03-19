@@ -111,6 +111,13 @@ body.archive-page a:hover {
     box-shadow: 0 10px 30px rgba(12, 73, 148, 0.08);
     backdrop-filter: blur(10px);
     z-index: 1000;
+    transition: transform 0.24s ease, opacity 0.24s ease;
+}
+
+.site-nav.site-nav-hidden {
+    transform: translate(-50%, -130%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .site-nav-title {

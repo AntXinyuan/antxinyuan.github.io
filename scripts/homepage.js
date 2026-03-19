@@ -131,6 +131,32 @@
         });
     }
 
+    function setupNavigationVisibility() {
+        const nav = document.querySelector('.site-nav');
+        if (!nav) {
+            return;
+        }
+
+        let lastScrollY = window.scrollY;
+
+        function updateNavigationVisibility() {
+            const currentScrollY = window.scrollY;
+            const scrollDelta = currentScrollY - lastScrollY;
+
+            if (currentScrollY <= 12) {
+                nav.classList.remove('site-nav-hidden');
+            } else if (scrollDelta > 6) {
+                nav.classList.add('site-nav-hidden');
+            } else if (scrollDelta < -6) {
+                nav.classList.remove('site-nav-hidden');
+            }
+
+            lastScrollY = currentScrollY;
+        }
+
+        window.addEventListener('scroll', updateNavigationVisibility, { passive: true });
+    }
+
     function clickEffects(event) {
         const words = [
             'CVPR+1',
@@ -182,6 +208,7 @@
                 window.NewsSite.renderRecentNews('recent-news-section')
             ]);
             buildNavigation();
+            setupNavigationVisibility();
         } catch (error) {
             console.error('Error loading Markdown:', error);
         }
