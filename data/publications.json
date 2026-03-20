@@ -88,9 +88,10 @@
       "venue_html": "<em>AAAI 2026</em> (<span style=\"color:#ae1324;\">CCF-A</span>)",
       "thumbnail": "docs/aaai2026/thumbnail.webp",
       "thumbnail_alt": "IQGS: Instance Query-based Gaussian Segmentation",
-      "scholar_id": null,
+      "scholar_id": "eXwizz8AAAAJ:roLk4NBRz8UC",
       "github_repo": "tom-gao-gyc/iqgs",
       "links": [
+        { "label": "PDF", "url": "https://ojs.aaai.org/index.php/AAAI/article/view/42415/46376" },
         { "label": "Code", "url": "https://github.com/tom-gao-gyc/iqgs" },
         { "label": "BibTex", "url": "docs/aaai2026/bibtex.txt" }
       ]

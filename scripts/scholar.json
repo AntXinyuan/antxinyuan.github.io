@@ -2,7 +2,7 @@
   "user_id": "eXwizz8AAAAJ",
   "name": "Xinyuan Liu (刘 鑫源)",
   "affiliation": "PhD student, Institute of Computing Technology, Chinese Academy of Sciences",
-  "homepage": "https://antxinyuan.github.io/",
+  "homepage": "",
   "interests": [
     "Computer Vision",
     "Object Detection"
@@ -33,6 +33,10 @@
       "pub_id": "eXwizz8AAAAJ:2osOgNQ5qMEC",
       "num_citations": "3"
     },
+    "eXwizz8AAAAJ:roLk4NBRz8UC": {
+      "pub_id": "eXwizz8AAAAJ:roLk4NBRz8UC",
+      "num_citations": "0"
+    },
     "eXwizz8AAAAJ:LkGwnXOMwfcC": {
       "pub_id": "eXwizz8AAAAJ:LkGwnXOMwfcC",
       "num_citations": "0"
@@ -42,5 +46,5 @@
       "num_citations": "0"
     }
   },
-  "updated": "2026-03-17 12:22:41.972238"
+  "updated": "2026-03-20 21:49:18.700198"
 }
