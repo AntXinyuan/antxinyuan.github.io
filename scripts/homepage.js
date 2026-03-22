@@ -138,23 +138,97 @@
         }
 
         let lastScrollY = window.scrollY;
+        let isAnchorNavigating = false;
+        let lastTouchY = null;
 
-        function updateNavigationVisibility() {
-            const currentScrollY = window.scrollY;
-            const scrollDelta = currentScrollY - lastScrollY;
-
-            if (currentScrollY <= 12) {
-                nav.classList.remove('site-nav-hidden');
-            } else if (scrollDelta > 6) {
-                nav.classList.add('site-nav-hidden');
-            } else if (scrollDelta < -6) {
-                nav.classList.remove('site-nav-hidden');
-            }
-
-            lastScrollY = currentScrollY;
+        function showNavigation() {
+            nav.classList.remove('site-nav-hidden');
         }
 
+        function hideNavigation() {
+            nav.classList.add('site-nav-hidden');
+        }
+
+        function handleAnchorNavigation() {
+            isAnchorNavigating = true;
+            lastTouchY = null;
+            showNavigation();
+            lastScrollY = window.scrollY;
+        }
+
+        function handleDirectionalIntent(delta) {
+            isAnchorNavigating = false;
+
+            if (window.scrollY <= 12) {
+                showNavigation();
+                return;
+            }
+
+            if (delta > 0) {
+                hideNavigation();
+            } else if (delta < 0) {
+                showNavigation();
+            }
+        }
+
+        function handleWheel(event) {
+            handleDirectionalIntent(event.deltaY);
+            lastScrollY = window.scrollY;
+        }
+
+        function handleTouchStart(event) {
+            if (event.touches.length > 0) {
+                isAnchorNavigating = false;
+                lastTouchY = event.touches[0].clientY;
+            }
+        }
+
+        function handleTouchMove(event) {
+            if (event.touches.length === 0 || lastTouchY === null) {
+                return;
+            }
+
+            const currentTouchY = event.touches[0].clientY;
+            handleDirectionalIntent(lastTouchY - currentTouchY);
+            lastTouchY = currentTouchY;
+            lastScrollY = window.scrollY;
+        }
+
+        function handleKeydown(event) {
+            const hideKeys = new Set(['ArrowDown', 'PageDown', 'End', ' ']);
+            const showKeys = new Set(['ArrowUp', 'PageUp', 'Home']);
+
+            if (hideKeys.has(event.key)) {
+                handleDirectionalIntent(1);
+            } else if (showKeys.has(event.key)) {
+                handleDirectionalIntent(-1);
+            }
+        }
+
+        function updateNavigationVisibility() {
+            if (window.scrollY <= 12) {
+                showNavigation();
+            } else if (isAnchorNavigating) {
+                showNavigation();
+            }
+
+            lastScrollY = window.scrollY;
+        }
+
+        nav.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', handleAnchorNavigation);
+        });
+
+        window.addEventListener('wheel', handleWheel, { passive: true });
+        window.addEventListener('touchstart', handleTouchStart, { passive: true });
+        window.addEventListener('touchmove', handleTouchMove, { passive: true });
+        window.addEventListener('keydown', handleKeydown);
         window.addEventListener('scroll', updateNavigationVisibility, { passive: true });
+        window.addEventListener('hashchange', () => {
+            isAnchorNavigating = false;
+            nav.classList.remove('site-nav-hidden');
+            lastScrollY = window.scrollY;
+        });
     }
 
     function clickEffects(event) {

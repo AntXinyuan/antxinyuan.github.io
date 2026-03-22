@@ -197,6 +197,9 @@ body.archive-page a:hover {
 }
 
 .site-nav-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
     font-size: 0.82rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -204,6 +207,18 @@ body.archive-page a:hover {
     color: var(--nav-title-color);
     white-space: nowrap;
     opacity: 0.75;
+}
+
+.site-nav-title-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+    border-radius: 4px;
+    flex: 0 0 auto;
+}
+
+.site-nav-title-text {
+    line-height: 1;
 }
 
 .site-nav-links {
@@ -365,6 +380,13 @@ body.archive-page h1 {
         width: 100%;
         text-align: center;
         font-size: 0.76rem;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .site-nav-title-icon {
+        width: 16px;
+        height: 16px;
     }
 
     .site-nav-links a {
