@@ -164,6 +164,7 @@ Scholar 只负责提供：
 2. 创建一个例如 `Guestbook` 的 Discussions 分类
 3. 在 `https://giscus.app` 获取 `repo-id` 和 `category-id`
 4. 将 `scripts/messages.js` 中的占位配置替换为真实值
+5. 如果启用了主题 tab，请在同一分类下预先创建 `academic-research`、`website-building` 和 `daily-chat` 这 3 个 discussion 线程
 
 完成后，访问者就可以使用 GitHub 账号登录，并直接在网页内用 Markdown 留言和互动。
 

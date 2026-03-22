@@ -164,6 +164,7 @@ To enable it:
 2. create a discussion category such as `Guestbook`
 3. get the `repo-id` and `category-id` from `https://giscus.app`
 4. replace the placeholder values in `scripts/messages.js`
+5. if topic tabs are enabled, create the discussion threads `academic-research`, `website-building`, and `daily-chat` in the same category
 
 Once configured, visitors can sign in with GitHub, write messages in Markdown, and interact directly on the site.
 
