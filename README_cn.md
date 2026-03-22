@@ -19,6 +19,7 @@
 ## ✨ 特性
 
 - 主页与归档页分离：主页只展示精选论文和近一年新闻，完整列表放到独立页面
+- 可选留言板：支持通过 GitHub Discussions + giscus 接入留言区，支持 GitHub 登录和 Markdown 留言
 - 内容结构化：论文、新闻都使用 JSON 管理，便于筛选、统计和批量维护
 - 轻量前端：无构建工具、无依赖安装，直接用浏览器即可运行
 - 自动数据融合：前端会将手工维护的论文信息与 Scholar 引用量合并
@@ -31,6 +32,7 @@
 ├── index.html                 # 主页入口
 ├── publications.html          # 完整论文页
 ├── news.html                  # 完整新闻页
+├── messages.html              # 基于 GitHub Discussions 的留言板页面
 ├── data/
 │   ├── academic.md            # 主页的非结构化正文内容（Biography / Education / Awards 等）
 │   ├── publications.json      # 论文数据源
@@ -39,6 +41,7 @@
 │   ├── homepage.js            # 主页渲染逻辑
 │   ├── publications.js        # 论文渲染逻辑
 │   ├── news.js                # 新闻渲染逻辑
+│   ├── messages.js            # 留言板 / giscus 接入逻辑
 │   ├── site-utils.js          # 共享前端工具
 │   ├── scholar.json           # Scholar 数据缓存
 │   ├── scholar_fetch.py       # Scholar 抓取
@@ -150,6 +153,19 @@ Scholar 只负责提供：
 1. 获取 Scholar 页面原始内容
 2. 更新 `scripts/scholar.json`
 3. 前端在渲染论文时自动合并 citation 数据
+
+## 💬 留言板
+
+留言板基于 `GitHub Discussions + giscus`。
+
+启用步骤：
+
+1. 在仓库中开启 GitHub Discussions
+2. 创建一个例如 `Guestbook` 的 Discussions 分类
+3. 在 `https://giscus.app` 获取 `repo-id` 和 `category-id`
+4. 将 `scripts/messages.js` 中的占位配置替换为真实值
+
+完成后，访问者就可以使用 GitHub 账号登录，并直接在网页内用 Markdown 留言和互动。
 
 ## 🧪 本地预览
 

@@ -11,7 +11,9 @@ Institute of Computing Technology, Chinese Academy of Sciences (ICT,CAS)
 Beijing, China  
 
 <i class="fa fa-envelope" style="color: #0c4994;"></i>
-Email: [liuxinyuan21s@ict.ac.cn](mailto:liuxinyuan21s@ict.ac.cn)  
+Email: [liuxinyuan21s@ict.ac.cn](mailto:liuxinyuan21s@ict.ac.cn) /
+<i class="fa fa-comments-o" style="color: #0c4994;"></i>
+[Leave a Message](messages.html)  
 
 <i class="ai ai-google-scholar" style="color: #0c4994;"></i>
 [Google Scholar](https://scholar.google.com/citations?user=eXwizz8AAAAJ) / 

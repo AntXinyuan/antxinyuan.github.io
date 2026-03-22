@@ -20,6 +20,9 @@
 
     function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
+        document.dispatchEvent(new CustomEvent('site-theme-change', {
+            detail: { theme }
+        }));
     }
 
     function persistTheme(theme) {
@@ -191,7 +194,8 @@
         renderFilterBar,
         ensureThemeToggle,
         applyTheme,
-        getPreferredTheme
+        getPreferredTheme,
+        getCurrentTheme: () => document.documentElement.getAttribute('data-theme') || getPreferredTheme()
     };
 
     applyTheme(getPreferredTheme());

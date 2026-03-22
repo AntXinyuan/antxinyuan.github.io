@@ -19,6 +19,7 @@ The goal is to keep the site structured, easy to maintain, and simple to deploy 
 ## ✨ Features
 
 - Split homepage and archive pages: the homepage shows selected publications and recent news, while full lists live on dedicated pages
+- Optional guestbook page via GitHub Discussions + giscus, with Markdown support and GitHub login
 - Structured content: publications and news are managed with JSON
 - Lightweight frontend: no framework, no bundler, no dependency installation
 - Citation merge pipeline: manually maintained publication metadata is merged with Scholar citation counts
@@ -31,6 +32,7 @@ The goal is to keep the site structured, easy to maintain, and simple to deploy 
 ├── index.html                 # Homepage
 ├── publications.html          # Full publication archive
 ├── news.html                  # Full news archive
+├── messages.html              # Guestbook page backed by GitHub Discussions
 ├── data/
 │   ├── academic.md            # Non-structured homepage content (Biography / Education / Awards / etc.)
 │   ├── publications.json      # Publication data source
@@ -39,6 +41,7 @@ The goal is to keep the site structured, easy to maintain, and simple to deploy 
 │   ├── homepage.js            # Homepage rendering logic
 │   ├── publications.js        # Publication rendering logic
 │   ├── news.js                # News rendering logic
+│   ├── messages.js            # Guestbook / giscus integration
 │   ├── site-utils.js          # Shared frontend utilities
 │   ├── scholar.json           # Cached Scholar data
 │   ├── scholar_fetch.py       # Scholar fetching script
@@ -150,6 +153,19 @@ Recommended workflow:
 1. obtain raw Scholar page content
 2. update `scripts/scholar.json`
 3. let the frontend merge citation counts during rendering
+
+## 💬 Guestbook
+
+The guestbook uses `GitHub Discussions + giscus`.
+
+To enable it:
+
+1. turn on GitHub Discussions for the repository
+2. create a discussion category such as `Guestbook`
+3. get the `repo-id` and `category-id` from `https://giscus.app`
+4. replace the placeholder values in `scripts/messages.js`
+
+Once configured, visitors can sign in with GitHub, write messages in Markdown, and interact directly on the site.
 
 ## 🧪 Local Preview
 

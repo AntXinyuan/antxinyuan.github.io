@@ -573,6 +573,52 @@ html[data-theme="dark"] {
     background: var(--details-card-bg);
 }
 
+.guestbook-intro {
+    margin: 18px 0 18px;
+    padding: 16px 18px;
+    border: 1px solid var(--details-border-soft);
+    border-radius: 18px;
+    background: linear-gradient(180deg, var(--details-surface) 0, var(--details-surface-alt) 100%);
+}
+
+.guestbook-intro-text,
+.guestbook-intro-note,
+.guestbook-setup-text {
+    margin: 0;
+    color: var(--details-body-text);
+    line-height: 1.65;
+}
+
+.guestbook-intro-note {
+    margin-top: 8px;
+    color: var(--details-muted-text);
+}
+
+.guestbook-thread {
+    margin-top: 16px;
+}
+
+.guestbook-setup-card {
+    margin-top: 16px;
+    padding: 18px;
+    border: 1px dashed var(--details-border-empty);
+    border-radius: 18px;
+    background: var(--details-empty-bg);
+}
+
+.guestbook-setup-title {
+    margin: 0 0 10px;
+    color: var(--details-heading);
+    font-size: 1.05rem;
+}
+
+.guestbook-setup-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
 @media (max-width: 768px) {
     .publication-card {
         display: block;
