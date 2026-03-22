@@ -158,6 +158,10 @@
     }
 
     function clickEffects(event) {
+        if (event.target.closest('.theme-toggle')) {
+            return;
+        }
+
         const words = [
             'CVPR+1',
             'ICCV+1',
