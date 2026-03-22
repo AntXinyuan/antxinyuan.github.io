@@ -34,6 +34,12 @@
     --theme-toggle-color: #17365d;
     --theme-toggle-icon-bg: #edf4fc;
     --theme-toggle-icon-color: #0c4994;
+    --guestbook-inline-bg: rgba(12, 73, 148, 0.06);
+    --guestbook-inline-bg-hover: rgba(12, 73, 148, 0.1);
+    --guestbook-inline-border: rgba(12, 73, 148, 0.14);
+    --guestbook-inline-color: #0c4994;
+    --guestbook-inline-shadow: 0 4px 10px rgba(12, 73, 148, 0.08);
+    --guestbook-inline-icon-bg: rgba(12, 73, 148, 0.1);
 }
 
 html[data-theme="dark"] {
@@ -72,6 +78,12 @@ html[data-theme="dark"] {
     --theme-toggle-color: #eef4ff;
     --theme-toggle-icon-bg: rgba(141, 184, 255, 0.14);
     --theme-toggle-icon-color: #bcd5ff;
+    --guestbook-inline-bg: rgba(141, 184, 255, 0.08);
+    --guestbook-inline-bg-hover: rgba(141, 184, 255, 0.14);
+    --guestbook-inline-border: rgba(141, 184, 255, 0.18);
+    --guestbook-inline-color: #cfe1ff;
+    --guestbook-inline-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    --guestbook-inline-icon-bg: rgba(141, 184, 255, 0.14);
 }
 
 body.homepage-body {
@@ -258,6 +270,41 @@ body.archive-page a:hover {
     height: auto;
     border-radius: 8px;
     box-shadow: var(--profile-shadow);
+}
+
+.guestbook-inline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-left: 6px;
+    padding: 4px 11px 4px 8px;
+    border: 1px solid var(--guestbook-inline-border);
+    border-radius: 999px;
+    background: var(--guestbook-inline-bg);
+    color: var(--guestbook-inline-color) !important;
+    font-size: 0.95em;
+    font-weight: 600;
+    line-height: 1.2;
+    box-shadow: var(--guestbook-inline-shadow);
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guestbook-inline-link i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.45em;
+    height: 1.45em;
+    border-radius: 999px;
+    background: var(--guestbook-inline-icon-bg);
+    color: var(--guestbook-inline-color);
+    font-size: 0.88em;
+}
+
+.guestbook-inline-link:hover {
+    border-bottom: none !important;
+    background: var(--guestbook-inline-bg-hover);
+    transform: translateY(-1px);
 }
 
 .pub-tag {

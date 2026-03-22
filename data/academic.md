@@ -12,8 +12,7 @@ Beijing, China
 
 <i class="fa fa-envelope" style="color: #0c4994;"></i>
 Email: [liuxinyuan21s@ict.ac.cn](mailto:liuxinyuan21s@ict.ac.cn) /
-<i class="fa fa-comments-o" style="color: #0c4994;"></i>
-[Leave a Message](messages.html)  
+<a class="guestbook-inline-link" href="messages.html"><i class="fa fa-comments-o" aria-hidden="true"></i><span>Leave a Message</span></a>  
 
 <i class="ai ai-google-scholar" style="color: #0c4994;"></i>
 [Google Scholar](https://scholar.google.com/citations?user=eXwizz8AAAAJ) / 
