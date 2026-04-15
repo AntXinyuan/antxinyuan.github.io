@@ -261,14 +261,17 @@ body.archive-page a:hover {
 
 .profile-photo {
     float: right;
+    width: 165px;
     margin-left: 30px;
     margin-top: 10px;
 }
 
 .profile-photo-game-link {
-    display: inline-block;
+    display: block;
+    width: 165px;
     border-radius: 8px;
     cursor: pointer;
+    line-height: 0;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -284,7 +287,8 @@ body.archive-page a:hover {
 
 .profile-photo img {
     display: block;
-    width: 165px;
+    width: 100%;
+    max-width: none;
     height: auto;
     border-radius: 8px;
     box-shadow: var(--profile-shadow);
