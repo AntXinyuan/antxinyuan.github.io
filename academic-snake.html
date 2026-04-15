@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academic Snake | Xinyuan Liu</title>
+    <meta name="description" content="A hidden academic snake game for Xinyuan Liu's homepage." />
+    <link rel="shortcut icon" type="image/png" href="images/logo.ico" />
+    <style>
+        :root {
+            color-scheme: light;
+            --page-bg: #f6fbff;
+            --page-text: #24384f;
+            --page-muted: #5f738b;
+            --blue: #0c4994;
+            --blue-deep: #17365d;
+            --red: #ae1324;
+            --red-soft: #fce8eb;
+            --gold: #d69f20;
+            --teal: #168a84;
+            --green: #2f8f5b;
+            --ink: #192536;
+            --surface: #ffffff;
+            --surface-alt: #eef6ff;
+            --line: #d7e5f4;
+            --shadow: 0 18px 44px rgba(12, 73, 148, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            color: var(--page-text);
+            font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+            background:
+                linear-gradient(180deg, #f7fbff 0, var(--page-bg) 48%, #ffffff 100%);
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            border-radius: 8px;
+        }
+
+        .game-page {
+            width: min(1120px, calc(100% - 28px));
+            margin: 0 auto;
+            padding: 18px 0 32px;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 36px;
+            padding: 7px 12px;
+            border: 1px solid rgba(12, 73, 148, 0.18);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .status-note {
+            color: var(--page-muted);
+            font-size: 0.92rem;
+            text-align: right;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .game-column,
+        .side-column {
+            min-width: 0;
+        }
+
+        .title-block {
+            margin-bottom: 12px;
+        }
+
+        .eyebrow {
+            margin: 0 0 5px;
+            color: var(--red);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--blue-deep);
+            font-size: 2rem;
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            max-width: 760px;
+            margin: 8px 0 0;
+            color: var(--page-muted);
+            line-height: 1.55;
+        }
+
+        .hud {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .hud-item {
+            min-height: 70px;
+            padding: 9px 10px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .hud-label {
+            display: block;
+            color: var(--page-muted);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hud-value {
+            display: block;
+            margin-top: 5px;
+            color: var(--blue-deep);
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .hud-detail {
+            display: block;
+            margin-top: 3px;
+            color: var(--page-muted);
+            font-size: 0.8rem;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+
+        .board-shell {
+            position: relative;
+            display: grid;
+            place-items: center;
+            min-height: 360px;
+            padding: 10px;
+            border: 3px solid var(--red);
+            border-radius: 8px;
+            background:
+                linear-gradient(90deg, rgba(174, 19, 36, 0.08) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(12, 73, 148, 0.08) 1px, transparent 1px),
+                #ffffff;
+            background-size: 28px 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .board-shell::before {
+            content: "Academic integrity red line";
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            z-index: 2;
+            padding: 3px 7px;
+            border-radius: 6px;
+            background: var(--red);
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        canvas {
+            display: block;
+            max-width: 100%;
+            border-radius: 6px;
+            background: #fbfdff;
+            touch-action: none;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 10px;
+            z-index: 5;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            border-radius: 6px;
+            background: rgba(246, 251, 255, 0.9);
+            backdrop-filter: blur(6px);
+        }
+
+        .overlay.is-visible {
+            display: flex;
+        }
+
+        .overlay-panel {
+            width: min(520px, 100%);
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 18px 34px rgba(25, 37, 54, 0.16);
+        }
+
+        .overlay-title {
+            margin: 0 0 8px;
+            color: var(--blue-deep);
+            font-size: 1.55rem;
+            line-height: 1.2;
+        }
+
+        .overlay-text {
+            margin: 0 0 12px;
+            color: var(--page-muted);
+            line-height: 1.5;
+        }
+
+        .rules {
+            display: grid;
+            gap: 7px;
+            margin: 12px 0;
+            padding: 0;
+            list-style: none;
+            color: var(--page-text);
+            font-size: 0.94rem;
+            line-height: 1.38;
+        }
+
+        .rules li {
+            padding-left: 14px;
+            border-left: 3px solid var(--line);
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .button {
+            min-height: 38px;
+            padding: 8px 13px;
+            border: 1px solid rgba(12, 73, 148, 0.18);
+            background: #ffffff;
+            color: var(--blue);
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: var(--surface-alt);
+        }
+
+        .button.primary {
+            border-color: var(--blue);
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        .button.primary:hover {
+            background: #123f7c;
+        }
+
+        .button.danger {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        .name-form {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .name-form input {
+            min-height: 38px;
+            min-width: 0;
+            padding: 8px 10px;
+            border: 1px solid #c8d8e9;
+            border-radius: 8px;
+            color: var(--ink);
+        }
+
+        .mobile-controls {
+            display: none;
+            grid-template-columns: repeat(3, 56px);
+            grid-template-rows: repeat(3, 46px);
+            justify-content: center;
+            gap: 7px;
+            margin-top: 12px;
+        }
+
+        .mobile-controls button {
+            min-width: 0;
+            border: 1px solid rgba(12, 73, 148, 0.24);
+            background: #ffffff;
+            color: var(--blue);
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .mobile-controls [data-dir="up"] {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .mobile-controls [data-dir="left"] {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .mobile-controls [data-dir="down"] {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .mobile-controls [data-dir="right"] {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .panel {
+            margin-bottom: 12px;
+            padding: 14px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.94);
+        }
+
+        .panel h2 {
+            margin: 0 0 9px;
+            color: var(--blue-deep);
+            font-size: 1.16rem;
+        }
+
+        .panel p {
+            margin: 0 0 10px;
+            color: var(--page-muted);
+            line-height: 1.5;
+        }
+
+        .leaderboard {
+            display: grid;
+            gap: 7px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .leaderboard li {
+            display: grid;
+            grid-template-columns: 28px minmax(0, 1fr) auto;
+            gap: 8px;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #edf3fa;
+        }
+
+        .leaderboard li:last-child {
+            border-bottom: 0;
+        }
+
+        .rank {
+            display: inline-grid;
+            place-items: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: var(--surface-alt);
+            color: var(--blue);
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .player {
+            min-width: 0;
+            color: var(--ink);
+            font-weight: 800;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .score {
+            color: var(--red);
+            font-weight: 800;
+        }
+
+        .empty-rank {
+            color: var(--page-muted);
+            line-height: 1.45;
+        }
+
+        .venue-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .venue-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 7px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #ffffff;
+            color: var(--blue-deep);
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+
+        .venue-pill span {
+            color: var(--page-muted);
+            font-weight: 700;
+        }
+
+        .share-status {
+            margin: 9px 0 0;
+            color: var(--green);
+            font-size: 0.9rem;
+            min-height: 1.3em;
+        }
+
+        .honor-wall {
+            display: none;
+            margin-top: 12px;
+        }
+
+        .honor-wall.is-visible {
+            display: block;
+        }
+
+        .honor-wall-note {
+            margin: 0 0 10px;
+            color: var(--page-muted);
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+
+        .footer-note {
+            margin: 16px 0 0;
+            color: var(--page-muted);
+            font-size: 0.86rem;
+            line-height: 1.5;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .status-note {
+                text-align: left;
+            }
+
+            .side-column {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .panel {
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .game-page {
+                width: min(100% - 18px, 1120px);
+                padding-top: 10px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 1.65rem;
+            }
+
+            .hud {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .board-shell {
+                min-height: 280px;
+                padding: 7px;
+            }
+
+            .overlay {
+                inset: 7px;
+                padding: 10px;
+            }
+
+            .overlay-panel {
+                padding: 14px;
+            }
+
+            .mobile-controls {
+                display: grid;
+            }
+
+            .side-column {
+                display: block;
+            }
+
+            .panel {
+                margin-bottom: 12px;
+            }
+
+            .name-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="game-page">
+        <div class="topbar">
+            <a class="back-link" href="index.html">Back to Homepage</a>
+            <div class="status-note">Keyboard: arrow keys / WASD, Space to start or restart, P to pause.</div>
+        </div>
+
+        <section class="hero" aria-label="Academic Snake game">
+            <div class="game-column">
+                <div class="title-block">
+                    <p class="eyebrow">Hidden Academic Game</p>
+                    <h1>Academic Snake: CCF-A Submission Season</h1>
+                    <p class="subtitle">
+                        Stack doctoral caps into a longer snake and chase CCF 2026 AI A venues. Higher-impact badges are larger and worth more points; conference targets have deadlines and disappear if you wait too long.
+                    </p>
+                </div>
+
+                <div class="hud" aria-live="polite">
+                    <div class="hud-item">
+                        <span class="hud-label">Score</span>
+                        <span class="hud-value" id="score-value">0</span>
+                        <span class="hud-detail" id="combo-value">no combo</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">Length</span>
+                        <span class="hud-value" id="length-value">3</span>
+                        <span class="hud-detail">doctoral hats</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">Current Target</span>
+                        <span class="hud-value" id="target-value">--</span>
+                        <span class="hud-detail" id="target-detail">waiting</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">Deadline</span>
+                        <span class="hud-value" id="deadline-value">--</span>
+                        <span class="hud-detail" id="deadline-detail">rolling submission</span>
+                    </div>
+                </div>
+
+                <div class="board-shell" id="board-shell">
+                    <canvas id="game-canvas" width="960" height="720" aria-label="Academic Snake board"></canvas>
+
+                    <div class="overlay is-visible" id="start-overlay">
+                        <div class="overlay-panel">
+                            <h2 class="overlay-title">Start A High-Stakes Submission</h2>
+                            <p class="overlay-text">
+                                Collect high-impact venues and stay away from the academic integrity red line. Conference food counts down; journal food stays open.
+                            </p>
+                            <ul class="rules">
+                                <li>The wall is the academic integrity red line. Touch it and the game ends.</li>
+                                <li>Conference targets have a 9-second submission window before they refresh.</li>
+                                <li>Impact uses Google Scholar Metrics h5-index to set size, score, and growth.</li>
+                            </ul>
+                            <div class="actions">
+                                <button class="button primary" type="button" id="start-button">Start Game</button>
+                                <button class="button" type="button" id="show-wall-button">Open Honor Wall</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overlay" id="pause-overlay">
+                        <div class="overlay-panel">
+                            <h2 class="overlay-title">Peer Review Paused</h2>
+                            <p class="overlay-text">Press P or click resume. The reviewer comments are still on the way.</p>
+                            <div class="actions">
+                                <button class="button primary" type="button" id="resume-button">Resume</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overlay" id="gameover-overlay">
+                        <div class="overlay-panel">
+                            <h2 class="overlay-title">Game Over</h2>
+                            <p class="overlay-text" id="gameover-reason">You touched the academic integrity red line.</p>
+                            <form class="name-form" id="name-form">
+                                <label class="sr-only" for="player-name">Player name</label>
+                                <input id="player-name" maxlength="18" autocomplete="name" placeholder="Your name for local leaderboard" />
+                                <button class="button primary" type="submit">Save Score</button>
+                            </form>
+                            <div class="actions">
+                                <button class="button" type="button" id="restart-button">Restart</button>
+                                <button class="button danger" type="button" id="share-button">Share to Discussions</button>
+                            </div>
+                            <p class="share-status" id="share-status" aria-live="polite"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mobile-controls" aria-label="Mobile direction controls">
+                    <button type="button" data-dir="up">Up</button>
+                    <button type="button" data-dir="left">Left</button>
+                    <button type="button" data-dir="down">Down</button>
+                    <button type="button" data-dir="right">Right</button>
+                </div>
+            </div>
+
+            <aside class="side-column" aria-label="Game information">
+                <section class="panel">
+                    <h2>Local Leaderboard</h2>
+                    <ol class="leaderboard" id="leaderboard-list"></ol>
+                    <p class="empty-rank" id="leaderboard-empty">No records yet. The first submission is yours.</p>
+                </section>
+
+                <section class="panel">
+                    <h2>CCF-A Targets</h2>
+                    <p>Larger abbreviation badges mean higher h5-index. Conferences count down; journals stay rolling.</p>
+                    <div class="venue-list" id="venue-list"></div>
+                </section>
+
+                <section class="panel">
+                    <h2>GitHub Honor Wall</h2>
+                    <p>
+                        The real leaderboard is stored locally in your browser. GitHub Discussions is a manual honor wall, not an automatically sorted ranking.
+                    </p>
+                    <div class="actions">
+                        <button class="button" type="button" id="open-wall-button">Open Honor Wall</button>
+                    </div>
+                    <div class="honor-wall" id="honor-wall">
+                        <p class="honor-wall-note">The share button copies a Markdown score card. Sign in to GitHub and paste it into the discussion below.</p>
+                        <div id="giscus-thread"></div>
+                    </div>
+                </section>
+            </aside>
+        </section>
+
+        <p class="footer-note">
+            Venue list follows the CCF 2026 AI A category. h5-index weighting follows Google Scholar Metrics 2025 where available.
+            The AI journal name is ambiguous in Scholar search, so it uses a conservative fallback value in this game.
+        </p>
+    </main>
+
+    <script>
+        (function () {
+            const BOARD_COLS = 24;
+            const BOARD_ROWS = 18;
+            const TICK_MS = 112;
+            const CONFERENCE_DEADLINE_MS = 9000;
+            const LEADERBOARD_KEY = 'academic-snake-leaderboard-v1';
+            const MAX_LEADERBOARD_SIZE = 10;
+
+            const VENUES = [
+                { key: 'CVPR', type: 'conference', h5: 450, name: 'IEEE/CVF Conference on Computer Vision and Pattern Recognition', color: '#0c4994' },
+                { key: 'NeurIPS', type: 'conference', h5: 371, name: 'Conference on Neural Information Processing Systems', color: '#ae1324' },
+                { key: 'ICLR', type: 'conference', h5: 362, name: 'International Conference on Learning Representations', color: '#168a84' },
+                { key: 'ICML', type: 'conference', h5: 272, name: 'International Conference on Machine Learning', color: '#d69f20' },
+                { key: 'ICCV', type: 'conference', h5: 256, name: 'International Conference on Computer Vision', color: '#3457a8' },
+                { key: 'ACL', type: 'conference', h5: 236, name: 'Annual Meeting of the Association for Computational Linguistics', color: '#2f8f5b' },
+                { key: 'AAAI', type: 'conference', h5: 232, name: 'AAAI Conference on Artificial Intelligence', color: '#ae1324' },
+                { key: 'TPAMI', type: 'journal', h5: 217, name: 'IEEE Transactions on Pattern Analysis and Machine Intelligence', color: '#0c4994' },
+                { key: 'JMLR', type: 'journal', h5: 130, name: 'Journal of Machine Learning Research', color: '#168a84' },
+                { key: 'IJCV', type: 'journal', h5: 109, name: 'International Journal of Computer Vision', color: '#3457a8' },
+                // Google Scholar venue search treats "Artificial Intelligence" as ambiguous, so AI uses a conservative fallback.
+                { key: 'AI', type: 'journal', h5: 70, name: 'Artificial Intelligence', color: '#d69f20', fallback: true }
+            ].map(addVenueStats);
+
+            const canvas = document.getElementById('game-canvas');
+            const ctx = canvas.getContext('2d');
+            const boardShell = document.getElementById('board-shell');
+            const startOverlay = document.getElementById('start-overlay');
+            const pauseOverlay = document.getElementById('pause-overlay');
+            const gameoverOverlay = document.getElementById('gameover-overlay');
+            const scoreValue = document.getElementById('score-value');
+            const comboValue = document.getElementById('combo-value');
+            const lengthValue = document.getElementById('length-value');
+            const targetValue = document.getElementById('target-value');
+            const targetDetail = document.getElementById('target-detail');
+            const deadlineValue = document.getElementById('deadline-value');
+            const deadlineDetail = document.getElementById('deadline-detail');
+            const gameoverReason = document.getElementById('gameover-reason');
+            const leaderboardList = document.getElementById('leaderboard-list');
+            const leaderboardEmpty = document.getElementById('leaderboard-empty');
+            const venueList = document.getElementById('venue-list');
+            const nameForm = document.getElementById('name-form');
+            const playerName = document.getElementById('player-name');
+            const shareStatus = document.getElementById('share-status');
+            const honorWall = document.getElementById('honor-wall');
+            const giscusThread = document.getElementById('giscus-thread');
+
+            const state = {
+                mode: 'ready',
+                snake: [],
+                direction: { x: 1, y: 0 },
+                queuedDirection: { x: 1, y: 0 },
+                pendingGrowth: 0,
+                food: null,
+                score: 0,
+                combo: 0,
+                bestCombo: 0,
+                lastTime: 0,
+                tickCarry: 0,
+                cell: 32,
+                boardWidth: 768,
+                boardHeight: 576,
+                lastResult: null,
+                scoreSaved: false,
+                touchStart: null,
+                giscusLoaded: false
+            };
+
+            function addVenueStats(venue) {
+                const normalized = (venue.h5 - 70) / (450 - 70);
+                return {
+                    ...venue,
+                    normalized: Math.max(0, Math.min(1, normalized)),
+                    foodScale: 0.85 + Math.max(0, Math.min(1, normalized)) * 0.45,
+                    scoreGain: 20 + Math.round(venue.h5 / 5),
+                    growth: 1 + Math.floor(venue.h5 / 160)
+                };
+            }
+
+            function safeReadLeaderboard() {
+                try {
+                    const raw = localStorage.getItem(LEADERBOARD_KEY);
+                    const data = raw ? JSON.parse(raw) : [];
+                    return Array.isArray(data) ? data : [];
+                } catch (error) {
+                    return [];
+                }
+            }
+
+            function safeWriteLeaderboard(rows) {
+                try {
+                    localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(rows));
+                } catch (error) {
+                    shareStatus.textContent = 'Your browser blocked local saving, but you can still keep playing.';
+                }
+            }
+
+            function renderLeaderboard() {
+                const rows = safeReadLeaderboard()
+                    .sort((a, b) => b.score - a.score || b.length - a.length || a.date.localeCompare(b.date))
+                    .slice(0, MAX_LEADERBOARD_SIZE);
+
+                leaderboardList.innerHTML = '';
+                leaderboardEmpty.style.display = rows.length ? 'none' : 'block';
+
+                rows.forEach((row, index) => {
+                    const item = document.createElement('li');
+                    item.innerHTML = `
+                        <span class="rank">${index + 1}</span>
+                        <span class="player" title="${escapeHtml(row.name)}">${escapeHtml(row.name)}</span>
+                        <span class="score">${row.score}</span>
+                    `;
+                    leaderboardList.appendChild(item);
+                });
+            }
+
+            function renderVenueList() {
+                venueList.innerHTML = '';
+                VENUES.forEach(venue => {
+                    const pill = document.createElement('span');
+                    pill.className = 'venue-pill';
+                    pill.style.borderColor = venue.color;
+                    pill.innerHTML = `${venue.key} <span>h5 ${venue.h5}${venue.fallback ? '*' : ''}</span>`;
+                    venueList.appendChild(pill);
+                });
+            }
+
+            function escapeHtml(value) {
+                return String(value).replace(/[&<>"']/g, char => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                }[char]));
+            }
+
+            function resizeCanvas() {
+                const shellRect = boardShell.getBoundingClientRect();
+                const availableWidth = Math.max(280, shellRect.width - 20);
+                const availableHeight = Math.max(260, window.innerHeight * 0.62);
+                let cssWidth = Math.min(820, availableWidth);
+                let cssHeight = cssWidth * BOARD_ROWS / BOARD_COLS;
+
+                if (cssHeight > availableHeight) {
+                    cssHeight = availableHeight;
+                    cssWidth = cssHeight * BOARD_COLS / BOARD_ROWS;
+                }
+
+                state.boardWidth = Math.floor(cssWidth);
+                state.boardHeight = Math.floor(cssHeight);
+                state.cell = state.boardWidth / BOARD_COLS;
+
+                const dpr = window.devicePixelRatio || 1;
+                canvas.style.width = `${state.boardWidth}px`;
+                canvas.style.height = `${state.boardHeight}px`;
+                canvas.width = Math.floor(state.boardWidth * dpr);
+                canvas.height = Math.floor(state.boardHeight * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                draw();
+            }
+
+            function resetGame() {
+                const middleY = Math.floor(BOARD_ROWS / 2);
+                state.snake = [
+                    { x: 5, y: middleY },
+                    { x: 4, y: middleY },
+                    { x: 3, y: middleY }
+                ];
+                state.direction = { x: 1, y: 0 };
+                state.queuedDirection = { x: 1, y: 0 };
+                state.pendingGrowth = 0;
+                state.score = 0;
+                state.combo = 0;
+                state.bestCombo = 0;
+                state.tickCarry = 0;
+                state.lastTime = performance.now();
+                state.lastResult = null;
+                state.scoreSaved = false;
+                shareStatus.textContent = '';
+                spawnFood();
+                syncHud();
+            }
+
+            function startGame() {
+                resetGame();
+                state.mode = 'running';
+                hideOverlays();
+                requestAnimationFrame(loop);
+            }
+
+            function restartGame() {
+                startGame();
+            }
+
+            function pauseGame() {
+                if (state.mode !== 'running') {
+                    return;
+                }
+                state.mode = 'paused';
+                pauseOverlay.classList.add('is-visible');
+            }
+
+            function resumeGame() {
+                if (state.mode !== 'paused') {
+                    return;
+                }
+                state.mode = 'running';
+                state.lastTime = performance.now();
+                pauseOverlay.classList.remove('is-visible');
+                requestAnimationFrame(loop);
+            }
+
+            function hideOverlays() {
+                startOverlay.classList.remove('is-visible');
+                pauseOverlay.classList.remove('is-visible');
+                gameoverOverlay.classList.remove('is-visible');
+            }
+
+            function loop(now) {
+                if (state.mode !== 'running') {
+                    draw();
+                    return;
+                }
+
+                const delta = Math.min(now - state.lastTime, 240);
+                state.lastTime = now;
+                state.tickCarry += delta;
+
+                while (state.tickCarry >= TICK_MS) {
+                    tick(TICK_MS);
+                    state.tickCarry -= TICK_MS;
+                    if (state.mode !== 'running') {
+                        break;
+                    }
+                }
+
+                draw();
+                syncHud();
+
+                if (state.mode === 'running') {
+                    requestAnimationFrame(loop);
+                }
+            }
+
+            function tick(delta) {
+                if (state.food && state.food.venue.type === 'conference') {
+                    state.food.remainingMs -= delta;
+                    if (state.food.remainingMs <= 0) {
+                        state.combo = 0;
+                        spawnFood();
+                    }
+                }
+
+                const nextDirection = state.queuedDirection;
+                if (!isOpposite(nextDirection, state.direction)) {
+                    state.direction = nextDirection;
+                }
+
+                const head = state.snake[0];
+                const next = {
+                    x: head.x + state.direction.x,
+                    y: head.y + state.direction.y
+                };
+
+                if (next.x < 0 || next.x >= BOARD_COLS || next.y < 0 || next.y >= BOARD_ROWS) {
+                    endGame('You touched the academic integrity red line.');
+                    return;
+                }
+
+                const willEat = state.food && next.x === state.food.x && next.y === state.food.y;
+                const bodyToCheck = willEat ? state.snake : state.snake.slice(0, -1);
+                if (bodyToCheck.some(segment => segment.x === next.x && segment.y === next.y)) {
+                    endGame('The doctoral caps folded back into themselves.');
+                    return;
+                }
+
+                state.snake.unshift(next);
+
+                if (willEat) {
+                    eatFood();
+                }
+
+                if (state.pendingGrowth > 0) {
+                    state.pendingGrowth -= 1;
+                } else {
+                    state.snake.pop();
+                }
+            }
+
+            function isOpposite(next, current) {
+                return next.x + current.x === 0 && next.y + current.y === 0;
+            }
+
+            function eatFood() {
+                const venue = state.food.venue;
+                let gain = venue.scoreGain;
+                let growth = venue.growth;
+                let earlyBonus = 0;
+
+                state.combo += 1;
+                state.bestCombo = Math.max(state.bestCombo, state.combo);
+
+                if (venue.type === 'conference' && state.food.remainingMs > CONFERENCE_DEADLINE_MS / 2) {
+                    earlyBonus = 15;
+                    growth += 1;
+                }
+
+                gain += earlyBonus + Math.max(0, state.combo - 1) * 5;
+                state.score += gain;
+                state.pendingGrowth += growth;
+                spawnFood();
+            }
+
+            function endGame(reason) {
+                state.mode = 'gameover';
+                state.lastResult = {
+                    score: state.score,
+                    length: state.snake.length,
+                    bestCombo: state.bestCombo,
+                    reason,
+                    date: new Date().toISOString()
+                };
+                gameoverReason.textContent = `${reason} Final score: ${state.score}.`;
+                gameoverOverlay.classList.add('is-visible');
+                playerName.value = getStoredPlayerName();
+                window.setTimeout(() => playerName.focus(), 40);
+                syncHud();
+                draw();
+            }
+
+            function spawnFood() {
+                const emptyCells = [];
+                for (let y = 0; y < BOARD_ROWS; y += 1) {
+                    for (let x = 0; x < BOARD_COLS; x += 1) {
+                        if (!state.snake.some(segment => segment.x === x && segment.y === y)) {
+                            emptyCells.push({ x, y });
+                        }
+                    }
+                }
+
+                const cell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                const venue = weightedVenue();
+                state.food = {
+                    ...cell,
+                    venue,
+                    remainingMs: venue.type === 'conference' ? CONFERENCE_DEADLINE_MS : Infinity
+                };
+            }
+
+            function weightedVenue() {
+                const total = VENUES.reduce((sum, venue) => sum + 1 / venue.foodScale, 0);
+                let cursor = Math.random() * total;
+                for (const venue of VENUES) {
+                    cursor -= 1 / venue.foodScale;
+                    if (cursor <= 0) {
+                        return venue;
+                    }
+                }
+                return VENUES[0];
+            }
+
+            function queueDirection(direction) {
+                if (state.mode === 'ready' || state.mode === 'gameover') {
+                    return;
+                }
+                if (!isOpposite(direction, state.direction)) {
+                    state.queuedDirection = direction;
+                }
+            }
+
+            function syncHud() {
+                const food = state.food;
+                scoreValue.textContent = state.score;
+                comboValue.textContent = state.combo > 1 ? `combo x${state.combo}` : 'no combo';
+                lengthValue.textContent = state.snake.length;
+
+                if (!food) {
+                    targetValue.textContent = '--';
+                    targetDetail.textContent = 'waiting';
+                    deadlineValue.textContent = '--';
+                    deadlineDetail.textContent = 'rolling submission';
+                    return;
+                }
+
+                targetValue.textContent = food.venue.key;
+                targetDetail.textContent = `h5 ${food.venue.h5}${food.venue.fallback ? ' fallback' : ''}, +${food.venue.scoreGain}`;
+
+                if (food.venue.type === 'conference') {
+                    const seconds = Math.max(0, Math.ceil(food.remainingMs / 1000));
+                    deadlineValue.textContent = `${seconds}s`;
+                    deadlineDetail.textContent = 'conference deadline';
+                } else {
+                    deadlineValue.textContent = 'Rolling';
+                    deadlineDetail.textContent = 'journal submission';
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, state.boardWidth, state.boardHeight);
+                drawBoard();
+                if (state.food) {
+                    drawFood(state.food);
+                }
+                drawSnake();
+            }
+
+            function drawBoard() {
+                const width = state.boardWidth;
+                const height = state.boardHeight;
+                const cell = state.cell;
+
+                ctx.fillStyle = '#fbfdff';
+                ctx.fillRect(0, 0, width, height);
+
+                ctx.strokeStyle = 'rgba(12, 73, 148, 0.08)';
+                ctx.lineWidth = 1;
+                for (let x = 0; x <= BOARD_COLS; x += 1) {
+                    ctx.beginPath();
+                    ctx.moveTo(x * cell, 0);
+                    ctx.lineTo(x * cell, height);
+                    ctx.stroke();
+                }
+                for (let y = 0; y <= BOARD_ROWS; y += 1) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y * cell);
+                    ctx.lineTo(width, y * cell);
+                    ctx.stroke();
+                }
+
+                ctx.strokeStyle = '#ae1324';
+                ctx.lineWidth = Math.max(3, cell * 0.11);
+                ctx.strokeRect(1.5, 1.5, width - 3, height - 3);
+            }
+
+            function drawSnake() {
+                for (let index = state.snake.length - 1; index >= 0; index -= 1) {
+                    drawDoctorHat(state.snake[index], index === 0, index);
+                }
+            }
+
+            function drawDoctorHat(segment, isHead, index) {
+                const cell = state.cell;
+                const cx = (segment.x + 0.5) * cell;
+                const cy = (segment.y + 0.5) * cell;
+                const size = cell * (isHead ? 0.86 : 0.76);
+                const capColor = isHead ? '#17365d' : '#24384f';
+                const bandColor = isHead ? '#ae1324' : '#0c4994';
+
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.rotate((index % 2 ? -1 : 1) * 0.08);
+
+                ctx.fillStyle = 'rgba(12, 73, 148, 0.14)';
+                ctx.beginPath();
+                ctx.ellipse(0, size * 0.22, size * 0.42, size * 0.16, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = capColor;
+                ctx.beginPath();
+                ctx.moveTo(-size * 0.48, -size * 0.08);
+                ctx.lineTo(0, -size * 0.34);
+                ctx.lineTo(size * 0.48, -size * 0.08);
+                ctx.lineTo(0, size * 0.18);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.fillStyle = bandColor;
+                ctx.fillRect(-size * 0.22, size * 0.02, size * 0.44, size * 0.22);
+
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = Math.max(1.5, size * 0.04);
+                ctx.beginPath();
+                ctx.moveTo(0, -size * 0.34);
+                ctx.lineTo(size * 0.28, size * 0.02);
+                ctx.stroke();
+
+                if (isHead) {
+                    ctx.strokeStyle = '#d69f20';
+                    ctx.lineWidth = Math.max(2, size * 0.05);
+                    ctx.beginPath();
+                    ctx.moveTo(size * 0.28, size * 0.02);
+                    ctx.quadraticCurveTo(size * 0.46, size * 0.12, size * 0.35, size * 0.33);
+                    ctx.stroke();
+                    ctx.fillStyle = '#d69f20';
+                    ctx.beginPath();
+                    ctx.arc(size * 0.35, size * 0.33, size * 0.07, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.restore();
+            }
+
+            function drawFood(food) {
+                const cell = state.cell;
+                const venue = food.venue;
+                const cx = (food.x + 0.5) * cell;
+                const cy = (food.y + 0.5) * cell;
+                const width = cell * 1.08 * venue.foodScale;
+                const height = cell * 0.7 * venue.foodScale;
+                const x = Math.max(4, Math.min(cx - width / 2, state.boardWidth - width - 4));
+                const y = Math.max(4, Math.min(cy - height / 2, state.boardHeight - height - 8));
+                const radius = Math.min(8, height * 0.22);
+                const deadlineRatio = venue.type === 'conference'
+                    ? Math.max(0, food.remainingMs / CONFERENCE_DEADLINE_MS)
+                    : 1;
+
+                ctx.save();
+                ctx.shadowColor = 'rgba(12, 73, 148, 0.18)';
+                ctx.shadowBlur = cell * 0.18;
+                ctx.shadowOffsetY = cell * 0.08;
+                roundRect(x, y, width, height, radius);
+                ctx.fillStyle = '#ffffff';
+                ctx.fill();
+                ctx.shadowColor = 'transparent';
+                ctx.lineWidth = Math.max(2, cell * (0.08 + venue.normalized * 0.05));
+                ctx.strokeStyle = venue.color;
+                ctx.stroke();
+
+                ctx.fillStyle = venue.color;
+                let labelSize = Math.max(10, Math.min(18, cell * 0.36 * venue.foodScale));
+                ctx.font = `800 ${labelSize}px Trebuchet MS, Arial, sans-serif`;
+                while (ctx.measureText(venue.key).width > width - 8 && labelSize > 8) {
+                    labelSize -= 1;
+                    ctx.font = `800 ${labelSize}px Trebuchet MS, Arial, sans-serif`;
+                }
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(venue.key, cx, cy - height * 0.04);
+
+                ctx.font = `700 ${Math.max(7, Math.min(11, cell * 0.2))}px Trebuchet MS, Arial, sans-serif`;
+                ctx.fillStyle = '#5f738b';
+                ctx.fillText(`h5 ${venue.h5}`, cx, cy + height * 0.25);
+
+                if (venue.type === 'conference') {
+                    ctx.fillStyle = deadlineRatio > 0.5 ? '#2f8f5b' : '#ae1324';
+                    ctx.fillRect(x, y + height + 3, width * deadlineRatio, Math.max(3, cell * 0.08));
+                }
+
+                ctx.restore();
+            }
+
+            function roundRect(x, y, width, height, radius) {
+                ctx.beginPath();
+                ctx.moveTo(x + radius, y);
+                ctx.lineTo(x + width - radius, y);
+                ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+                ctx.lineTo(x + width, y + height - radius);
+                ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                ctx.lineTo(x + radius, y + height);
+                ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+                ctx.lineTo(x, y + radius);
+                ctx.quadraticCurveTo(x, y, x + radius, y);
+                ctx.closePath();
+            }
+
+            function saveCurrentScore(name) {
+                if (!state.lastResult || state.scoreSaved) {
+                    return;
+                }
+
+                const cleanName = (name || 'Anonymous Reviewer').trim().slice(0, 18) || 'Anonymous Reviewer';
+                const rows = safeReadLeaderboard();
+                rows.push({
+                    name: cleanName,
+                    score: state.lastResult.score,
+                    length: state.lastResult.length,
+                    bestCombo: state.lastResult.bestCombo,
+                    date: state.lastResult.date
+                });
+
+                rows.sort((a, b) => b.score - a.score || b.length - a.length || a.date.localeCompare(b.date));
+                safeWriteLeaderboard(rows.slice(0, MAX_LEADERBOARD_SIZE));
+                state.scoreSaved = true;
+                storePlayerName(cleanName);
+                renderLeaderboard();
+                shareStatus.textContent = 'Saved to your local leaderboard.';
+            }
+
+            function getStoredPlayerName() {
+                try {
+                    return localStorage.getItem('academic-snake-player-name') || '';
+                } catch (error) {
+                    return '';
+                }
+            }
+
+            function storePlayerName(name) {
+                try {
+                    localStorage.setItem('academic-snake-player-name', name);
+                } catch (error) {
+                    // Ignore storage failures.
+                }
+            }
+
+            function buildShareMarkdown() {
+                const result = state.lastResult || {
+                    score: state.score,
+                    length: state.snake.length,
+                    bestCombo: state.bestCombo,
+                    date: new Date().toISOString()
+                };
+                const name = (playerName.value || getStoredPlayerName() || 'Anonymous Reviewer').trim();
+                return [
+                    '### Academic Snake Score',
+                    '',
+                    `- Player: ${name}`,
+                    `- Score: ${result.score}`,
+                    `- Doctoral hats: ${result.length}`,
+                    `- Best combo: ${result.bestCombo || 0}`,
+                    `- Date: ${new Date(result.date).toLocaleString()}`,
+                    '',
+                    'Wall touched: academic integrity red line avoided until peer review got spicy.'
+                ].join('\n');
+            }
+
+            async function shareToDiscussions() {
+                const markdown = buildShareMarkdown();
+                openHonorWall();
+
+                try {
+                    await navigator.clipboard.writeText(markdown);
+                    shareStatus.textContent = 'Score Markdown copied. Paste it into the GitHub honor wall below.';
+                } catch (error) {
+                    shareStatus.textContent = 'Honor wall opened. Copy your score from the game result and post it below.';
+                }
+            }
+
+            function openHonorWall() {
+                honorWall.classList.add('is-visible');
+                if (state.giscusLoaded) {
+                    honorWall.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = 'https://giscus.app/client.js';
+                script.async = true;
+                script.crossOrigin = 'anonymous';
+                script.setAttribute('data-repo', 'AntXinyuan/antxinyuan.github.io');
+                script.setAttribute('data-repo-id', 'R_kgDOLi5vPQ');
+                script.setAttribute('data-category', 'Announcements');
+                script.setAttribute('data-category-id', 'DIC_kwDOLi5vPc4C5AYx');
+                script.setAttribute('data-mapping', 'specific');
+                script.setAttribute('data-term', 'academic-snake-leaderboard');
+                script.setAttribute('data-strict', '0');
+                script.setAttribute('data-reactions-enabled', '1');
+                script.setAttribute('data-emit-metadata', '0');
+                script.setAttribute('data-input-position', 'top');
+                script.setAttribute('data-theme', 'light');
+                script.setAttribute('data-lang', 'en');
+                script.setAttribute('data-loading', 'lazy');
+                giscusThread.appendChild(script);
+                state.giscusLoaded = true;
+                honorWall.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            function handleKeydown(event) {
+                if (event.target.closest('input, textarea, [contenteditable="true"]')) {
+                    return;
+                }
+
+                const keyMap = {
+                    ArrowUp: { x: 0, y: -1 },
+                    w: { x: 0, y: -1 },
+                    W: { x: 0, y: -1 },
+                    ArrowDown: { x: 0, y: 1 },
+                    s: { x: 0, y: 1 },
+                    S: { x: 0, y: 1 },
+                    ArrowLeft: { x: -1, y: 0 },
+                    a: { x: -1, y: 0 },
+                    A: { x: -1, y: 0 },
+                    ArrowRight: { x: 1, y: 0 },
+                    d: { x: 1, y: 0 },
+                    D: { x: 1, y: 0 }
+                };
+
+                if (keyMap[event.key]) {
+                    event.preventDefault();
+                    queueDirection(keyMap[event.key]);
+                    return;
+                }
+
+                if (event.key === ' ') {
+                    event.preventDefault();
+                    if (state.mode === 'ready' || state.mode === 'gameover') {
+                        startGame();
+                    } else if (state.mode === 'paused') {
+                        resumeGame();
+                    }
+                    return;
+                }
+
+                if (event.key === 'p' || event.key === 'P') {
+                    event.preventDefault();
+                    if (state.mode === 'running') {
+                        pauseGame();
+                    } else if (state.mode === 'paused') {
+                        resumeGame();
+                    }
+                }
+            }
+
+            function bindEvents() {
+                document.getElementById('start-button').addEventListener('click', startGame);
+                document.getElementById('restart-button').addEventListener('click', restartGame);
+                document.getElementById('resume-button').addEventListener('click', resumeGame);
+                document.getElementById('share-button').addEventListener('click', shareToDiscussions);
+                document.getElementById('open-wall-button').addEventListener('click', openHonorWall);
+                document.getElementById('show-wall-button').addEventListener('click', openHonorWall);
+
+                nameForm.addEventListener('submit', event => {
+                    event.preventDefault();
+                    saveCurrentScore(playerName.value);
+                });
+
+                document.addEventListener('keydown', handleKeydown);
+                window.addEventListener('resize', resizeCanvas);
+
+                document.querySelectorAll('.mobile-controls button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const directions = {
+                            up: { x: 0, y: -1 },
+                            down: { x: 0, y: 1 },
+                            left: { x: -1, y: 0 },
+                            right: { x: 1, y: 0 }
+                        };
+                        queueDirection(directions[button.dataset.dir]);
+                    });
+                });
+
+                canvas.addEventListener('pointerdown', event => {
+                    state.touchStart = { x: event.clientX, y: event.clientY };
+                });
+
+                canvas.addEventListener('pointerup', event => {
+                    if (!state.touchStart) {
+                        return;
+                    }
+                    const dx = event.clientX - state.touchStart.x;
+                    const dy = event.clientY - state.touchStart.y;
+                    state.touchStart = null;
+
+                    if (Math.max(Math.abs(dx), Math.abs(dy)) < 18) {
+                        return;
+                    }
+
+                    if (Math.abs(dx) > Math.abs(dy)) {
+                        queueDirection(dx > 0 ? { x: 1, y: 0 } : { x: -1, y: 0 });
+                    } else {
+                        queueDirection(dy > 0 ? { x: 0, y: 1 } : { x: 0, y: -1 });
+                    }
+                });
+            }
+
+            bindEvents();
+            renderVenueList();
+            renderLeaderboard();
+            resetGame();
+            resizeCanvas();
+            draw();
+        })();
+    </script>
+</body>
+
+</html>

@@ -265,7 +265,25 @@ body.archive-page a:hover {
     margin-top: 10px;
 }
 
+.profile-photo-game-link {
+    display: inline-block;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-photo-game-link:hover {
+    border-bottom: none !important;
+    transform: translateY(-2px);
+}
+
+.profile-photo-game-link:focus-visible {
+    outline: 3px solid rgba(174, 19, 36, 0.45);
+    outline-offset: 4px;
+}
+
 .profile-photo img {
+    display: block;
     width: 165px;
     height: auto;
     border-radius: 8px;

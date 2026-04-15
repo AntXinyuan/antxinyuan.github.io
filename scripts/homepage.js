@@ -10,8 +10,16 @@
         }
 
         const photo = document.createElement('div');
+        const gameLink = document.createElement('a');
+        const clonedImage = firstImage.cloneNode(true);
+
         photo.className = 'profile-photo';
-        photo.appendChild(firstImage.cloneNode(true));
+        gameLink.className = 'profile-photo-game-link';
+        gameLink.href = 'academic-snake.html';
+        gameLink.setAttribute('aria-label', 'Open hidden Academic Snake game');
+        gameLink.title = 'Academic Snake';
+        gameLink.appendChild(clonedImage);
+        photo.appendChild(gameLink);
         container.insertBefore(photo, container.firstChild);
         firstImage.parentNode.remove();
     }
@@ -232,7 +240,7 @@
     }
 
     function clickEffects(event) {
-        if (event.target.closest('.theme-toggle')) {
+        if (event.target.closest('.theme-toggle, .profile-photo-game-link')) {
             return;
         }
 
