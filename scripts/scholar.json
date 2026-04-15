@@ -7,20 +7,19 @@
     "Computer Vision",
     "Object Detection"
   ],
-  "citedby": "113",
-  "updated": "2026-03-29 08:28:33.180101",
+  "citedby": "118",
   "publications": {
     "eXwizz8AAAAJ:d1gkVwhDpl0C": {
       "pub_id": "eXwizz8AAAAJ:d1gkVwhDpl0C",
-      "num_citations": "53"
+      "num_citations": "54"
     },
     "eXwizz8AAAAJ:WF5omc3nYNoC": {
       "pub_id": "eXwizz8AAAAJ:WF5omc3nYNoC",
-      "num_citations": "30"
+      "num_citations": "31"
     },
     "eXwizz8AAAAJ:9yKSN-GCB0IC": {
       "pub_id": "eXwizz8AAAAJ:9yKSN-GCB0IC",
-      "num_citations": "15"
+      "num_citations": "16"
     },
     "eXwizz8AAAAJ:qjMakFHDy7sC": {
       "pub_id": "eXwizz8AAAAJ:qjMakFHDy7sC",
@@ -28,11 +27,11 @@
     },
     "eXwizz8AAAAJ:ufrVoPGSRksC": {
       "pub_id": "eXwizz8AAAAJ:ufrVoPGSRksC",
-      "num_citations": "5"
+      "num_citations": "6"
     },
     "eXwizz8AAAAJ:2osOgNQ5qMEC": {
       "pub_id": "eXwizz8AAAAJ:2osOgNQ5qMEC",
-      "num_citations": "3"
+      "num_citations": "4"
     },
     "eXwizz8AAAAJ:roLk4NBRz8UC": {
       "pub_id": "eXwizz8AAAAJ:roLk4NBRz8UC",
@@ -46,5 +45,6 @@
       "pub_id": "eXwizz8AAAAJ:_FxGoFyzp5QC",
       "num_citations": "0"
     }
-  }
+  },
+  "updated": "2026-04-15 17:28:13.662424"
 }
