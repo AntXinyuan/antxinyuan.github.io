@@ -583,7 +583,7 @@
             <div class="game-column">
                 <div class="title-block">
                     <p class="eyebrow">Hidden Academic Game</p>
-                    <h1>Academic Snake: CCF-A Submission Season</h1>
+                    <h1>Academic Snake: Paper Submission Season</h1>
                     <p class="subtitle">
                         Stack doctoral caps into a longer snake and chase CCF 2026 AI A venues. Higher-impact badges are larger and worth more points; conference targets have deadlines and disappear if you wait too long.
                     </p>
@@ -677,7 +677,7 @@
                 </section>
 
                 <section class="panel">
-                    <h2>CCF-A Targets</h2>
+                    <h2>Paper Targets</h2>
                     <p>Larger abbreviation badges mean higher h5-index. Conferences count down; journals stay rolling.</p>
                     <div class="venue-list" id="venue-list"></div>
                 </section>
@@ -698,10 +698,6 @@
             </aside>
         </section>
 
-        <p class="footer-note">
-            Venue list follows the CCF 2026 AI A category. h5-index weighting follows Google Scholar Metrics 2025 where available.
-            The AI journal name is ambiguous in Scholar search, so it uses a conservative fallback value in this game.
-        </p>
     </main>
 
     <script>
@@ -721,11 +717,18 @@
                 { key: 'ICCV', type: 'conference', h5: 256, name: 'International Conference on Computer Vision', color: '#3457a8' },
                 { key: 'ACL', type: 'conference', h5: 236, name: 'Annual Meeting of the Association for Computational Linguistics', color: '#2f8f5b' },
                 { key: 'AAAI', type: 'conference', h5: 232, name: 'AAAI Conference on Artificial Intelligence', color: '#ae1324' },
+                { key: 'ACM MM', type: 'conference', h5: 119, name: 'ACM International Conference on Multimedia', color: '#8b4aa8' },
+                { key: 'SIGGRAPH', type: 'conference', h5: 114, name: 'ACM Special Interest Group on Computer Graphics', color: '#0f7b6c'},
+                { key: 'VR', type: 'conference', h5: 52, name: 'IEEE Conference on Virtual Reality and 3D User Interfaces', color: '#c6533c' },
+                { key: 'IEEE VIS', type: 'conference', h5: 23, name: 'IEEE Visualization Conference', color: '#5b6fb8' },
                 { key: 'TPAMI', type: 'journal', h5: 217, name: 'IEEE Transactions on Pattern Analysis and Machine Intelligence', color: '#0c4994' },
+                { key: 'TIP', type: 'journal', h5: 165, name: 'IEEE Transactions on Image Processing', color: '#8b4aa8' },
                 { key: 'JMLR', type: 'journal', h5: 130, name: 'Journal of Machine Learning Research', color: '#168a84' },
+                { key: 'TOG', type: 'journal', h5: 114, name: 'ACM Transactions on Graphics', color: '#0f7b6c' },
+                { key: 'TMM', type: 'journal', h5: 110, name: 'IEEE Transactions on Multimedia', color: '#c6533c' },
                 { key: 'IJCV', type: 'journal', h5: 109, name: 'International Journal of Computer Vision', color: '#3457a8' },
-                // Google Scholar venue search treats "Artificial Intelligence" as ambiguous, so AI uses a conservative fallback.
-                { key: 'AI', type: 'journal', h5: 70, name: 'Artificial Intelligence', color: '#d69f20', fallback: true }
+                { key: 'TVCG', type: 'journal', h5: 94, name: 'IEEE Transactions on Visualization and Computer Graphics', color: '#5b6fb8' },
+                { key: 'AI', type: 'journal', h5: 70, name: 'Artificial Intelligence', color: '#d69f20'}
             ].map(addVenueStats);
 
             const canvas = document.getElementById('game-canvas');
@@ -826,7 +829,7 @@
                     const pill = document.createElement('span');
                     pill.className = 'venue-pill';
                     pill.style.borderColor = venue.color;
-                    pill.innerHTML = `${venue.key} <span>h5 ${venue.h5}${venue.fallback ? '*' : ''}</span>`;
+                    pill.innerHTML = `${venue.key} <span>h5 ${venue.h5}</span>`;
                     venueList.appendChild(pill);
                 });
             }
