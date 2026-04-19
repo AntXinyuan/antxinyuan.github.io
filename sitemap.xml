@@ -13,6 +13,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://antxinyuan.github.io/academic-snake.html</loc>
+    <lastmod>2026-04-15 18:09:50</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://antxinyuan.github.io/publications.html</loc>
     <lastmod>2026-03-20 00:27:55</lastmod>
     <changefreq>yearly</changefreq>
@@ -38,7 +44,7 @@
   </url>
   <url>
     <loc>https://antxinyuan.github.io/scripts/scholar.html</loc>
-    <lastmod>2026-03-20 21:51:02</lastmod>
+    <lastmod>2026-04-15 17:28:46</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -62,7 +68,7 @@
   </url>
   <url>
     <loc>https://antxinyuan.github.io/scripts/homepage.js</loc>
-    <lastmod>2026-03-22 16:33:36</lastmod>
+    <lastmod>2026-04-15 16:27:00</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -254,7 +260,7 @@
   </url>
   <url>
     <loc>https://antxinyuan.github.io/styles/site.css</loc>
-    <lastmod>2026-03-22 22:25:36</lastmod>
+    <lastmod>2026-04-15 17:56:08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
