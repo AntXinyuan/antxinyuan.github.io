@@ -82,11 +82,21 @@
                     return;
                 }
 
-                if (href.includes('github') || href.includes('scholar')) {
-                    image.style = 'height: 1em;';
+                let hostname = '';
+                try {
+                    hostname = new URL(href, window.location.href).hostname;
+                } catch (error) {
+                    hostname = '';
                 }
 
-                if (href.includes('scholar.google.com/citations?user=')) {
+                const isScholarLink = hostname === 'scholar.google.com';
+                const isGithubRepoLink = hostname === 'github.com' || hostname === 'www.github.com';
+
+                if (isScholarLink || isGithubRepoLink) {
+                    image.style.height = '1em';
+                }
+
+                if (isScholarLink && href.includes('/citations?user=')) {
                     image.src = `https://img.shields.io/badge/Citations-${totalCitations}-blue.svg?logo=google-scholar`;
                 }
             });
