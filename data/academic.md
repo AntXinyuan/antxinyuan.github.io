@@ -56,13 +56,6 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - Xi'an, China 
 - Sep. 2017 - Jun. 2021 
 
-### FGZX
-![edu|Fugu Middle School](images/fgzx.webp)
-
-- Fugu Middle School of Shaanxi 
-- Fugu, China 
-- Sep. 2014 - Jun. 2017 
-
 ## 🎖 Awards  
 - Master's National Scholarship, 2023  
 - ICT × E Fund Scholarship, 2022  
@@ -71,5 +64,5 @@ I'm interested in computer vision, with a focus on **panoramic/oriented/3D objec
 - First-Class Academic Scholarship, 2018, 2019, 2020, 2022, 2023  
 
 <center>
-&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Mar, 2026</a>
+&copy; Xinyuan Liu | <a href="https://github.com/antxinyuan/antxinyuan.github.io">Last updated: Apr, 2026</a>
 </center>
