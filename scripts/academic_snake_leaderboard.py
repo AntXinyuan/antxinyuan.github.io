@@ -390,6 +390,31 @@ def write_output(path: str, payload: Dict[str, Any]) -> None:
         handle.write("\n")
 
 
+def load_existing_output(path: str) -> Optional[Dict[str, Any]]:
+    if not path or not os.path.exists(path):
+        return None
+
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+    except (OSError, json.JSONDecodeError):
+        return None
+
+    return payload if isinstance(payload, dict) else None
+
+
+def extract_change_key(payload: Dict[str, Any]) -> Any:
+    # Only leaderboard changes should trigger a write; timestamps like generated_at should not.
+    return payload.get("leaderboard") or []
+
+
+def should_write_output(existing_payload: Optional[Dict[str, Any]], next_payload: Dict[str, Any]) -> bool:
+    if existing_payload is None:
+        return True
+
+    return extract_change_key(existing_payload) != extract_change_key(next_payload)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build the Academic Snake remote leaderboard JSON.")
     parser.add_argument("--output", default="data/academic-snake-leaderboard.json", help="Output JSON path.")
@@ -410,11 +435,19 @@ def main() -> int:
         source_data = fetch_discussion_comments(token)
 
     output = build_output(source_data)
-    write_output(args.output, output)
+    existing_output = load_existing_output(args.output)
+    changed = should_write_output(existing_output, output)
+
+    if changed:
+        write_output(args.output, output)
+    elif existing_output is not None:
+        output = existing_output
+
     print(json.dumps({
         "output": args.output,
         "leaderboard_size": len(output["leaderboard"]),
-        "rejected_entries": len(output["rejected_entries"])
+        "rejected_entries": len(output["rejected_entries"]),
+        "changed": changed
     }, ensure_ascii=False))
     return 0
 
