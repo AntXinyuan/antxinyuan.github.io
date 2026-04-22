@@ -32,7 +32,7 @@ jobs:
 
       - name: Check for leaderboard changes
         run: |
-          if [ -n "$(git diff --stat data/academic-snake-leaderboard.json)" ]; then
+          if [ -n "$(git status --porcelain --untracked-files=all -- data/academic-snake-leaderboard.json)" ]; then
             echo "CHANGED=true" >> $GITHUB_ENV
           else
             echo "CHANGED=false" >> $GITHUB_ENV

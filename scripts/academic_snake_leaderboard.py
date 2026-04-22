@@ -494,7 +494,10 @@ def build_output(source_data: Dict[str, Any]) -> Dict[str, Any]:
         if rejected is not None:
             rejected_entries.append(rejected)
 
-    ranked_entries = dedupe_entries(parsed_entries)
+    ranked_entries = dedupe_entries([
+        entry for entry in parsed_entries
+        if entry.get("checksum_status") == "valid"
+    ])
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
@@ -506,7 +509,7 @@ def build_output(source_data: Dict[str, Any]) -> Dict[str, Any]:
         "policy": {
             "dedupe": "github_login_keep_best_score",
             "sort": "score_desc,length_desc,best_combo_desc,achieved_at_asc",
-            "checksum_mode": "public_md5_v2_with_legacy_fallback"
+            "checksum_mode": "public_md5_v2_required_for_leaderboard"
         },
         "leaderboard": ranked_entries,
         "rejected_entries": rejected_entries
@@ -514,11 +517,16 @@ def build_output(source_data: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def write_output(path: str, payload: Dict[str, Any]) -> None:
+    persisted_payload = {
+        **payload,
+        "rejected_entries": []
+    }
+
     directory = os.path.dirname(path)
     if directory:
         os.makedirs(directory, exist_ok=True)
     with open(path, "w", encoding="utf-8") as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2)
+        json.dump(persisted_payload, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
 
 
@@ -541,21 +549,25 @@ def extract_change_key(payload: Dict[str, Any]) -> Any:
 
 
 def should_write_output(existing_payload: Optional[Dict[str, Any]], next_payload: Dict[str, Any]) -> bool:
+    next_change_key = extract_change_key(next_payload)
+    if not next_change_key:
+        return False
+
     if existing_payload is None:
         return True
 
-    return extract_change_key(existing_payload) != extract_change_key(next_payload)
+    return extract_change_key(existing_payload) != next_change_key
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build the Academic Snake remote leaderboard JSON.")
     parser.add_argument("--output", default="data/academic-snake-leaderboard.json", help="Output JSON path.")
     parser.add_argument("--fixture", help="Optional local fixture JSON for testing instead of GitHub API.")
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
-def main() -> int:
-    args = parse_args()
+def main(argv: Optional[List[str]] = None) -> int:
+    args = parse_args(argv)
 
     if args.fixture:
         source_data = load_fixture(args.fixture)

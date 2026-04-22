@@ -3,6 +3,7 @@ import json
 import random
 import re
 import string
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -284,6 +285,147 @@ class AcademicSnakeChecksumTests(unittest.TestCase):
                 f"{rng.randint(0, 999):03d}Z"
             )
             self.assertFrontendMatchesBackend(raw_name, score, length, best_combo, played_at)
+
+    def test_build_output_only_persists_checksum_valid_entries(self):
+        valid_payload = frontend_machine_payload("valid-player", 321, 12, 5, "2026-04-22T08:00:00.000Z")
+        legacy_body = "\n".join([
+            leaderboard.COMMENT_HEADER,
+            "",
+            "- Player: legacy-player",
+            "- Score: 999",
+            "- Doctoral hats: 20",
+            "- Best combo: 8",
+            "- Date: 2026/4/22 16:00:00",
+        ])
+        invalid_payload = dict(valid_payload)
+        invalid_payload["score"] = 555
+        invalid_payload["md5"] = "deadbeef"
+
+        source_data = {
+            "discussion_url": leaderboard.DISCUSSION_URL,
+            "comment_count": 3,
+            "comments": [
+                {
+                    "body": build_comment_body(valid_payload),
+                    "createdAt": "2026-04-22T08:00:01Z",
+                    "url": "https://example.com/comment/valid",
+                    "author": {"login": "valid-user"},
+                },
+                {
+                    "body": legacy_body,
+                    "createdAt": "2026-04-22T08:00:02Z",
+                    "url": "https://example.com/comment/legacy",
+                    "author": {"login": "legacy-user"},
+                },
+                {
+                    "body": build_comment_body(invalid_payload),
+                    "createdAt": "2026-04-22T08:00:03Z",
+                    "url": "https://example.com/comment/invalid",
+                    "author": {"login": "invalid-user"},
+                },
+            ],
+        }
+
+        output = leaderboard.build_output(source_data)
+        self.assertEqual(len(output["leaderboard"]), 1)
+        self.assertEqual(output["leaderboard"][0]["github_login"], "valid-user")
+        self.assertEqual(output["leaderboard"][0]["checksum_status"], "valid")
+        self.assertEqual(len(output["rejected_entries"]), 1)
+
+    def test_should_write_output_only_when_valid_leaderboard_exists(self):
+        empty_payload = {"leaderboard": []}
+        valid_payload = {
+            "leaderboard": [
+                {"github_login": "tester", "score": 100, "checksum_status": "valid"}
+            ]
+        }
+
+        self.assertFalse(leaderboard.should_write_output(None, empty_payload))
+        self.assertTrue(leaderboard.should_write_output(None, valid_payload))
+        self.assertFalse(leaderboard.should_write_output(valid_payload, empty_payload))
+        self.assertFalse(leaderboard.should_write_output(valid_payload, valid_payload))
+
+    def test_main_does_not_write_output_for_invalid_only_fixture(self):
+        invalid_body = "\n".join([
+            leaderboard.COMMENT_HEADER,
+            "",
+            "- Player: invalid-player",
+            "- Score: 777",
+            "- Doctoral hats: 15",
+            "- Best combo: 6",
+            "- Date: 2026/4/22 16:30:00",
+            "",
+            "<!-- academic-snake:v2 {\"bestCombo\":6,\"length\":15,\"playedAt\":\"2026-04-22T08:30:00.000Z\",\"player\":\"invalid-player\",\"score\":777,\"md5\":\"wrong\"} -->",
+        ])
+
+        fixture = {
+            "discussion_url": leaderboard.DISCUSSION_URL,
+            "comment_count": 1,
+            "comments": [
+                {
+                    "body": invalid_body,
+                    "createdAt": "2026-04-22T08:30:01Z",
+                    "url": "https://example.com/comment/invalid-only",
+                    "author": {"login": "invalid-user"},
+                }
+            ],
+        }
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            fixture_path = Path(tmpdir) / "fixture.json"
+            output_path = Path(tmpdir) / "leaderboard.json"
+            fixture_path.write_text(json.dumps(fixture), encoding="utf-8")
+
+            result = leaderboard.main([
+                "--fixture", str(fixture_path),
+                "--output", str(output_path),
+            ])
+
+            self.assertEqual(result, 0)
+            self.assertFalse(output_path.exists())
+
+    def test_main_writes_only_valid_entries_to_output_file(self):
+        valid_payload = frontend_machine_payload("valid-player", 321, 12, 5, "2026-04-22T08:00:00.000Z")
+        invalid_payload = dict(valid_payload)
+        invalid_payload["score"] = 555
+        invalid_payload["md5"] = "deadbeef"
+
+        fixture = {
+            "discussion_url": leaderboard.DISCUSSION_URL,
+            "comment_count": 2,
+            "comments": [
+                {
+                    "body": build_comment_body(valid_payload),
+                    "createdAt": "2026-04-22T08:00:01Z",
+                    "url": "https://example.com/comment/valid",
+                    "author": {"login": "valid-user"},
+                },
+                {
+                    "body": build_comment_body(invalid_payload),
+                    "createdAt": "2026-04-22T08:00:02Z",
+                    "url": "https://example.com/comment/invalid",
+                    "author": {"login": "invalid-user"},
+                },
+            ],
+        }
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            fixture_path = Path(tmpdir) / "fixture.json"
+            output_path = Path(tmpdir) / "leaderboard.json"
+            fixture_path.write_text(json.dumps(fixture), encoding="utf-8")
+
+            result = leaderboard.main([
+                "--fixture", str(fixture_path),
+                "--output", str(output_path),
+            ])
+
+            self.assertEqual(result, 0)
+            self.assertTrue(output_path.exists())
+
+            persisted = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual(len(persisted["leaderboard"]), 1)
+            self.assertEqual(persisted["leaderboard"][0]["github_login"], "valid-user")
+            self.assertEqual(persisted["rejected_entries"], [])
 
 
 if __name__ == "__main__":
