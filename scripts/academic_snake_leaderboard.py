@@ -8,7 +8,7 @@ import sys
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 
 OWNER = "AntXinyuan"
@@ -130,35 +130,75 @@ def parse_positive_int(value: Any, field_name: str) -> int:
     return parsed
 
 
-def parse_machine_payload(body: str) -> Tuple[Optional[Dict[str, Any]], Optional[str], str]:
+def build_machine_checksum_base(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "bestCombo": parse_positive_int(payload.get("bestCombo"), "bestCombo"),
+        "length": parse_positive_int(payload.get("length"), "length"),
+        "playedAt": str(payload.get("playedAt") or "").strip(),
+        "player": clean_player_name(payload.get("player")),
+        "score": parse_positive_int(payload.get("score"), "score")
+    }
+
+
+def inspect_machine_payload(body: str) -> Dict[str, Any]:
     match = MACHINE_BLOCK_RE.search(body)
     if not match:
-        return None, None, "missing"
+        return {
+            "status": "missing"
+        }
 
     try:
         payload = json.loads(match.group(1))
     except json.JSONDecodeError as error:
-        return None, f"invalid_machine_json:{error.msg}", "invalid"
+        return {
+            "status": "invalid",
+            "error": f"invalid_machine_json:{error.msg}",
+            "raw_machine_block": match.group(1)
+        }
+
+    details: Dict[str, Any] = {
+        "status": "invalid",
+        "raw_payload": payload
+    }
 
     required_fields = {"player", "score", "length", "bestCombo", "playedAt", "md5"}
     missing_fields = sorted(required_fields - set(payload.keys()))
     if missing_fields:
-        return None, f"missing_machine_fields:{','.join(missing_fields)}", "invalid"
+        details["error"] = f"missing_machine_fields:{','.join(missing_fields)}"
+        return details
 
     try:
-        checksum_base = {
-            "bestCombo": parse_positive_int(payload.get("bestCombo"), "bestCombo"),
-            "length": parse_positive_int(payload.get("length"), "length"),
-            "playedAt": str(payload.get("playedAt") or "").strip(),
-            "player": clean_player_name(payload.get("player")),
-            "score": parse_positive_int(payload.get("score"), "score")
-        }
+        checksum_base = build_machine_checksum_base(payload)
     except ValueError as error:
-        return None, str(error), "invalid"
+        details["error"] = str(error)
+        return details
+
     expected_md5 = compute_public_md5(checksum_base)
     provided_md5 = str(payload.get("md5") or "").strip().lower()
+
+    details.update({
+        "checksum_base": checksum_base,
+        "expected_md5": expected_md5,
+        "provided_md5": provided_md5
+    })
+
     if provided_md5 != expected_md5:
-        return None, "checksum_mismatch", "invalid"
+        details["error"] = "checksum_mismatch"
+        return details
+
+    details["status"] = "valid"
+    details["error"] = None
+    return details
+
+
+def parse_machine_payload(body: str) -> Tuple[Optional[Dict[str, Any]], Optional[str], str]:
+    details = inspect_machine_payload(body)
+    if details["status"] == "missing":
+        return None, None, "missing"
+    if details["status"] != "valid":
+        return None, details.get("error") or "invalid_machine_payload", "invalid"
+
+    checksum_base = details["checksum_base"]
 
     return {
         "player_name": checksum_base["player"],
@@ -200,6 +240,20 @@ def build_rejected_entry(comment: Dict[str, Any], reason: str, checksum_status: 
     }
 
 
+def build_suggested_machine_payload(parsed_entry: Dict[str, Any]) -> Dict[str, Any]:
+    checksum_base = {
+        "bestCombo": parsed_entry["best_combo"],
+        "length": parsed_entry["length"],
+        "playedAt": parsed_entry["achieved_at"],
+        "player": parsed_entry["player_name"],
+        "score": parsed_entry["score"]
+    }
+    return {
+        **checksum_base,
+        "md5": compute_public_md5(checksum_base)
+    }
+
+
 def parse_comment(comment: Dict[str, Any]) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]]]:
     body = str(comment.get("body") or "")
     if COMMENT_HEADER not in body:
@@ -232,6 +286,84 @@ def parse_comment(comment: Dict[str, Any]) -> Tuple[Optional[Dict[str, Any]], Op
         "comment_url": str(comment.get("url") or DISCUSSION_URL),
         "checksum_status": parsed["checksum_status"]
     }, None
+
+
+def extract_known_comment_urls(payload: Optional[Dict[str, Any]]) -> Set[str]:
+    urls: Set[str] = set()
+    if not payload:
+        return urls
+
+    for section in ("leaderboard", "rejected_entries"):
+        for entry in payload.get(section) or []:
+            url = str(entry.get("comment_url") or "").strip()
+            if url:
+                urls.add(url)
+    return urls
+
+
+def build_comment_diagnostic(comment: Dict[str, Any]) -> Dict[str, Any]:
+    body = str(comment.get("body") or "")
+    machine_details = inspect_machine_payload(body)
+    parsed_entry, rejected_entry = parse_comment(comment)
+
+    diagnostic: Dict[str, Any] = {
+        "github_login": str((comment.get("author") or {}).get("login") or "").strip(),
+        "comment_url": str(comment.get("url") or DISCUSSION_URL),
+        "comment_created_at": str(comment.get("createdAt") or ""),
+        "body": body
+    }
+
+    if parsed_entry is not None:
+        diagnostic["parse_result"] = "accepted"
+        diagnostic["parsed_entry"] = parsed_entry
+        diagnostic["suggested_machine_payload"] = build_suggested_machine_payload(parsed_entry)
+    else:
+        diagnostic["parse_result"] = "rejected"
+
+    if rejected_entry is not None:
+        diagnostic["rejected_entry"] = rejected_entry
+
+    if machine_details["status"] != "missing":
+        diagnostic["machine_payload_details"] = machine_details
+        checksum_base = machine_details.get("checksum_base")
+        expected_md5 = machine_details.get("expected_md5")
+        if checksum_base and expected_md5:
+            diagnostic["correct_machine_payload"] = {
+                **checksum_base,
+                "md5": expected_md5
+            }
+
+    return diagnostic
+
+
+def build_new_score_comment_diagnostics(source_data: Dict[str, Any], existing_payload: Optional[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    known_comment_urls = extract_known_comment_urls(existing_payload)
+    diagnostics: List[Dict[str, Any]] = []
+
+    for comment in source_data.get("comments") or []:
+        body = str(comment.get("body") or "")
+        comment_url = str(comment.get("url") or DISCUSSION_URL)
+        if COMMENT_HEADER not in body:
+            continue
+        if comment_url in known_comment_urls:
+            continue
+        diagnostics.append(build_comment_diagnostic(comment))
+
+    return diagnostics
+
+
+def print_new_score_comment_diagnostics(diagnostics: List[Dict[str, Any]]) -> None:
+    print(json.dumps({
+        "new_score_comments_detected": len(diagnostics)
+    }, ensure_ascii=False))
+
+    if not diagnostics:
+        return
+
+    print("=== New Academic Snake score comments ===")
+    for index, diagnostic in enumerate(diagnostics, start=1):
+        print(f"--- score_comment_{index} ---")
+        print(json.dumps(diagnostic, ensure_ascii=False, indent=2))
 
 
 def ranking_sort_key(entry: Dict[str, Any]) -> Tuple[Any, ...]:
@@ -434,8 +566,9 @@ def main() -> int:
             return 1
         source_data = fetch_discussion_comments(token)
 
-    output = build_output(source_data)
     existing_output = load_existing_output(args.output)
+    new_comment_diagnostics = build_new_score_comment_diagnostics(source_data, existing_output)
+    output = build_output(source_data)
     changed = should_write_output(existing_output, output)
 
     if changed:
@@ -443,6 +576,7 @@ def main() -> int:
     elif existing_output is not None:
         output = existing_output
 
+    print_new_score_comment_diagnostics(new_comment_diagnostics)
     print(json.dumps({
         "output": args.output,
         "leaderboard_size": len(output["leaderboard"]),
