@@ -468,6 +468,23 @@
             line-height: 1.5;
         }
 
+        .leaderboard-note,
+        .leaderboard-status {
+            margin: 0 0 8px;
+            color: var(--page-muted);
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+
+        .leaderboard-status {
+            min-height: 1.45em;
+            font-size: 0.84rem;
+        }
+
+        .leaderboard-status.is-warning {
+            color: var(--red);
+        }
+
         .leaderboard {
             display: grid;
             gap: 7px;
@@ -487,6 +504,19 @@
 
         .leaderboard li:last-child {
             border-bottom: 0;
+        }
+
+        .leaderboard-row-local {
+            padding: 8px;
+            border: 1px solid var(--line);
+            border-bottom: 0;
+            border-radius: 8px;
+            background: var(--surface-alt);
+        }
+
+        .leaderboard-row-local .rank {
+            background: var(--blue);
+            color: #ffffff;
         }
 
         .rank {
@@ -898,7 +928,11 @@
 
             <aside class="side-column" aria-label="Game information">
                 <section class="panel">
-                    <h2>Local Leaderboard</h2>
+                    <h2>Leaderboard</h2>
+                    <p class="leaderboard-note">
+                        Global top 5 updates every 6 hours. Your best local score appears immediately and becomes permanent after the next sync.
+                    </p>
+                    <p class="leaderboard-status" id="leaderboard-status">Loading remote leaderboard...</p>
                     <ol class="leaderboard" id="leaderboard-list"></ol>
                     <p class="empty-rank" id="leaderboard-empty">No records yet. The first submission is yours.</p>
                 </section>
@@ -912,13 +946,13 @@
                 <section class="panel">
                     <h2>GitHub Honor Wall</h2>
                     <p>
-                        The real leaderboard is stored locally in your browser. GitHub Discussions is a manual honor wall, not an automatically sorted ranking.
+                        The formal leaderboard syncs from GitHub Discussions every 6 hours. Your local best score appears here immediately and becomes permanent after the next sync.
                     </p>
                     <div class="actions">
                         <button class="button" type="button" id="open-wall-button">Open Honor Wall</button>
                     </div>
                     <div class="honor-wall" id="honor-wall">
-                        <p class="honor-wall-note">The share button copies a Markdown score card. Sign in to GitHub and paste it into the discussion below.</p>
+                        <p class="honor-wall-note">The share button copies a Markdown score card with a public checksum for format validation only, not strong anti-cheat. Sign in to GitHub and paste it into discussion #5 below.</p>
                         <div id="giscus-thread"></div>
                     </div>
                 </section>
@@ -937,6 +971,11 @@
             const CONFERENCE_DEADLINE_MS = 9000;
             const LEADERBOARD_KEY = 'academic-snake-leaderboard-v1';
             const MAX_LEADERBOARD_SIZE = 10;
+            const REMOTE_LEADERBOARD_PATH = 'data/academic-snake-leaderboard.json';
+            const REMOTE_DISPLAY_LIMIT = 5;
+            const DEFAULT_PLAYER_NAME = 'Anonymous Reviewer';
+            const REMOTE_DISCUSSION_NUMBER = 5;
+            const REMOTE_DISCUSSION_URL = 'https://github.com/AntXinyuan/antxinyuan.github.io/discussions/5';
 
             const VENUES = [
                 { key: 'CVPR', type: 'conference', h5: 450, name: 'IEEE/CVF Conference on Computer Vision and Pattern Recognition', color: '#0c4994' },
@@ -976,6 +1015,7 @@
             const gameoverReason = document.getElementById('gameover-reason');
             const leaderboardList = document.getElementById('leaderboard-list');
             const leaderboardEmpty = document.getElementById('leaderboard-empty');
+            const leaderboardStatus = document.getElementById('leaderboard-status');
             const venueList = document.getElementById('venue-list');
             const nameForm = document.getElementById('name-form');
             const playerName = document.getElementById('player-name');
@@ -1002,7 +1042,11 @@
                 lastResult: null,
                 scoreSaved: false,
                 touchStart: null,
-                giscusLoaded: false
+                giscusLoaded: false,
+                remoteLeaderboard: [],
+                remoteGeneratedAt: '',
+                remoteCommentCount: 0,
+                remoteStatus: 'loading'
             };
 
             function readCssVar(name) {
@@ -1084,23 +1128,247 @@
                 }
             }
 
+            function cleanPlayerName(value) {
+                return String(value || DEFAULT_PLAYER_NAME)
+                    .replace(/\s+/g, ' ')
+                    .trim()
+                    .slice(0, 18) || DEFAULT_PLAYER_NAME;
+            }
+
+            function parseComparableTime(value) {
+                const timestamp = Date.parse(value || '');
+                return Number.isFinite(timestamp) ? timestamp : Number.MAX_SAFE_INTEGER;
+            }
+
+            function compareLeaderboardRows(a, b) {
+                return (b.score - a.score)
+                    || (b.length - a.length)
+                    || (b.bestCombo - a.bestCombo)
+                    || (parseComparableTime(a.achievedAt || a.commentCreatedAt) - parseComparableTime(b.achievedAt || b.commentCreatedAt))
+                    || String(a.githubLogin || a.playerName || '').localeCompare(String(b.githubLogin || b.playerName || ''));
+            }
+
+            function normalizeLocalEntry(row) {
+                const score = Number(row.score) || 0;
+                const length = Number(row.length) || 0;
+                const bestCombo = Number(row.bestCombo) || 0;
+                const achievedAt = row.date || '';
+                const player = cleanPlayerName(row.name);
+
+                return {
+                    source: 'local',
+                    uniqueKey: `local:${player}:${score}:${length}:${bestCombo}:${achievedAt}`,
+                    githubLogin: '',
+                    playerName: player,
+                    score,
+                    length,
+                    bestCombo,
+                    achievedAt,
+                    commentCreatedAt: achievedAt,
+                    commentUrl: '',
+                    checksumStatus: 'local',
+                    isLocal: true
+                };
+            }
+
+            function normalizeRemoteEntry(row) {
+                const score = Number(row.score);
+                const length = Number(row.length);
+                const bestCombo = Number(row.best_combo);
+
+                if (!Number.isFinite(score) || !Number.isFinite(length) || !Number.isFinite(bestCombo)) {
+                    return null;
+                }
+
+                return {
+                    source: 'remote',
+                    uniqueKey: `remote:${String(row.github_login || 'unknown')}:${String(row.comment_url || row.comment_created_at || row.achieved_at || score)}`,
+                    githubLogin: String(row.github_login || '').trim(),
+                    playerName: cleanPlayerName(row.player_name),
+                    score,
+                    length,
+                    bestCombo,
+                    achievedAt: String(row.achieved_at || row.comment_created_at || ''),
+                    commentCreatedAt: String(row.comment_created_at || ''),
+                    commentUrl: String(row.comment_url || ''),
+                    checksumStatus: String(row.checksum_status || 'missing'),
+                    isLocal: false
+                };
+            }
+
+            function getSortedLocalEntries() {
+                return safeReadLeaderboard()
+                    .map(normalizeLocalEntry)
+                    .sort(compareLeaderboardRows);
+            }
+
+            function hasExactRemoteMatch(localRow, remoteRows) {
+                return remoteRows.some(remoteRow =>
+                    remoteRow.playerName === localRow.playerName
+                    && remoteRow.score === localRow.score
+                    && remoteRow.length === localRow.length
+                    && remoteRow.bestCombo === localRow.bestCombo
+                );
+            }
+
+            function assignRanks(rows) {
+                return rows.map((row, index) => ({
+                    ...row,
+                    rank: index + 1
+                }));
+            }
+
+            function formatLeaderboardName(row) {
+                if (row.isLocal) {
+                    return row.playerName === DEFAULT_PLAYER_NAME
+                        ? 'You (local)'
+                        : `You (local) · ${row.playerName}`;
+                }
+
+                if (!row.githubLogin) {
+                    return row.playerName;
+                }
+
+                if (!row.playerName || row.playerName === DEFAULT_PLAYER_NAME || row.playerName === row.githubLogin) {
+                    return row.githubLogin;
+                }
+
+                return `${row.githubLogin} · ${row.playerName}`;
+            }
+
+            function formatLeaderboardStatusTime(value) {
+                const timestamp = Date.parse(value || '');
+                if (!Number.isFinite(timestamp)) {
+                    return value || '';
+                }
+
+                return new Date(timestamp).toLocaleString();
+            }
+
+            function setLeaderboardStatus(text, variant = '') {
+                if (!leaderboardStatus) {
+                    return;
+                }
+
+                leaderboardStatus.textContent = text;
+                leaderboardStatus.className = variant
+                    ? `leaderboard-status ${variant}`
+                    : 'leaderboard-status';
+            }
+
+            function createLeaderboardItem(row) {
+                const item = document.createElement('li');
+                if (row.isLocal) {
+                    item.classList.add('leaderboard-row-local');
+                }
+
+                const rank = document.createElement('span');
+                rank.className = 'rank';
+                rank.textContent = row.rank;
+
+                const player = document.createElement('span');
+                player.className = 'player';
+                player.textContent = formatLeaderboardName(row);
+                player.title = [
+                    row.githubLogin ? `GitHub: ${row.githubLogin}` : 'Source: local browser record',
+                    `Score: ${row.score}`,
+                    `Doctoral hats: ${row.length}`,
+                    `Best combo: ${row.bestCombo}`,
+                    row.achievedAt ? `Achieved: ${row.achievedAt}` : '',
+                    row.checksumStatus && row.checksumStatus !== 'local' ? `Checksum: ${row.checksumStatus}` : ''
+                ].filter(Boolean).join('\n');
+
+                const score = document.createElement('span');
+                score.className = 'score';
+                score.textContent = row.score;
+
+                item.appendChild(rank);
+                item.appendChild(player);
+                item.appendChild(score);
+                return item;
+            }
+
             function renderLeaderboard() {
-                const rows = safeReadLeaderboard()
-                    .sort((a, b) => b.score - a.score || b.length - a.length || a.date.localeCompare(b.date))
-                    .slice(0, MAX_LEADERBOARD_SIZE);
-
                 leaderboardList.innerHTML = '';
-                leaderboardEmpty.style.display = rows.length ? 'none' : 'block';
+                const localRows = getSortedLocalEntries();
+                let visibleRows = [];
+                let extraLocalRow = null;
 
-                rows.forEach((row, index) => {
-                    const item = document.createElement('li');
-                    item.innerHTML = `
-                        <span class="rank">${index + 1}</span>
-                        <span class="player" title="${escapeHtml(row.name)}">${escapeHtml(row.name)}</span>
-                        <span class="score">${row.score}</span>
-                    `;
-                    leaderboardList.appendChild(item);
+                if (state.remoteStatus === 'ready') {
+                    const remoteRows = [...state.remoteLeaderboard].sort(compareLeaderboardRows);
+                    const localBest = localRows[0] || null;
+                    let combinedRows = [...remoteRows];
+
+                    if (localBest && !hasExactRemoteMatch(localBest, remoteRows)) {
+                        combinedRows.push(localBest);
+                    }
+
+                    combinedRows = assignRanks(combinedRows.sort(compareLeaderboardRows));
+                    visibleRows = combinedRows.slice(0, REMOTE_DISPLAY_LIMIT);
+                    extraLocalRow = combinedRows.find(row => row.isLocal && row.rank > REMOTE_DISPLAY_LIMIT) || null;
+
+                    const parts = [];
+                    if (state.remoteGeneratedAt) {
+                        parts.push(`Updated ${formatLeaderboardStatusTime(state.remoteGeneratedAt)}`);
+                    }
+                    if (state.remoteCommentCount) {
+                        parts.push(`tracked from ${state.remoteCommentCount} discussion comment${state.remoteCommentCount === 1 ? '' : 's'}`);
+                    }
+                    setLeaderboardStatus(parts.length ? `${parts.join(' · ')}.` : 'Remote leaderboard ready.');
+                } else if (state.remoteStatus === 'unavailable') {
+                    visibleRows = assignRanks(localRows.slice(0, REMOTE_DISPLAY_LIMIT));
+                    setLeaderboardStatus('Remote leaderboard unavailable. Showing this browser\'s local scores.', 'is-warning');
+                } else {
+                    visibleRows = assignRanks(localRows.slice(0, REMOTE_DISPLAY_LIMIT));
+                    setLeaderboardStatus('Loading remote leaderboard...');
+                }
+
+                visibleRows.forEach(row => {
+                    leaderboardList.appendChild(createLeaderboardItem(row));
                 });
+
+                if (extraLocalRow) {
+                    leaderboardList.appendChild(createLeaderboardItem(extraLocalRow));
+                }
+
+                const isEmpty = leaderboardList.children.length === 0;
+                leaderboardEmpty.style.display = isEmpty ? 'block' : 'none';
+                leaderboardEmpty.textContent = state.remoteStatus === 'unavailable'
+                    ? 'No local records yet. The first submission is yours.'
+                    : state.remoteStatus === 'loading'
+                        ? 'Loading remote leaderboard...'
+                        : 'No records yet. The first submission is yours.';
+            }
+
+            async function loadRemoteLeaderboard() {
+                state.remoteStatus = 'loading';
+                renderLeaderboard();
+
+                try {
+                    const response = await fetch(`${REMOTE_LEADERBOARD_PATH}?t=${Date.now()}`, {
+                        cache: 'no-store'
+                    });
+                    if (!response.ok) {
+                        throw new Error(`Failed to load remote leaderboard: ${response.status}`);
+                    }
+
+                    const payload = await response.json();
+                    const remoteRows = Array.isArray(payload.leaderboard) ? payload.leaderboard : [];
+                    state.remoteLeaderboard = remoteRows
+                        .map(normalizeRemoteEntry)
+                        .filter(Boolean);
+                    state.remoteGeneratedAt = typeof payload.generated_at === 'string' ? payload.generated_at : '';
+                    state.remoteCommentCount = Number(payload?.source?.comment_count) || remoteRows.length;
+                    state.remoteStatus = 'ready';
+                } catch (error) {
+                    console.error('Error loading remote leaderboard:', error);
+                    state.remoteLeaderboard = [];
+                    state.remoteGeneratedAt = '';
+                    state.remoteCommentCount = 0;
+                    state.remoteStatus = 'unavailable';
+                }
+
+                renderLeaderboard();
             }
 
             function renderVenueList() {
@@ -1562,7 +1830,7 @@
                     return;
                 }
 
-                const cleanName = (name || 'Anonymous Reviewer').trim().slice(0, 18) || 'Anonymous Reviewer';
+                const cleanName = cleanPlayerName(name);
                 const rows = safeReadLeaderboard();
                 rows.push({
                     name: cleanName,
@@ -1577,7 +1845,7 @@
                 state.scoreSaved = true;
                 storePlayerName(cleanName);
                 renderLeaderboard();
-                shareStatus.textContent = 'Saved to your local leaderboard.';
+                shareStatus.textContent = 'Saved locally. If this is your best score, it appears here immediately and joins the formal board after the next sync.';
             }
 
             function getStoredPlayerName() {
@@ -1596,24 +1864,214 @@
                 }
             }
 
-            function buildShareMarkdown() {
+            function stableSerialize(value) {
+                if (Array.isArray(value)) {
+                    return `[${value.map(item => stableSerialize(item)).join(',')}]`;
+                }
+
+                if (value && typeof value === 'object') {
+                    return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${stableSerialize(value[key])}`).join(',')}}`;
+                }
+
+                return JSON.stringify(value);
+            }
+
+            function md5Hex(input) {
+                function add32(a, b) {
+                    return (a + b) & 0xFFFFFFFF;
+                }
+
+                function cmn(q, a, b, x, s, t) {
+                    a = add32(add32(a, q), add32(x, t));
+                    return add32((a << s) | (a >>> (32 - s)), b);
+                }
+
+                function ff(a, b, c, d, x, s, t) {
+                    return cmn((b & c) | ((~b) & d), a, b, x, s, t);
+                }
+
+                function gg(a, b, c, d, x, s, t) {
+                    return cmn((b & d) | (c & (~d)), a, b, x, s, t);
+                }
+
+                function hh(a, b, c, d, x, s, t) {
+                    return cmn(b ^ c ^ d, a, b, x, s, t);
+                }
+
+                function ii(a, b, c, d, x, s, t) {
+                    return cmn(c ^ (b | (~d)), a, b, x, s, t);
+                }
+
+                function md5Cycle(stateWords, blockWords) {
+                    let [a, b, c, d] = stateWords;
+
+                    a = ff(a, b, c, d, blockWords[0], 7, -680876936);
+                    d = ff(d, a, b, c, blockWords[1], 12, -389564586);
+                    c = ff(c, d, a, b, blockWords[2], 17, 606105819);
+                    b = ff(b, c, d, a, blockWords[3], 22, -1044525330);
+                    a = ff(a, b, c, d, blockWords[4], 7, -176418897);
+                    d = ff(d, a, b, c, blockWords[5], 12, 1200080426);
+                    c = ff(c, d, a, b, blockWords[6], 17, -1473231341);
+                    b = ff(b, c, d, a, blockWords[7], 22, -45705983);
+                    a = ff(a, b, c, d, blockWords[8], 7, 1770035416);
+                    d = ff(d, a, b, c, blockWords[9], 12, -1958414417);
+                    c = ff(c, d, a, b, blockWords[10], 17, -42063);
+                    b = ff(b, c, d, a, blockWords[11], 22, -1990404162);
+                    a = ff(a, b, c, d, blockWords[12], 7, 1804603682);
+                    d = ff(d, a, b, c, blockWords[13], 12, -40341101);
+                    c = ff(c, d, a, b, blockWords[14], 17, -1502002290);
+                    b = ff(b, c, d, a, blockWords[15], 22, 1236535329);
+
+                    a = gg(a, b, c, d, blockWords[1], 5, -165796510);
+                    d = gg(d, a, b, c, blockWords[6], 9, -1069501632);
+                    c = gg(c, d, a, b, blockWords[11], 14, 643717713);
+                    b = gg(b, c, d, a, blockWords[0], 20, -373897302);
+                    a = gg(a, b, c, d, blockWords[5], 5, -701558691);
+                    d = gg(d, a, b, c, blockWords[10], 9, 38016083);
+                    c = gg(c, d, a, b, blockWords[15], 14, -660478335);
+                    b = gg(b, c, d, a, blockWords[4], 20, -405537848);
+                    a = gg(a, b, c, d, blockWords[9], 5, 568446438);
+                    d = gg(d, a, b, c, blockWords[14], 9, -1019803690);
+                    c = gg(c, d, a, b, blockWords[3], 14, -187363961);
+                    b = gg(b, c, d, a, blockWords[8], 20, 1163531501);
+                    a = gg(a, b, c, d, blockWords[13], 5, -1444681467);
+                    d = gg(d, a, b, c, blockWords[2], 9, -51403784);
+                    c = gg(c, d, a, b, blockWords[7], 14, 1735328473);
+                    b = gg(b, c, d, a, blockWords[12], 20, -1926607734);
+
+                    a = hh(a, b, c, d, blockWords[5], 4, -378558);
+                    d = hh(d, a, b, c, blockWords[8], 11, -2022574463);
+                    c = hh(c, d, a, b, blockWords[11], 16, 1839030562);
+                    b = hh(b, c, d, a, blockWords[14], 23, -35309556);
+                    a = hh(a, b, c, d, blockWords[1], 4, -1530992060);
+                    d = hh(d, a, b, c, blockWords[4], 11, 1272893353);
+                    c = hh(c, d, a, b, blockWords[7], 16, -155497632);
+                    b = hh(b, c, d, a, blockWords[10], 23, -1094730640);
+                    a = hh(a, b, c, d, blockWords[13], 4, 681279174);
+                    d = hh(d, a, b, c, blockWords[0], 11, -358537222);
+                    c = hh(c, d, a, b, blockWords[3], 16, -722521979);
+                    b = hh(b, c, d, a, blockWords[6], 23, 76029189);
+                    a = hh(a, b, c, d, blockWords[9], 4, -640364487);
+                    d = hh(d, a, b, c, blockWords[12], 11, -421815835);
+                    c = hh(c, d, a, b, blockWords[15], 16, 530742520);
+                    b = hh(b, c, d, a, blockWords[2], 23, -995338651);
+
+                    a = ii(a, b, c, d, blockWords[0], 6, -198630844);
+                    d = ii(d, a, b, c, blockWords[7], 10, 1126891415);
+                    c = ii(c, d, a, b, blockWords[14], 15, -1416354905);
+                    b = ii(b, c, d, a, blockWords[5], 21, -57434055);
+                    a = ii(a, b, c, d, blockWords[12], 6, 1700485571);
+                    d = ii(d, a, b, c, blockWords[3], 10, -1894986606);
+                    c = ii(c, d, a, b, blockWords[10], 15, -1051523);
+                    b = ii(b, c, d, a, blockWords[1], 21, -2054922799);
+                    a = ii(a, b, c, d, blockWords[8], 6, 1873313359);
+                    d = ii(d, a, b, c, blockWords[15], 10, -30611744);
+                    c = ii(c, d, a, b, blockWords[6], 15, -1560198380);
+                    b = ii(b, c, d, a, blockWords[13], 21, 1309151649);
+                    a = ii(a, b, c, d, blockWords[4], 6, -145523070);
+                    d = ii(d, a, b, c, blockWords[11], 10, -1120210379);
+                    c = ii(c, d, a, b, blockWords[2], 15, 718787259);
+                    b = ii(b, c, d, a, blockWords[9], 21, -343485551);
+
+                    stateWords[0] = add32(a, stateWords[0]);
+                    stateWords[1] = add32(b, stateWords[1]);
+                    stateWords[2] = add32(c, stateWords[2]);
+                    stateWords[3] = add32(d, stateWords[3]);
+                }
+
+                function md5Block(binaryText) {
+                    const blockWords = [];
+                    for (let offset = 0; offset < 64; offset += 4) {
+                        blockWords[offset >> 2] = binaryText.charCodeAt(offset)
+                            + (binaryText.charCodeAt(offset + 1) << 8)
+                            + (binaryText.charCodeAt(offset + 2) << 16)
+                            + (binaryText.charCodeAt(offset + 3) << 24);
+                    }
+                    return blockWords;
+                }
+
+                function md51(binaryText) {
+                    const stateWords = [1732584193, -271733879, -1732584194, 271733878];
+                    let offset = 64;
+
+                    for (; offset <= binaryText.length; offset += 64) {
+                        md5Cycle(stateWords, md5Block(binaryText.substring(offset - 64, offset)));
+                    }
+
+                    binaryText = binaryText.substring(offset - 64);
+                    const tail = new Array(16).fill(0);
+                    for (offset = 0; offset < binaryText.length; offset += 1) {
+                        tail[offset >> 2] |= binaryText.charCodeAt(offset) << ((offset % 4) << 3);
+                    }
+                    tail[offset >> 2] |= 0x80 << ((offset % 4) << 3);
+                    if (offset > 55) {
+                        md5Cycle(stateWords, tail);
+                        tail.fill(0);
+                    }
+
+                    tail[14] = binaryText.length * 8;
+                    md5Cycle(stateWords, tail);
+                    return stateWords;
+                }
+
+                function rhex(value) {
+                    let hex = '';
+                    for (let index = 0; index < 4; index += 1) {
+                        hex += (`0${((value >> (index * 8)) & 0xFF).toString(16)}`).slice(-2);
+                    }
+                    return hex;
+                }
+
+                const utf8 = unescape(encodeURIComponent(input));
+                return md51(utf8).map(rhex).join('');
+            }
+
+            function buildSharePayload() {
                 const result = state.lastResult || {
                     score: state.score,
                     length: state.snake.length,
                     bestCombo: state.bestCombo,
                     date: new Date().toISOString()
                 };
-                const name = (playerName.value || getStoredPlayerName() || 'Anonymous Reviewer').trim();
+                return {
+                    player: cleanPlayerName(playerName.value || getStoredPlayerName()),
+                    score: result.score,
+                    length: result.length,
+                    bestCombo: result.bestCombo || 0,
+                    playedAt: result.date
+                };
+            }
+
+            function buildShareMarkdown() {
+                const payload = buildSharePayload();
+                const checksumBase = {
+                    bestCombo: payload.bestCombo,
+                    length: payload.length,
+                    playedAt: payload.playedAt,
+                    player: payload.player,
+                    score: payload.score
+                };
+                const machinePayload = {
+                    ...checksumBase,
+                    md5: md5Hex(stableSerialize(checksumBase))
+                };
+                const safeMachineJson = stableSerialize(machinePayload)
+                    .replace(/--/g, '\\u002d\\u002d')
+                    .replace(/</g, '\\u003c')
+                    .replace(/>/g, '\\u003e');
+
                 return [
                     '### Academic Snake Score',
                     '',
-                    `- Player: ${name}`,
-                    `- Score: ${result.score}`,
-                    `- Doctoral hats: ${result.length}`,
-                    `- Best combo: ${result.bestCombo || 0}`,
-                    `- Date: ${new Date(result.date).toLocaleString()}`,
+                    `- Player: ${payload.player}`,
+                    `- Score: ${payload.score}`,
+                    `- Doctoral hats: ${payload.length}`,
+                    `- Best combo: ${payload.bestCombo}`,
+                    `- Date: ${new Date(payload.playedAt).toLocaleString()}`,
                     '',
-                    'Wall touched: academic integrity red line avoided until peer review got spicy.'
+                    'Wall touched: academic integrity red line avoided until peer review got spicy.',
+                    '',
+                    `<!-- academic-snake:v2 ${safeMachineJson} -->`
                 ].join('\n');
             }
 
@@ -1623,9 +2081,9 @@
 
                 try {
                     await navigator.clipboard.writeText(markdown);
-                    shareStatus.textContent = 'Score Markdown copied. Paste it into the GitHub honor wall below.';
+                    shareStatus.textContent = 'Score Markdown copied. Paste it into discussion #5 below. The formal leaderboard syncs every 6 hours.';
                 } catch (error) {
-                    shareStatus.textContent = 'Honor wall opened. Copy your score from the game result and post it below.';
+                    shareStatus.textContent = 'Honor wall opened. Copy your score card into discussion #5 below.';
                 }
             }
 
@@ -1644,8 +2102,8 @@
                 script.setAttribute('data-repo-id', 'R_kgDOLi5vPQ');
                 script.setAttribute('data-category', 'Announcements');
                 script.setAttribute('data-category-id', 'DIC_kwDOLi5vPc4C5AYx');
-                script.setAttribute('data-mapping', 'specific');
-                script.setAttribute('data-term', 'academic-snake-leaderboard');
+                script.setAttribute('data-mapping', 'number');
+                script.setAttribute('data-term', String(REMOTE_DISCUSSION_NUMBER));
                 script.setAttribute('data-strict', '0');
                 script.setAttribute('data-reactions-enabled', '1');
                 script.setAttribute('data-emit-metadata', '0');
@@ -1801,6 +2259,7 @@
             state.palette = getThemePalette();
             renderVenueList();
             renderLeaderboard();
+            loadRemoteLeaderboard();
             resetGame();
             resizeCanvas();
             draw();

@@ -1,0 +1,48 @@
+name: Academic Snake Leaderboard Update
+
+on:
+  schedule:
+    - cron: '0 */1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  discussions: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate remote leaderboard
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/academic_snake_leaderboard.py --output data/academic-snake-leaderboard.json
+
+      - name: Check for leaderboard changes
+        run: |
+          if [ -n "$(git diff --stat data/academic-snake-leaderboard.json)" ]; then
+            echo "CHANGED=true" >> $GITHUB_ENV
+          else
+            echo "CHANGED=false" >> $GITHUB_ENV
+          fi
+
+      - name: Commit and push leaderboard update
+        if: ${{ env.CHANGED == 'true' }}
+        run: |
+          git config --local user.name "${{ github.actor }}"
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git add data/academic-snake-leaderboard.json
+          git commit -m "Update academic snake leaderboard"
+          git push
