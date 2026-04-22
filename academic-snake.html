@@ -139,45 +139,42 @@
         .game-page {
             width: min(1120px, calc(100% - 28px));
             margin: 0 auto;
-            padding: 84px 0 32px;
+            padding: 28px 0 32px;
         }
 
-        .topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-            margin-bottom: 14px;
+        .game-back-link {
+            margin-bottom: 18px;
         }
 
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            min-height: 36px;
-            padding: 7px 12px;
-            border: 1px solid rgba(12, 73, 148, 0.18);
-            border-radius: 8px;
-            background: var(--surface-soft);
-            color: var(--blue);
-            font-weight: 700;
+        .game-back-link:hover {
+            text-decoration: none;
         }
 
         .status-note {
+            margin: 10px 0 0;
             color: var(--page-muted);
             font-size: 0.92rem;
-            text-align: right;
+            line-height: 1.45;
         }
 
         .hero {
             display: grid;
             grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
             gap: 20px;
-            align-items: start;
+            align-items: stretch;
         }
 
         .game-column,
         .side-column {
             min-width: 0;
+        }
+
+        .side-column {
+            display: grid;
+            grid-template-rows: minmax(0, 1fr) auto;
+            gap: 12px;
+            min-height: 0;
+            height: 100%;
         }
 
         .title-block {
@@ -320,6 +317,23 @@
             box-shadow: var(--overlay-panel-shadow);
         }
 
+        .start-overlay-panel {
+            width: min(420px, 100%);
+            text-align: center;
+        }
+
+        .start-slogan {
+            margin: 0;
+            color: var(--page-muted);
+            font-size: 1rem;
+            line-height: 1.55;
+        }
+
+        .start-overlay-panel .actions {
+            justify-content: center;
+            margin-top: 14px;
+        }
+
         .overlay-title {
             margin: 0 0 8px;
             color: var(--blue-deep);
@@ -331,26 +345,6 @@
             margin: 0 0 12px;
             color: var(--page-muted);
             line-height: 1.5;
-        }
-
-        .rules {
-            display: grid;
-            gap: 7px;
-            margin: 12px 0;
-            padding: 0;
-            list-style: none;
-            color: var(--page-text);
-            font-size: 0.94rem;
-            line-height: 1.38;
-        }
-
-        .rules li {
-            padding-left: 14px;
-            border-left: 3px solid var(--line);
-        }
-
-        .mobile-start-hint {
-            display: none;
         }
 
         .actions {
@@ -456,6 +450,10 @@
             background: var(--surface-soft-strong);
         }
 
+        .side-column .panel {
+            margin-bottom: 0;
+        }
+
         .panel h2 {
             margin: 0 0 9px;
             color: var(--blue-deep);
@@ -479,6 +477,20 @@
         .leaderboard-status {
             min-height: 1.45em;
             font-size: 0.84rem;
+        }
+
+        .leaderboard-panel {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .leaderboard-scroll {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            padding-right: 6px;
+            scrollbar-gutter: stable;
         }
 
         .leaderboard-status.is-warning {
@@ -546,8 +558,15 @@
         }
 
         .empty-rank {
+            margin: 8px 0 0;
             color: var(--page-muted);
             line-height: 1.45;
+        }
+
+        .target-panel {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
         }
 
         .venue-list {
@@ -555,6 +574,7 @@
             flex-wrap: wrap;
             gap: 6px;
             margin-top: 10px;
+            align-content: flex-start;
         }
 
         .venue-pill {
@@ -584,7 +604,7 @@
 
         .honor-wall {
             display: none;
-            margin-top: 12px;
+            margin-top: 14px;
         }
 
         .honor-wall.is-visible {
@@ -596,6 +616,27 @@
             color: var(--page-muted);
             font-size: 0.9rem;
             line-height: 1.45;
+        }
+
+        .honor-wall-panel {
+            margin-top: 18px;
+            margin-bottom: 0;
+        }
+
+        .honor-wall-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .honor-wall-copy {
+            min-width: 0;
+        }
+
+        .honor-wall-header .actions {
+            margin-top: 0;
+            flex: 0 0 auto;
         }
 
         .footer-note {
@@ -622,32 +663,23 @@
                 grid-template-columns: 1fr;
             }
 
-            .status-note {
-                text-align: left;
-            }
-
             .side-column {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+                grid-template-rows: none;
                 gap: 12px;
+                height: auto;
             }
 
-            .panel {
-                margin-bottom: 0;
+            .leaderboard-panel,
+            .target-panel {
+                min-height: 0;
             }
         }
 
         @media (max-width: 680px) {
             .game-page {
                 width: min(100% - 18px, 1120px);
-                padding-top: 78px;
-            }
-
-            .topbar {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 8px;
-                margin-bottom: 10px;
+                padding-top: 16px;
             }
 
             .status-note {
@@ -728,27 +760,6 @@
                 line-height: 1.35;
             }
 
-            .rules {
-                gap: 5px;
-                margin: 6px 0;
-                font-size: 0.78rem;
-                line-height: 1.28;
-            }
-
-            .rules li {
-                padding-left: 10px;
-                border-left-width: 2px;
-            }
-
-            .mobile-start-hint {
-                display: block;
-                margin: 6px 0 0;
-                color: var(--blue);
-                font-size: 0.82rem;
-                font-weight: 800;
-                line-height: 1.35;
-            }
-
             .overlay .actions {
                 position: sticky;
                 bottom: 0;
@@ -769,11 +780,29 @@
             }
 
             .side-column {
-                display: block;
+                grid-template-columns: 1fr;
+                grid-template-rows: none;
+                height: auto;
             }
 
-            .panel {
-                margin-bottom: 12px;
+            .target-panel {
+                min-height: 0;
+            }
+
+            .leaderboard-scroll {
+                max-height: 280px;
+            }
+
+            .honor-wall-header {
+                flex-direction: column;
+            }
+
+            .honor-wall-header .actions {
+                width: 100%;
+            }
+
+            .honor-wall-header .button {
+                width: 100%;
             }
 
             .name-form {
@@ -783,12 +812,7 @@
 
         @media (max-width: 680px) and (max-height: 700px) {
             .game-page {
-                padding-top: 70px;
-            }
-
-            .back-link {
-                min-height: 32px;
-                padding: 5px 10px;
+                padding-top: 12px;
             }
 
             .status-note,
@@ -830,10 +854,7 @@
 
 <body>
     <main class="game-page">
-        <div class="topbar">
-            <a class="back-link" href="index.html">Back to Homepage</a>
-            <div class="status-note">Keyboard: arrow keys / WASD, Space to start or restart, P to pause.</div>
-        </div>
+        <a class="archive-back game-back-link" href="index.html">← Back to Homepage</a>
 
         <section class="hero" aria-label="Academic Snake game">
             <div class="game-column">
@@ -843,6 +864,7 @@
                     <p class="subtitle">
                         Stack doctoral caps into a longer snake and chase CCF 2026 AI A venues. Higher-impact badges are larger and worth more points; conference targets have deadlines and disappear if you wait too long.
                     </p>
+                    <p class="status-note">Keyboard: arrow keys / WASD, Space to start or restart, P to pause.</p>
                 </div>
 
                 <div class="hud" aria-live="polite">
@@ -872,20 +894,10 @@
                     <canvas id="game-canvas" width="960" height="720" aria-label="Academic Snake board"></canvas>
 
                     <div class="overlay is-visible" id="start-overlay">
-                        <div class="overlay-panel">
-                            <h2 class="overlay-title">Start A High-Stakes Submission</h2>
-                            <p class="overlay-text">
-                                Collect high-impact venues and stay away from the academic integrity red line. Conference food counts down; journal food stays open.
-                            </p>
-                            <ul class="rules">
-                                <li>The wall is the academic integrity red line. Touch it and the game ends.</li>
-                                <li>Conference targets have a 9-second submission window before they refresh.</li>
-                                <li>Impact uses Google Scholar Metrics h5-index to set size, score, and growth.</li>
-                            </ul>
-                            <p class="mobile-start-hint">Mobile: swipe anywhere on the board to steer. Direction buttons are just a fallback.</p>
+                        <div class="overlay-panel start-overlay-panel">
+                            <p class="start-slogan">🎓 Slither for glory, dodge the red line, and snack your way to CVPR dreams! 🐍</p>
                             <div class="actions">
                                 <button class="button primary" type="button" id="start-button">Start Game</button>
-                                <button class="button" type="button" id="show-wall-button">Open Honor Wall</button>
                             </div>
                         </div>
                     </div>
@@ -927,38 +939,42 @@
             </div>
 
             <aside class="side-column" aria-label="Game information">
-                <section class="panel">
+                <section class="panel leaderboard-panel">
                     <h2>Leaderboard</h2>
                     <p class="leaderboard-note">
-                        Global top 5 updates every 6 hours. Your best local score appears immediately and becomes permanent after the next sync.
+                        Global top 10 refreshes every hour. Browser-local scores are saved immediately.
                     </p>
                     <p class="leaderboard-status" id="leaderboard-status">Loading remote leaderboard...</p>
-                    <ol class="leaderboard" id="leaderboard-list"></ol>
-                    <p class="empty-rank" id="leaderboard-empty">No records yet. The first submission is yours.</p>
+                    <div class="leaderboard-scroll">
+                        <ol class="leaderboard" id="leaderboard-list"></ol>
+                        <p class="empty-rank" id="leaderboard-empty">No records yet. The first submission is yours.</p>
+                    </div>
                 </section>
 
-                <section class="panel">
+                <section class="panel target-panel">
                     <h2>Paper Targets</h2>
                     <p>Larger abbreviation badges mean higher h5-index. Conferences count down; journals stay rolling.</p>
                     <div class="venue-list" id="venue-list"></div>
                 </section>
-
-                <section class="panel">
-                    <h2>GitHub Honor Wall</h2>
-                    <p>
-                        The formal leaderboard syncs from GitHub Discussions every 6 hours. Your local best score appears here immediately and becomes permanent after the next sync.
-                    </p>
-                    <div class="actions">
-                        <button class="button" type="button" id="open-wall-button">Open Honor Wall</button>
-                    </div>
-                    <div class="honor-wall" id="honor-wall">
-                        <p class="honor-wall-note">The share button copies a Markdown score card with a public checksum for format validation only, not strong anti-cheat. Sign in to GitHub and paste it into discussion #5 below.</p>
-                        <div id="giscus-thread"></div>
-                    </div>
-                </section>
             </aside>
         </section>
 
+        <section class="panel honor-wall-panel">
+            <div class="honor-wall-header">
+                <div class="honor-wall-copy">
+                    <h2>GitHub Honor Wall</h2>
+                    <p>
+                        The formal leaderboard syncs from GitHub Discussions every 6 hours. Open the wall to share your score card or browse the public discussion thread.
+                    </p>
+                </div>
+                <div class="actions">
+                    <button class="button" type="button" id="open-wall-button">Open Honor Wall</button>
+                </div>
+            </div>
+            <div class="honor-wall" id="honor-wall">
+                <div id="giscus-thread"></div>
+            </div>
+        </section>
     </main>
 
     <script src="scripts/site-utils.js"></script>
@@ -972,7 +988,7 @@
             const LEADERBOARD_KEY = 'academic-snake-leaderboard-v1';
             const MAX_LEADERBOARD_SIZE = 10;
             const REMOTE_LEADERBOARD_PATH = 'data/academic-snake-leaderboard.json';
-            const REMOTE_DISPLAY_LIMIT = 5;
+            const REMOTE_DISPLAY_LIMIT = 10;
             const DEFAULT_PLAYER_NAME = 'Anonymous Reviewer';
             const REMOTE_DISCUSSION_NUMBER = 5;
             const REMOTE_DISCUSSION_URL = 'https://github.com/AntXinyuan/antxinyuan.github.io/discussions/5';
@@ -1292,7 +1308,6 @@
                 leaderboardList.innerHTML = '';
                 const localRows = getSortedLocalEntries();
                 let visibleRows = [];
-                let extraLocalRow = null;
 
                 if (state.remoteStatus === 'ready') {
                     const remoteRows = [...state.remoteLeaderboard].sort(compareLeaderboardRows);
@@ -1305,7 +1320,6 @@
 
                     combinedRows = assignRanks(combinedRows.sort(compareLeaderboardRows));
                     visibleRows = combinedRows.slice(0, REMOTE_DISPLAY_LIMIT);
-                    extraLocalRow = combinedRows.find(row => row.isLocal && row.rank > REMOTE_DISPLAY_LIMIT) || null;
 
                     const parts = [];
                     if (state.remoteGeneratedAt) {
@@ -1326,10 +1340,6 @@
                 visibleRows.forEach(row => {
                     leaderboardList.appendChild(createLeaderboardItem(row));
                 });
-
-                if (extraLocalRow) {
-                    leaderboardList.appendChild(createLeaderboardItem(extraLocalRow));
-                }
 
                 const isEmpty = leaderboardList.children.length === 0;
                 leaderboardEmpty.style.display = isEmpty ? 'block' : 'none';
@@ -2081,7 +2091,7 @@
 
                 try {
                     await navigator.clipboard.writeText(markdown);
-                    shareStatus.textContent = 'Score Markdown copied. Paste it into discussion #5 below. The formal leaderboard syncs every 6 hours.';
+                    shareStatus.textContent = 'Score Markdown copied. Paste it into discussion #5 below. The formal leaderboard syncs every hour.';
                 } catch (error) {
                     shareStatus.textContent = 'Honor wall opened. Copy your score card into discussion #5 below.';
                 }
@@ -2225,7 +2235,6 @@
                 document.getElementById('resume-button').addEventListener('click', resumeGame);
                 document.getElementById('share-button').addEventListener('click', shareToDiscussions);
                 document.getElementById('open-wall-button').addEventListener('click', openHonorWall);
-                document.getElementById('show-wall-button').addEventListener('click', openHonorWall);
 
                 nameForm.addEventListener('submit', event => {
                     event.preventDefault();
