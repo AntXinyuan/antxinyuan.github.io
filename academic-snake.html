@@ -7,14 +7,20 @@
     <title>Academic Snake | Xinyuan Liu</title>
     <meta name="description" content="A hidden academic snake game for Xinyuan Liu's homepage." />
     <link rel="shortcut icon" type="image/png" href="images/logo.ico" />
+    <link rel="stylesheet" href="styles/site.css" />
     <style>
         :root {
             color-scheme: light;
+            --page-bg-top: #f7fbff;
             --page-bg: #f6fbff;
+            --page-bg-bottom: #ffffff;
             --page-text: #24384f;
             --page-muted: #5f738b;
             --blue: #0c4994;
             --blue-deep: #17365d;
+            --button-primary-bg: #0c4994;
+            --button-primary-bg-hover: #123f7c;
+            --button-primary-text: #ffffff;
             --red: #ae1324;
             --red-soft: #fce8eb;
             --gold: #d69f20;
@@ -23,8 +29,76 @@
             --ink: #192536;
             --surface: #ffffff;
             --surface-alt: #eef6ff;
+            --surface-soft: rgba(255, 255, 255, 0.9);
+            --surface-soft-strong: rgba(255, 255, 255, 0.94);
+            --surface-elevated: #ffffff;
             --line: #d7e5f4;
+            --line-soft: #edf3fa;
+            --input-bg: #ffffff;
+            --input-border: #c8d8e9;
+            --board-bg: #ffffff;
+            --board-grid-red: rgba(174, 19, 36, 0.08);
+            --board-grid-blue: rgba(12, 73, 148, 0.08);
+            --canvas-bg: #fbfdff;
+            --overlay-bg: rgba(246, 251, 255, 0.9);
+            --overlay-panel-bg: #ffffff;
+            --overlay-panel-shadow: 0 18px 34px rgba(25, 37, 54, 0.16);
+            --overlay-actions-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.86), #ffffff 44%);
+            --snake-shadow: rgba(12, 73, 148, 0.14);
+            --snake-head: #17365d;
+            --snake-body: #24384f;
+            --snake-band-head: #ae1324;
+            --snake-band-body: #0c4994;
+            --food-surface: #ffffff;
+            --food-shadow: rgba(12, 73, 148, 0.18);
+            --food-meta: #5f738b;
             --shadow: 0 18px 44px rgba(12, 73, 148, 0.12);
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --page-bg-top: #09121d;
+            --page-bg: #0f1826;
+            --page-bg-bottom: #111c2b;
+            --page-text: #d9e5f5;
+            --page-muted: #9fb3cc;
+            --blue: #9cc2ff;
+            --blue-deep: #eef4ff;
+            --button-primary-bg: #3f6fb3;
+            --button-primary-bg-hover: #5887cb;
+            --button-primary-text: #f7fbff;
+            --red: #ff7c8a;
+            --red-soft: #3b1f27;
+            --gold: #f4c96c;
+            --teal: #43c2b6;
+            --green: #78d6a1;
+            --ink: #f5f8ff;
+            --surface: #162437;
+            --surface-alt: #20314a;
+            --surface-soft: rgba(18, 29, 45, 0.9);
+            --surface-soft-strong: rgba(19, 31, 47, 0.94);
+            --surface-elevated: #1b2b40;
+            --line: #2f465f;
+            --line-soft: #24364a;
+            --input-bg: #111c2b;
+            --input-border: #314964;
+            --board-bg: #101a27;
+            --board-grid-red: rgba(255, 124, 138, 0.12);
+            --board-grid-blue: rgba(141, 184, 255, 0.12);
+            --canvas-bg: #0f1724;
+            --overlay-bg: rgba(10, 16, 26, 0.84);
+            --overlay-panel-bg: #162437;
+            --overlay-panel-shadow: 0 18px 34px rgba(0, 0, 0, 0.42);
+            --overlay-actions-bg: linear-gradient(180deg, rgba(22, 36, 55, 0.84), #162437 44%);
+            --snake-shadow: rgba(141, 184, 255, 0.18);
+            --snake-head: #eef4ff;
+            --snake-body: #c8d8ef;
+            --snake-band-head: #ff7c8a;
+            --snake-band-body: #8db8ff;
+            --food-surface: #162437;
+            --food-shadow: rgba(0, 0, 0, 0.24);
+            --food-meta: #9fb3cc;
+            --shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
         }
 
         * {
@@ -41,7 +115,7 @@
             color: var(--page-text);
             font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
             background:
-                linear-gradient(180deg, #f7fbff 0, var(--page-bg) 48%, #ffffff 100%);
+                linear-gradient(180deg, var(--page-bg-top) 0, var(--page-bg) 48%, var(--page-bg-bottom) 100%);
         }
 
         a {
@@ -65,7 +139,7 @@
         .game-page {
             width: min(1120px, calc(100% - 28px));
             margin: 0 auto;
-            padding: 18px 0 32px;
+            padding: 84px 0 32px;
         }
 
         .topbar {
@@ -83,7 +157,7 @@
             padding: 7px 12px;
             border: 1px solid rgba(12, 73, 148, 0.18);
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--surface-soft);
             color: var(--blue);
             font-weight: 700;
         }
@@ -145,7 +219,7 @@
             padding: 9px 10px;
             border: 1px solid var(--line);
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--surface-soft);
         }
 
         .hud-label {
@@ -184,9 +258,9 @@
             border: 3px solid var(--red);
             border-radius: 8px;
             background:
-                linear-gradient(90deg, rgba(174, 19, 36, 0.08) 1px, transparent 1px),
-                linear-gradient(180deg, rgba(12, 73, 148, 0.08) 1px, transparent 1px),
-                #ffffff;
+                linear-gradient(90deg, var(--board-grid-red) 1px, transparent 1px),
+                linear-gradient(180deg, var(--board-grid-blue) 1px, transparent 1px),
+                var(--board-bg);
             background-size: 28px 28px;
             box-shadow: var(--shadow);
             overflow: hidden;
@@ -216,7 +290,7 @@
             display: block;
             max-width: 100%;
             border-radius: 6px;
-            background: #fbfdff;
+            background: var(--canvas-bg);
             touch-action: none;
         }
 
@@ -229,7 +303,7 @@
             justify-content: center;
             padding: 16px;
             border-radius: 6px;
-            background: rgba(246, 251, 255, 0.9);
+            background: var(--overlay-bg);
             backdrop-filter: blur(6px);
         }
 
@@ -242,8 +316,8 @@
             padding: 18px;
             border: 1px solid var(--line);
             border-radius: 8px;
-            background: #ffffff;
-            box-shadow: 0 18px 34px rgba(25, 37, 54, 0.16);
+            background: var(--overlay-panel-bg);
+            box-shadow: var(--overlay-panel-shadow);
         }
 
         .overlay-title {
@@ -294,7 +368,7 @@
             padding: 8px 13px;
             border: 1px solid rgba(12, 73, 148, 0.18);
             border-radius: 8px;
-            background: #ffffff;
+            background: var(--surface-elevated);
             color: var(--blue);
             font-weight: 800;
             cursor: pointer;
@@ -305,13 +379,13 @@
         }
 
         .button.primary {
-            border-color: var(--blue);
-            background: var(--blue);
-            color: #ffffff;
+            border-color: var(--button-primary-bg);
+            background: var(--button-primary-bg);
+            color: var(--button-primary-text);
         }
 
         .button.primary:hover {
-            background: #123f7c;
+            background: var(--button-primary-bg-hover);
         }
 
         .button.danger {
@@ -330,8 +404,9 @@
             min-height: 38px;
             min-width: 0;
             padding: 8px 10px;
-            border: 1px solid #c8d8e9;
+            border: 1px solid var(--input-border);
             border-radius: 8px;
+            background: var(--input-bg);
             color: var(--ink);
         }
 
@@ -347,7 +422,7 @@
         .mobile-controls button {
             min-width: 0;
             border: 1px solid rgba(12, 73, 148, 0.24);
-            background: #ffffff;
+            background: var(--surface-elevated);
             color: var(--blue);
             font-weight: 800;
             cursor: pointer;
@@ -378,7 +453,7 @@
             padding: 14px;
             border: 1px solid var(--line);
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.94);
+            background: var(--surface-soft-strong);
         }
 
         .panel h2 {
@@ -407,7 +482,7 @@
             gap: 8px;
             align-items: center;
             padding: 8px 0;
-            border-bottom: 1px solid #edf3fa;
+            border-bottom: 1px solid var(--line-soft);
         }
 
         .leaderboard li:last-child {
@@ -459,7 +534,7 @@
             padding: 5px 7px;
             border: 1px solid var(--line);
             border-radius: 8px;
-            background: #ffffff;
+            background: var(--surface-elevated);
             color: var(--blue-deep);
             font-size: 0.82rem;
             font-weight: 800;
@@ -535,7 +610,7 @@
         @media (max-width: 680px) {
             .game-page {
                 width: min(100% - 18px, 1120px);
-                padding-top: 10px;
+                padding-top: 78px;
             }
 
             .topbar {
@@ -649,7 +724,7 @@
                 bottom: 0;
                 margin-top: auto;
                 padding-top: 8px;
-                background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), #ffffff 44%);
+                background: var(--overlay-actions-bg);
             }
 
             .overlay .button {
@@ -678,7 +753,7 @@
 
         @media (max-width: 680px) and (max-height: 700px) {
             .game-page {
-                padding-top: 8px;
+                padding-top: 70px;
             }
 
             .back-link {
@@ -852,8 +927,10 @@
 
     </main>
 
+    <script src="scripts/site-utils.js"></script>
     <script>
         (function () {
+            const getCurrentTheme = window.SiteUiUtils?.getCurrentTheme || (() => document.documentElement.getAttribute('data-theme') || 'light');
             const BOARD_COLS = 24;
             const BOARD_ROWS = 18;
             const TICK_MS = 112;
@@ -921,11 +998,62 @@
                 cell: 32,
                 boardWidth: 768,
                 boardHeight: 576,
+                palette: null,
                 lastResult: null,
                 scoreSaved: false,
                 touchStart: null,
                 giscusLoaded: false
             };
+
+            function readCssVar(name) {
+                return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+            }
+
+            function getThemePalette() {
+                return {
+                    boardBg: readCssVar('--canvas-bg') || '#fbfdff',
+                    gridBlue: readCssVar('--board-grid-blue') || 'rgba(12, 73, 148, 0.08)',
+                    red: readCssVar('--red') || '#ae1324',
+                    green: readCssVar('--green') || '#2f8f5b',
+                    gold: readCssVar('--gold') || '#d69f20',
+                    snakeShadow: readCssVar('--snake-shadow') || 'rgba(12, 73, 148, 0.14)',
+                    snakeHead: readCssVar('--snake-head') || '#17365d',
+                    snakeBody: readCssVar('--snake-body') || '#24384f',
+                    snakeBandHead: readCssVar('--snake-band-head') || '#ae1324',
+                    snakeBandBody: readCssVar('--snake-band-body') || '#0c4994',
+                    foodSurface: readCssVar('--food-surface') || '#ffffff',
+                    foodShadow: readCssVar('--food-shadow') || 'rgba(12, 73, 148, 0.18)',
+                    foodMeta: readCssVar('--food-meta') || '#5f738b'
+                };
+            }
+
+            function getGiscusTheme() {
+                return getCurrentTheme() === 'dark' ? 'dark_dimmed' : 'light';
+            }
+
+            function syncGiscusTheme() {
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (!iframe) {
+                    return;
+                }
+
+                iframe.contentWindow?.postMessage(
+                    {
+                        giscus: {
+                            setConfig: {
+                                theme: getGiscusTheme()
+                            }
+                        }
+                    },
+                    'https://giscus.app'
+                );
+            }
+
+            function handleThemeChange() {
+                state.palette = getThemePalette();
+                draw();
+                syncGiscusTheme();
+            }
 
             function addVenueStats(venue) {
                 const normalized = (venue.h5 - 70) / (450 - 70);
@@ -1278,14 +1406,15 @@
             }
 
             function drawBoard() {
+                const palette = state.palette || getThemePalette();
                 const width = state.boardWidth;
                 const height = state.boardHeight;
                 const cell = state.cell;
 
-                ctx.fillStyle = '#fbfdff';
+                ctx.fillStyle = palette.boardBg;
                 ctx.fillRect(0, 0, width, height);
 
-                ctx.strokeStyle = 'rgba(12, 73, 148, 0.08)';
+                ctx.strokeStyle = palette.gridBlue;
                 ctx.lineWidth = 1;
                 for (let x = 0; x <= BOARD_COLS; x += 1) {
                     ctx.beginPath();
@@ -1300,7 +1429,7 @@
                     ctx.stroke();
                 }
 
-                ctx.strokeStyle = '#ae1324';
+                ctx.strokeStyle = palette.red;
                 ctx.lineWidth = Math.max(3, cell * 0.11);
                 ctx.strokeRect(1.5, 1.5, width - 3, height - 3);
             }
@@ -1312,18 +1441,19 @@
             }
 
             function drawDoctorHat(segment, isHead, index) {
+                const palette = state.palette || getThemePalette();
                 const cell = state.cell;
                 const cx = (segment.x + 0.5) * cell;
                 const cy = (segment.y + 0.5) * cell;
                 const size = cell * (isHead ? 0.86 : 0.76);
-                const capColor = isHead ? '#17365d' : '#24384f';
-                const bandColor = isHead ? '#ae1324' : '#0c4994';
+                const capColor = isHead ? palette.snakeHead : palette.snakeBody;
+                const bandColor = isHead ? palette.snakeBandHead : palette.snakeBandBody;
 
                 ctx.save();
                 ctx.translate(cx, cy);
                 ctx.rotate((index % 2 ? -1 : 1) * 0.08);
 
-                ctx.fillStyle = 'rgba(12, 73, 148, 0.14)';
+                ctx.fillStyle = palette.snakeShadow;
                 ctx.beginPath();
                 ctx.ellipse(0, size * 0.22, size * 0.42, size * 0.16, 0, 0, Math.PI * 2);
                 ctx.fill();
@@ -1348,13 +1478,13 @@
                 ctx.stroke();
 
                 if (isHead) {
-                    ctx.strokeStyle = '#d69f20';
+                    ctx.strokeStyle = palette.gold;
                     ctx.lineWidth = Math.max(2, size * 0.05);
                     ctx.beginPath();
                     ctx.moveTo(size * 0.28, size * 0.02);
                     ctx.quadraticCurveTo(size * 0.46, size * 0.12, size * 0.35, size * 0.33);
                     ctx.stroke();
-                    ctx.fillStyle = '#d69f20';
+                    ctx.fillStyle = palette.gold;
                     ctx.beginPath();
                     ctx.arc(size * 0.35, size * 0.33, size * 0.07, 0, Math.PI * 2);
                     ctx.fill();
@@ -1364,6 +1494,7 @@
             }
 
             function drawFood(food) {
+                const palette = state.palette || getThemePalette();
                 const cell = state.cell;
                 const venue = food.venue;
                 const cx = (food.x + 0.5) * cell;
@@ -1378,11 +1509,11 @@
                     : 1;
 
                 ctx.save();
-                ctx.shadowColor = 'rgba(12, 73, 148, 0.18)';
+                ctx.shadowColor = palette.foodShadow;
                 ctx.shadowBlur = cell * 0.18;
                 ctx.shadowOffsetY = cell * 0.08;
                 roundRect(x, y, width, height, radius);
-                ctx.fillStyle = '#ffffff';
+                ctx.fillStyle = palette.foodSurface;
                 ctx.fill();
                 ctx.shadowColor = 'transparent';
                 ctx.lineWidth = Math.max(2, cell * (0.08 + venue.normalized * 0.05));
@@ -1401,11 +1532,11 @@
                 ctx.fillText(venue.key, cx, cy - height * 0.04);
 
                 ctx.font = `700 ${Math.max(7, Math.min(11, cell * 0.2))}px Trebuchet MS, Arial, sans-serif`;
-                ctx.fillStyle = '#5f738b';
+                ctx.fillStyle = palette.foodMeta;
                 ctx.fillText(`h5 ${venue.h5}`, cx, cy + height * 0.25);
 
                 if (venue.type === 'conference') {
-                    ctx.fillStyle = deadlineRatio > 0.5 ? '#2f8f5b' : '#ae1324';
+                    ctx.fillStyle = deadlineRatio > 0.5 ? palette.green : palette.red;
                     ctx.fillRect(x, y + height + 3, width * deadlineRatio, Math.max(3, cell * 0.08));
                 }
 
@@ -1519,7 +1650,7 @@
                 script.setAttribute('data-reactions-enabled', '1');
                 script.setAttribute('data-emit-metadata', '0');
                 script.setAttribute('data-input-position', 'top');
-                script.setAttribute('data-theme', 'light');
+                script.setAttribute('data-theme', getGiscusTheme());
                 script.setAttribute('data-lang', 'en');
                 script.setAttribute('data-loading', 'lazy');
                 giscusThread.appendChild(script);
@@ -1644,6 +1775,7 @@
                 });
 
                 document.addEventListener('keydown', handleKeydown);
+                document.addEventListener('site-theme-change', handleThemeChange);
                 window.addEventListener('resize', resizeCanvas);
 
                 document.querySelectorAll('.mobile-controls button').forEach(button => {
@@ -1666,6 +1798,7 @@
             }
 
             bindEvents();
+            state.palette = getThemePalette();
             renderVenueList();
             renderLeaderboard();
             resetGame();
