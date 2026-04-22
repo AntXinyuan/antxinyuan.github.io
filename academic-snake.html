@@ -1148,7 +1148,9 @@
                 return String(value || DEFAULT_PLAYER_NAME)
                     .replace(/\s+/g, ' ')
                     .trim()
-                    .slice(0, 18) || DEFAULT_PLAYER_NAME;
+                    .slice(0, 18)
+                    .trim()
+                    || DEFAULT_PLAYER_NAME;
             }
 
             function parseComparableTime(value) {
@@ -2004,6 +2006,7 @@
 
                 function md51(binaryText) {
                     const stateWords = [1732584193, -271733879, -1732584194, 271733878];
+                    const originalLength = binaryText.length;
                     let offset = 64;
 
                     for (; offset <= binaryText.length; offset += 64) {
@@ -2021,7 +2024,8 @@
                         tail.fill(0);
                     }
 
-                    tail[14] = binaryText.length * 8;
+                    tail[14] = originalLength * 8;
+                    tail[15] = Math.floor(originalLength / 0x20000000);
                     md5Cycle(stateWords, tail);
                     return stateWords;
                 }

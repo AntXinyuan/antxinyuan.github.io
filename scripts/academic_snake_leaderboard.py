@@ -63,7 +63,7 @@ def compute_public_md5(payload: Dict[str, Any]) -> str:
 
 def clean_player_name(value: Any) -> str:
     name = re.sub(r"\s+", " ", str(value or DEFAULT_PLAYER_NAME)).strip()
-    name = name[:18]
+    name = name[:18].strip()
     return name or DEFAULT_PLAYER_NAME
 
 
