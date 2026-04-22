@@ -895,7 +895,7 @@
 
                     <div class="overlay is-visible" id="start-overlay">
                         <div class="overlay-panel start-overlay-panel">
-                            <p class="start-slogan">🎓 Slither for glory, dodge the red line, and snack your way to CVPR dreams! 🐍</p>
+                            <p class="start-slogan">🎓 Slither for glory, dodge the red line, and snack your way to academic dreams! 🐍</p>
                             <div class="actions">
                                 <button class="button primary" type="button" id="start-button">Start Game</button>
                             </div>
@@ -964,7 +964,7 @@
                 <div class="honor-wall-copy">
                     <h2>GitHub Honor Wall</h2>
                     <p>
-                        The formal leaderboard syncs from GitHub Discussions every 6 hours. Open the wall to share your score card or browse the public discussion thread.
+                        The formal leaderboard syncs from GitHub Discussions every hours.
                     </p>
                 </div>
                 <div class="actions">
@@ -2091,9 +2091,9 @@
 
                 try {
                     await navigator.clipboard.writeText(markdown);
-                    shareStatus.textContent = 'Score Markdown copied. Paste it into discussion #5 below. The formal leaderboard syncs every hour.';
+                    shareStatus.textContent = 'Score Markdown copied. Paste it into Honor Wall, and submit it.';
                 } catch (error) {
-                    shareStatus.textContent = 'Honor wall opened. Copy your score card into discussion #5 below.';
+                    shareStatus.textContent = 'Honor wall opened. Copy your score card into Honor Wall to submit it.';
                 }
             }
 
