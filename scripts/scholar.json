@@ -7,11 +7,12 @@
     "Computer Vision",
     "Object Detection"
   ],
-  "citedby": "118",
+  "citedby": "123",
+  "updated": "2026-04-26 08:48:25.073297",
   "publications": {
     "eXwizz8AAAAJ:d1gkVwhDpl0C": {
       "pub_id": "eXwizz8AAAAJ:d1gkVwhDpl0C",
-      "num_citations": "54"
+      "num_citations": "58"
     },
     "eXwizz8AAAAJ:WF5omc3nYNoC": {
       "pub_id": "eXwizz8AAAAJ:WF5omc3nYNoC",
@@ -19,7 +20,7 @@
     },
     "eXwizz8AAAAJ:9yKSN-GCB0IC": {
       "pub_id": "eXwizz8AAAAJ:9yKSN-GCB0IC",
-      "num_citations": "16"
+      "num_citations": "17"
     },
     "eXwizz8AAAAJ:qjMakFHDy7sC": {
       "pub_id": "eXwizz8AAAAJ:qjMakFHDy7sC",
@@ -45,6 +46,5 @@
       "pub_id": "eXwizz8AAAAJ:_FxGoFyzp5QC",
       "num_citations": "0"
     }
-  },
-  "updated": "2026-04-15 17:28:13.662424"
+  }
 }
