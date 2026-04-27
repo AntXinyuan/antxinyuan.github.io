@@ -138,6 +138,7 @@
       "scholar_id": null,
       "github_repo": "pandora-cv/panoindoor-outdoor",
       "links": [
+        { "label": "PDF", "url": "https://ieeexplore.ieee.org/abstract/document/11464195" },
         { "label": "Code", "url": "https://github.com/pandora-cv/panoindoor-outdoor" },
         { "label": "BibTex", "url": "docs/icassp2026a/bibtex.txt" }
       ]
@@ -161,6 +162,7 @@
       "scholar_id": null,
       "github_repo": null,
       "links": [
+        { "label": "PDF", "url": "https://ieeexplore.ieee.org/abstract/document/11464462" },
         { "label": "BibTex", "url": "docs/icassp2026b/bibtex.txt" }
       ]
     },
