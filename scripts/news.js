@@ -18,20 +18,31 @@
         return `${month}/${year}`;
     }
 
+    function enrichNewsItem(item, index) {
+        const date = new Date(item.date);
+
+        return {
+            ...item,
+            year: item.year ?? date.getUTCFullYear(),
+            source_index: index
+        };
+    }
+
     function sortNews(items) {
         return [...items].sort((left, right) => {
             const dateDelta = new Date(right.date).getTime() - new Date(left.date).getTime();
             if (dateDelta !== 0) {
                 return dateDelta;
             }
-            return left.order - right.order;
+
+            return left.source_index - right.source_index;
         });
     }
 
     async function loadNewsData() {
         if (!newsDataPromise) {
             newsDataPromise = fetchJson(NEWS_PATH).then(catalog => {
-                const news = sortNews(catalog.news || []);
+                const news = sortNews((catalog.news || []).map(enrichNewsItem));
                 return { catalog, news };
             });
         }

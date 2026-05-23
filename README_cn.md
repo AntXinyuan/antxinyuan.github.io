@@ -83,7 +83,6 @@
 每篇论文目前支持的核心字段包括：
 
 - `id`
-- `order`
 - `featured`
 - `section`
 - `type`
@@ -104,6 +103,8 @@
 其中：
 
 - `featured: true` 的论文会进入主页精选区
+- `tag` 中包含 `✨` 的论文会作为一作/共一亮点论文优先显示
+- 论文排序规则：先按是否包含 `✨`，再按 `year` 倒序，同一年内 `journal` 优先于 `conference`，期刊按 `SCI-Q1` 到 `SCI-Q4` 排，会议按 `level` 字典序排，最后按 `author_role` 的 `1st-author`、`co-1st-author`、`2nd-author`、`3rd-author`、`other-author` 排
 - `keyword` 用于完整论文页筛选
 - `author_role` 用于作者身份筛选
 - `scholar_id` 只负责和 `scripts/scholar.json` 中的引用量数据对齐
@@ -120,7 +121,6 @@
 每条新闻目前支持的核心字段包括：
 
 - `id`
-- `order`
 - `date`
 - `year`
 - `theme`
@@ -130,6 +130,7 @@
 其中：
 
 - 首页只展示最近一年的新闻
+- 新闻默认按 `date` 倒序排序，同一天的新闻按 JSON 中的相对位置排序，不需要维护连续序号
 - 完整新闻页支持按 `Year` 和 `Theme` 筛选
 
 ## 📈 Scholar 数据说明

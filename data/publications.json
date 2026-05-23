@@ -9,7 +9,8 @@
       "IEEE Trans. (1)"
     ],
     "authorship": [
-      "1st-author (3)",
+      "1st-author (2)",
+      "co-1st-author (1)",
       "2nd-author (5)",
       "3rd-author (3)",
       "corresponding-author (0)",
@@ -20,13 +21,12 @@
   "publications": [
     {
       "id": "cvpr2024-acm",
-      "order": 1,
       "featured": true,
       "section": "Conference Papers",
       "type": "conference",
       "level": "CCF-A",
       "keyword": "Oriented Detection",
-      "author_role": "1st-author",
+      "author_role": "co-1st-author",
       "tag": "CVPR24✨",
       "year": 2024,
       "title": "Rethinking Boundary Discontinuity Problem for Oriented Object Detection",
@@ -48,7 +48,6 @@
     },
     {
       "id": "ijcai2023-sph2pob",
-      "order": 2,
       "featured": true,
       "section": "Conference Papers",
       "type": "conference",
@@ -74,7 +73,6 @@
     },
     {
       "id": "aaai2026-iqgs",
-      "order": 3,
       "featured": true,
       "section": "Conference Papers",
       "type": "conference",
@@ -98,7 +96,6 @@
     },
     {
       "id": "icme2026-tear-of-the-sunset",
-      "order": 4,
       "featured": false,
       "section": "Conference Papers",
       "type": "conference",
@@ -121,7 +118,6 @@
     },
     {
       "id": "icassp2026-panoindoor-panooutdoor",
-      "order": 5,
       "featured": false,
       "section": "Conference Papers",
       "type": "conference",
@@ -145,7 +141,6 @@
     },
     {
       "id": "icassp2026-hca",
-      "order": 6,
       "featured": false,
       "section": "Conference Papers",
       "type": "conference",
@@ -168,7 +163,6 @@
     },
     {
       "id": "neurips2025-topopoint",
-      "order": 7,
       "featured": true,
       "section": "Conference Papers",
       "type": "conference",
@@ -196,7 +190,6 @@
     },
     {
       "id": "neurips2024-topologic",
-      "order": 8,
       "featured": true,
       "section": "Conference Papers",
       "type": "conference",
@@ -224,7 +217,6 @@
     },
     {
       "id": "cvpr2023-gldl",
-      "order": 9,
       "featured": true,
       "section": "Conference Papers",
       "type": "conference",
@@ -250,11 +242,10 @@
     },
     {
       "id": "tmm2026-pan-coco",
-      "order": 10,
       "featured": false,
       "section": "Journal Papers",
       "type": "journal",
-      "level": "CCF-B",
+      "level": "SCI-Q1",
       "keyword": "Panoramic Vision",
       "author_role": "other-author",
       "tag": "TMM26",
@@ -274,7 +265,6 @@
     },
     {
       "id": "electronics2023-gdl",
-      "order": 11,
       "featured": false,
       "section": "Journal Papers",
       "type": "journal",
@@ -297,19 +287,18 @@
     },
     {
       "id": "arxiv2025-ssp",
-      "order": 12,
       "featured": true,
-      "section": "Preprint Papers",
-      "type": "preprint",
-      "level": "Preprint",
+      "section": "Journal Papers",
+      "type": "journal",
+      "level": "SCI-Q1",
       "keyword": "Oriented Detection",
       "author_role": "1st-author",
-      "tag": "arXiv25✨",
-      "year": 2025,
+      "tag": "PR26✨",
+      "year": 2026,
       "title": "Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection",
-      "authors_html": "<strong>Xinyuan Liu</strong>, Hang Xu, Yike Ma, Yucheng Zhang and Feng Dai†",
-      "venue_html": "<em>arXiv 2025</em> (preprint)",
-      "thumbnail": "docs/arxiv2025b/thumbnail.webp",
+      "authors_html": "<strong>Xinyuan Liu</strong>, Hang Xu, Zirui Chen, Yike Ma, Chenggang Yan and Feng Dai†",
+      "venue_html": "<em>Pattern Recognition 2026</em> (SCI-Q1, IF=7.6, <span style=\"color:#ae1324;\">CCF-B</span>)",
+      "thumbnail": "docs/pr2026/thumbnail.webp",
       "thumbnail_alt": "Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection",
       "scholar_id": "eXwizz8AAAAJ:_FxGoFyzp5QC",
       "github_repo": "antxinyuan/ssp",
@@ -317,7 +306,7 @@
         { "label": "PDF", "url": "https://arxiv.org/pdf/2506.10601" },
         { "label": "arXiv", "url": "https://arxiv.org/abs/2506.10601" },
         { "label": "Code", "url": "https://github.com/antxinyuan/ssp" },
-        { "label": "BibTex", "url": "docs/arxiv2025b/bibtex.txt" }
+        { "label": "BibTex", "url": "docs/pr2026/bibtex.txt" }
       ]
     }
   ]

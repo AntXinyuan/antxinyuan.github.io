@@ -3,8 +3,15 @@
   "homepage_window_days": 365,
   "news": [
     {
+      "id": "pr-2026-accept",
+      "date": "2026-05-23",
+      "year": 2026,
+      "theme": "Publication",
+      "icon": "🎉",
+      "content_html": "One paper is accepted by Pattern Recognition."
+    },
+    {
       "id": "icme-2026-accept",
-      "order": 1,
       "date": "2026-03-01",
       "year": 2026,
       "theme": "Publication",
@@ -13,7 +20,6 @@
     },
     {
       "id": "scholar-100-citations",
-      "order": 2,
       "date": "2026-02-15",
       "year": 2026,
       "theme": "Award",
@@ -22,7 +28,6 @@
     },
     {
       "id": "tmm-2026-accept",
-      "order": 3,
       "date": "2026-02-01",
       "year": 2026,
       "theme": "Publication",
@@ -31,7 +36,6 @@
     },
     {
       "id": "icassp-2026-accept",
-      "order": 4,
       "date": "2026-01-01",
       "year": 2026,
       "theme": "Publication",
@@ -40,7 +44,6 @@
     },
     {
       "id": "aaai-2026-accept",
-      "order": 5,
       "date": "2025-11-01",
       "year": 2025,
       "theme": "Publication",
@@ -49,7 +52,6 @@
     },
     {
       "id": "ssp-arxiv-release",
-      "order": 6,
       "date": "2025-06-01",
       "year": 2025,
       "theme": "Publication",
@@ -58,7 +60,6 @@
     },
     {
       "id": "topopoint-arxiv-release",
-      "order": 7,
       "date": "2025-05-15",
       "year": 2025,
       "theme": "Publication",
@@ -67,7 +68,6 @@
     },
     {
       "id": "topologic-arxiv-release",
-      "order": 8,
       "date": "2024-05-01",
       "year": 2024,
       "theme": "Publication",
@@ -76,7 +76,6 @@
     },
     {
       "id": "phd-start-ict-cas",
-      "order": 9,
       "date": "2024-03-01",
       "year": 2024,
       "theme": "Experience",
@@ -85,7 +84,6 @@
     },
     {
       "id": "cvpr-2024-accept",
-      "order": 10,
       "date": "2024-02-01",
       "year": 2024,
       "theme": "Publication",
@@ -94,7 +92,6 @@
     },
     {
       "id": "national-scholarship-2023",
-      "order": 11,
       "date": "2023-10-01",
       "year": 2023,
       "theme": "Award",
@@ -103,7 +100,6 @@
     },
     {
       "id": "ijcai-2023-accept",
-      "order": 12,
       "date": "2023-05-01",
       "year": 2023,
       "theme": "Publication",
@@ -112,7 +108,6 @@
     },
     {
       "id": "cvpr-2023-accept",
-      "order": 13,
       "date": "2023-02-01",
       "year": 2023,
       "theme": "Publication",
@@ -121,7 +116,6 @@
     },
     {
       "id": "ms-start-ict-cas",
-      "order": 14,
       "date": "2021-09-01",
       "year": 2021,
       "theme": "Experience",

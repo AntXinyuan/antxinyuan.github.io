@@ -17,12 +17,89 @@
         return Number.isNaN(parsed) ? 0 : parsed;
     }
 
-    function enrichPublication(publication, scholarMap) {
+    function hasHighlightTag(publication) {
+        return (publication.tag || '').includes('✨');
+    }
+
+    function getTypeRank(type) {
+        const ranks = {
+            journal: 0,
+            conference: 1,
+            preprint: 2
+        };
+
+        return ranks[type] ?? 3;
+    }
+
+    function getJournalLevelRank(publication) {
+        const levelText = `${publication.level || ''} ${publication.venue_html || ''}`;
+        const match = levelText.match(/Q([1-4])/i);
+        return match ? Number(match[1]) - 1 : 4;
+    }
+
+    function getAuthorRoleRank(authorRole) {
+        const ranks = {
+            '1st-author': 0,
+            'co-1st-author': 1,
+            'equal-1st-author': 1,
+            '2nd-author': 2,
+            '3rd-author': 3,
+            'other-author': 4
+        };
+
+        return ranks[authorRole] ?? 5;
+    }
+
+    function compareLevel(left, right) {
+        if (left.type === 'journal' && right.type === 'journal') {
+            return getJournalLevelRank(left) - getJournalLevelRank(right);
+        }
+
+        if (left.type === 'conference' && right.type === 'conference') {
+            return String(left.level || '').localeCompare(String(right.level || ''));
+        }
+
+        return 0;
+    }
+
+    function sortPublications(publications) {
+        return [...publications].sort((left, right) => {
+            const highlightDelta = Number(hasHighlightTag(right)) - Number(hasHighlightTag(left));
+            if (highlightDelta !== 0) {
+                return highlightDelta;
+            }
+
+            const yearDelta = (right.year ?? 0) - (left.year ?? 0);
+            if (yearDelta !== 0) {
+                return yearDelta;
+            }
+
+            const typeDelta = getTypeRank(left.type) - getTypeRank(right.type);
+            if (typeDelta !== 0) {
+                return typeDelta;
+            }
+
+            const levelDelta = compareLevel(left, right);
+            if (levelDelta !== 0) {
+                return levelDelta;
+            }
+
+            const authorRoleDelta = getAuthorRoleRank(left.author_role) - getAuthorRoleRank(right.author_role);
+            if (authorRoleDelta !== 0) {
+                return authorRoleDelta;
+            }
+
+            return left.source_index - right.source_index;
+        });
+    }
+
+    function enrichPublication(publication, scholarMap, index) {
         const scholarEntry = publication.scholar_id ? scholarMap[publication.scholar_id] : null;
         const citationCount = normalizeCitationCount(scholarEntry?.num_citations);
 
         return {
             ...publication,
+            source_index: index,
             citation_count: citationCount,
             scholar_url: publication.scholar_id
                 ? `https://scholar.google.com/citations?view_op=view_citation&citation_for_view=${publication.scholar_id}`
@@ -38,13 +115,12 @@
             ]).then(([catalog, scholar]) => {
                 const scholarMap = scholar.publications || {};
                 const publications = (catalog.publications || [])
-                    .map(publication => enrichPublication(publication, scholarMap))
-                    .sort((left, right) => left.order - right.order);
+                    .map((publication, index) => enrichPublication(publication, scholarMap, index));
 
                 return {
                     catalog,
                     scholar,
-                    publications
+                    publications: sortPublications(publications)
                 };
             });
         }
@@ -283,7 +359,7 @@
     }
 
     function getAuthorRoleOptions(publications) {
-        const roleOrder = ['1st-author', '2nd-author', '3rd-author', 'corresponding-author', 'other-author'];
+        const roleOrder = ['1st-author', 'co-1st-author', '2nd-author', '3rd-author', 'corresponding-author', 'other-author'];
         return roleOrder;
     }
 

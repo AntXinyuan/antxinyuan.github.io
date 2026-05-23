@@ -83,7 +83,6 @@ Edit `data/publications.json`.
 Each publication currently supports fields such as:
 
 - `id`
-- `order`
 - `featured`
 - `section`
 - `type`
@@ -104,6 +103,8 @@ Each publication currently supports fields such as:
 Important behavior:
 
 - publications with `featured: true` appear on the homepage
+- publications whose `tag` contains `✨` are treated as highlighted first-author or co-first-author papers and are shown first
+- publications are sorted by highlight status, then `year` descending; within the same year, `journal` appears before `conference`, journals are ordered from `SCI-Q1` to `SCI-Q4`, conferences are ordered lexicographically by `level`, and ties are ordered by `author_role`: `1st-author`, `co-1st-author`, `2nd-author`, `3rd-author`, `other-author`
 - `keyword` is used by archive filtering
 - `author_role` is used by author-role filtering
 - `scholar_id` is only used to align manual metadata with citation data in `scripts/scholar.json`
@@ -120,7 +121,6 @@ Edit `data/news.json`.
 Each news item currently supports fields such as:
 
 - `id`
-- `order`
 - `date`
 - `year`
 - `theme`
@@ -130,6 +130,7 @@ Each news item currently supports fields such as:
 Important behavior:
 
 - the homepage shows only the most recent year of news
+- news items are sorted by `date` descending, with same-day items keeping their relative JSON order, so continuous manual numbering is not required
 - the full news archive supports filtering by `Year` and `Theme`
 
 ## 📈 Scholar Data

@@ -1,0 +1,6 @@
+@article{liu2026ssp,
+  title={Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection}, 
+  author={Xinyuan Liu and Hang Xu and Zirui Chen and Yike Ma and Chenggang Yan and Feng Dai},
+  journal={Pattern Recognition},
+  year={2026}
+}
