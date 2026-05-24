@@ -109,12 +109,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://antxinyuan.github.io/docs/arxiv2025b/thumbnail.webp</loc>
-    <lastmod>2025-06-13 12:45:16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://antxinyuan.github.io/docs/ijcai2023/sph2pob_poster.pdf</loc>
     <lastmod>2024-03-21 10:46:28</lastmod>
     <changefreq>monthly</changefreq>
@@ -135,6 +129,12 @@
   <url>
     <loc>https://antxinyuan.github.io/docs/ijcai2023/thumbnail.webp</loc>
     <lastmod>2025-06-05 19:51:04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/docs/pr2026/thumbnail.webp</loc>
+    <lastmod>2026-05-24 00:14:07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -296,13 +296,13 @@
   </url>
   <url>
     <loc>https://antxinyuan.github.io/scripts/news.js</loc>
-    <lastmod>2026-03-20 00:27:55</lastmod>
+    <lastmod>2026-05-24 00:14:07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://antxinyuan.github.io/scripts/publications.js</loc>
-    <lastmod>2026-03-20 00:27:55</lastmod>
+    <lastmod>2026-05-24 00:14:07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
