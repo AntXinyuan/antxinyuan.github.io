@@ -296,7 +296,7 @@
       "tag": "PR26✨",
       "year": 2026,
       "title": "Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection",
-      "authors_html": "<strong>Xinyuan Liu</strong>, Hang Xu, Zirui Chen, Yike Ma, Chenggang Yan and Feng Dai†",
+      "authors_html": "<strong>Xinyuan Liu</strong>, Hang Xu†, Zirui Chen, Yike Ma, Chenggang Yan and Feng Dai",
       "venue_html": "<em>Pattern Recognition 2026</em> (SCI-Q1, IF=7.6, <span style=\"color:#ae1324;\">CCF-B</span>)",
       "thumbnail": "docs/pr2026/thumbnail.webp",
       "thumbnail_alt": "Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection",
