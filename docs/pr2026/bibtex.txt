@@ -1,6 +1,11 @@
 @article{liu2026ssp,
-  title={Semantic-decoupled Spatial Partition Guided Point-supervised Oriented Object Detection}, 
-  author={Xinyuan Liu and Hang Xu and Zirui Chen and Yike Ma and Chenggang Yan and Feng Dai},
-  journal={Pattern Recognition},
-  year={2026}
+title = {Semantic-decoupled spatial partition guided point-supervised oriented object detection},
+journal = {Pattern Recognition},
+pages = {114079},
+year = {2026},
+issn = {0031-3203},
+doi = {https://doi.org/10.1016/j.patcog.2026.114079},
+url = {https://www.sciencedirect.com/science/article/pii/S0031320326010447},
+author = {Xinyuan Liu and Hang Xu and Zirui Chen and Yike Ma and Chenggang Yan and Feng Dai},
+keywords = {Object detection, Weakly-supervised learning},
 }
