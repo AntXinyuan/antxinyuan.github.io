@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://antxinyuan.github.io/scripts/scholar.html</loc>
-    <lastmod>2026-04-15 17:28:46</lastmod>
+    <lastmod>2026-07-05 13:05:47</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -129,6 +129,12 @@
   <url>
     <loc>https://antxinyuan.github.io/docs/icme2026/thumbnail.webp</loc>
     <lastmod>2026-03-17 12:21:13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://antxinyuan.github.io/docs/icme2026/tear_poster.pdf</loc>
+    <lastmod>2026-07-05 13:05:47</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
