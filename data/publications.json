@@ -113,7 +113,8 @@
       "github_repo": "DoubleFlicker7",
       "links": [
         { "label": "Code", "url": "https://github.com/DoubleFlicker7" },
-        { "label": "BibTex", "url": "docs/icme2026/bibtex.txt" }
+        { "label": "BibTex", "url": "docs/icme2026/bibtex.txt" },
+        { "label": "Poster", "url": "docs/icme2026/tear_poster.pdf" },
       ]
     },
     {
